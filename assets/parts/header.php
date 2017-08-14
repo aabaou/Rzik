@@ -2,7 +2,7 @@
 <html>
 	<head>
 
-		<title>LETITSEED</title>
+		<title>RZIK</title>
 
 		<!-- Meta -->
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,8 +45,9 @@
 			            </button>
 					</div>
 			            <a id="brand" class="navbar-brand" href="index.php">
-<!-- 			            	<img src="/Rzik/img/.png" alt="">
-				            <img src="/Rzik/img/.png" alt="">
+			            	<img src="assets/img/logowhite.png" alt="">
+			            	<img src="assets/img/logo.png" alt="">
+<!-- 				            <img src="/Rzik/img/.png" alt="">
 				            <img src="/Rzik/img/.png" alt=""> -->
 			            </a>
 			    </div>

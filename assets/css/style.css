@@ -175,8 +175,9 @@
 
     div[class~="fixed-theme"] a#brand.navbar-brand img:nth-child(2){
         display: inline;
-        width: inherit;
-        top: 3px;
+        position: absolute;
+        width: 200px;
+        top: -15px;
     }
 
     div a#brand.navbar-brand img:nth-child(3), div a#brand.navbar-brand img:nth-child(2){
@@ -323,8 +324,69 @@
 
     body .navbar-brand > img {
         position: absolute;
-        width: 250px;      
-        top: -10px;     
+        width: 250px;
+        top: -48px;
         z-index: 999;
     }
 
+
+    .slider_home, .slider_home *, header#home{
+        position: relative;
+        height: 100%;
+    }
+
+    .slider_home{
+        overflow-x: hidden;
+    }
+
+    #transitiontoevent{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        background: rgba(255, 255, 255, 0);
+        padding: 15px 0;
+        transition: .5s;
+        cursor: pointer;
+        height: 60px;
+    }
+
+    #transitiontoevent:hover{
+        color: black;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+
+   #transitiontoevent p{
+        font-size: 15px;
+        position: relative;
+        top: 5px;
+    }
+
+    #transitiontoevent i {
+        position: absolute;
+        font-size: 1.2em;
+        cursor: pointer;
+        -moz-animation-name: bounce;
+        -moz-animation-duration: 1s;
+        -moz-animation-fill-mode: backwards;
+        -moz-animation-delay: 0.5s;
+        -moz-animation-iteration-count: infinite;
+        -webkit-animation-name: bounce;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: backwards;
+        -webkit-animation-delay: 0.5s;
+        -webkit-animation-iteration-count: infinite;
+        animation-name: bounce;
+        animation-duration: 2s;
+        animation-fill-mode: backwards;
+        animation-delay: 0.5s;
+        animation-iteration-count: infinite;
+    }
+
+
+    @-webkit-keyframes bounce-down{0%{top:0px;-webkit-animation-timing-function:ease}50%{top:20px;-webkit-animation-timing-function:ease}100%{top:0px}}
+    @-webkit-keyframes bounce{0%{top:0px;-webkit-animation-timing-function:ease}50%{top:20px;-webkit-animation-timing-function:ease}100%{top:0px}}
+    @-moz-keyframes bounce{0%{top:0px;-moz-animation-timing-function:ease}50%{top:20px;-moz-animation-timing-function:ease}100%{top:0px}}
+    @keyframes bounce{0%{top:0px;-moz-animation-timing-function:ease}50%{top:20px;-moz-animation-timing-function:ease}100%{top:0px}}
