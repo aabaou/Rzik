@@ -1,9 +1,16 @@
-<?php include 'asset/parts/header.php' ?>
+<?php include __DIR__.'/assets/parts/header.php' ?>
 
 		<!-- HEADER FOND -->
 
 
-
+	<div class="slider">
+	  <div>your content</div>
+	  <div>your content</div>
+	  <div>your content</div>	  
+	  <div>your content</div>
+	  <div>your content</div>
+	  <div>your content</div>
+	</div>
 			<!-- Transition -->
 <!-- 			<div id="transitiontoevent">
 			</div> -->
@@ -17,4 +24,4 @@
 		<!-- FIN BODY -->
 
 
-<?php include 'asset/parts/footer.php' ?>
+<?php include __DIR__.'/assets/parts/footer.php' ?>
