@@ -365,8 +365,8 @@ $(document).ready(function(){
     $('.slider_home').slick({
         dots: false,
         infinite: true,
-        autoplay:false,
-        autoplaySpeed:3000,
+        autoplay:true,
+        autoplaySpeed:5000,
         slidesToShow: 1,
         slidesToScroll: 1,
         responsive: [
