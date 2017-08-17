@@ -1,7 +1,5 @@
 <?php include __DIR__.'/assets/parts/header.php' ?>
-
 		<!-- HEADER FOND -->
-
 <header id="home">
 	<div class="slider_home">
 	  <img src="./assets/img/slide1" alt="">

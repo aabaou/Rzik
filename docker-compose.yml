@@ -1,0 +1,46 @@
+version: '2'
+services:
+  web:
+    image: library/php:7.0-alpine
+    
+    ports:
+      - "80:80"
+      - "9000:9000"
+    # environment:
+      # - SERVERNAME=
+      # - SERVERALIAS= 
+      # - DOCUMENTROOT=web
+      # - COMPOSE_HTTP_TIMEOUT=200
+    volumes:
+      - .:/var/www/html
+    links:
+      - database:mysql
+      - mailhog
+    tty: true
+    
+  database:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysqlroot
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8010:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysqlroot
+      - UPLOAD_SIZE=1G
+    links:
+      - database:mysql
+
+  # mailhog container - official images
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+# ##### END OF PROFILING SECTION #####
