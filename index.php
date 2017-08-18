@@ -1,4 +1,5 @@
 <?php include __DIR__.'/assets/parts/header.php' ?>
+<?php include __DIR__.'/assets/objects/list.php' ?>
 
 		<!-- HEADER FOND -->
 
@@ -26,8 +27,13 @@
 
 		<!-- BODY -->
 
-	<div class="container">
-		<p>Bowada</p>
+	<div id="top" class="container">
+		<div class="division">
+			
+			<?php echo liste::piste("piste.png"); ?>
+
+		</div>
+
 	</div>
 
 		<!-- FIN BODY -->

@@ -1,7 +1,7 @@
+<?php include 'assets/config/fonctions.inc.php' ?>
 <!DOCTYPE html>
 <html>
 	<head>
-
 		<title>RZIK</title>
 
 		<!-- Meta -->

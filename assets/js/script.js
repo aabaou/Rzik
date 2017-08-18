@@ -348,11 +348,11 @@ $(document).ready(function(){
     $('#transitiontoevent').click(function (){
 
         // Position de la section PME
-        var target = $('#target').offset().top;
+        var top = $('#top').offset().top;
 
         $('body,html').animate(
             {
-                scrollTop: target - 100
+                scrollTop: top - 100
             }, 500);
         
 

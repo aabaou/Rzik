@@ -157,6 +157,14 @@
     .orange{
         color: #ff5722;
     }
+
+    .division {
+        padding: 40px 35px 10px;
+        display: inline-block;
+        width: 100%;
+    }
+
+
 /************************************************************ Fin Outils ************************************************************/
 
 
@@ -390,3 +398,9 @@
     @-webkit-keyframes bounce{0%{top:0px;-webkit-animation-timing-function:ease}50%{top:20px;-webkit-animation-timing-function:ease}100%{top:0px}}
     @-moz-keyframes bounce{0%{top:0px;-moz-animation-timing-function:ease}50%{top:20px;-moz-animation-timing-function:ease}100%{top:0px}}
     @keyframes bounce{0%{top:0px;-moz-animation-timing-function:ease}50%{top:20px;-moz-animation-timing-function:ease}100%{top:0px}}
+
+
+
+    .piste img{
+        width: 100%;
+    }
