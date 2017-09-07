@@ -8,7 +8,7 @@
   }
   .audio-player .album-image {
     min-height: 50px;
-    width: 50px;
+    max-width: 50px;
     background-size: cover;
   }
   .audio-player .player-controls {
@@ -25,11 +25,12 @@
     appearance: none;
     background-color: white;
     color: blue;
-    height: 5px;
+    height: 10px;
+    border-radius: 8px;
   }
   .audio-player .player-controls progress[value]::-webkit-progress-bar {
     background-color: white;
-    border-radius: 2px;
+    border-radius: 8px;
     border: 1px solid #dfdfdf;
     color: blue;
   }
@@ -49,3 +50,25 @@
   .audio-player #play-btn.pause {
     background-image: url("http://www.lukeduncan.me/images/pause-button.png");
   }
+
+  .audio-player #skip-btn {
+    background-image: src("http://www.lukeduncan.me/images/pause-button.png");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    margin: 2rem 0 2rem 2rem;
+  }
+
+
+
+
+  .sm2-bar-ui {
+    font-size: 12px;
+   }
+   .sm2-bar-ui .sm2-main-controls,
+   .sm2-bar-ui .sm2-playlist-drawer {
+    background-color: #c6c6c6;
+   }
+   .sm2-bar-ui .sm2-inline-texture {
+    background: transparent;
+   }
