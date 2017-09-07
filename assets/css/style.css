@@ -522,7 +522,7 @@
  overflow: visible;
  /* and this should probably have a high z-index. tweak as needed. */
  z-index: 999;
- display: none;
+ /* display: none; */
 }
 
 .sm2-bar-ui.fixed .bd,

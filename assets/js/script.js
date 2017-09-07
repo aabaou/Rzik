@@ -313,11 +313,11 @@ $(document).ready(function(){
         // Ajoute ou supprime 
         if(yOffset < currYOffSet) {
             myNavBar.add();  
-            $player.fadeIn('400');
+            // $player.fadeIn('400');
         }
         else if(currYOffSet == yOffset){
             myNavBar.remove();
-            $player.fadeOut('400');
+            // $player.fadeOut('400');
         }
 
         
