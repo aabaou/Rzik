@@ -1,6 +1,7 @@
 	<link rel="stylesheet" type="text/css" href="./assets/css/player.css">
 	<footer class="footer">
 	
+<<<<<<< HEAD
 	<div class="audio-player">
 				
     	<div id="play-btn"></div>
@@ -28,7 +29,8 @@
 
 	<!-- FIN BODY -->
 		<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/js/soundmanager2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/js/bar-ui.js" type="text/javascript" charset="utf-8"></script>
 		<script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/jquery.sticky.js" type="text/javascript"></script> 
 	</body>
 </html>
