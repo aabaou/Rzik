@@ -9,12 +9,10 @@
 	  <img src="./assets/img/slide3" alt="">	  
 	  <img src="./assets/img/slide4" alt="">
 	</div>
-<<<<<<< HEAD
+
 	
-	<!--<div id="transitiontoevent">
-=======
-	<div id="transitiontoevent">
->>>>>>> de139c2992f3ede63b0578460ead986b0ba148b0
+
+<!-- 	<div id="transitiontoevent">
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
 		</div>
@@ -24,7 +22,7 @@
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
 		</div>
-	</div>
+	</div> -->
 </header>
 
 		<!-- FIN HEADER FOND 
