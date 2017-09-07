@@ -326,6 +326,23 @@ $(document).ready(function(){
     }
 
 
+    /**
+     * Backstretch
+     */
+    
+    if(!!$('#page_inscription').length){
+
+        // $.backstretch([
+        //   "asset/img/connexion1.jpg",
+        //   "asset/img/connexion2.jpg",
+        //   "asset/img/connexion3.jpg"
+        // ], {
+        //     duration: 4000,
+        //     transition: 'fade',
+        //     transitionDuration: 1000
+        // });
+    }
+
 
     /**
      * Détection du scroll
