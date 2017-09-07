@@ -10,7 +10,13 @@
 	  <img src="./assets/img/slide4" alt="">
 	</div>
 
+<<<<<<< HEAD
 	<div id="transitiontoevent">
+=======
+	
+
+<!-- 	<div id="transitiontoevent">
+>>>>>>> ad58c3b21c6d155dfa1d423a8d950e4e9166f387
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
 		</div>
@@ -20,7 +26,7 @@
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
 		</div>
-	</div>
+	</div> -->
 </header>
 
 		<!-- FIN HEADER FOND 

@@ -448,6 +448,31 @@
     margin-bottom: 30px;
     }
 
+
+    #page_inscription{
+        height: 100vh;
+    }
+
+    #page_inscription div{
+        width: 500px;
+        background: rgba(255, 255, 255, 0.85);
+        text-align: center;
+        position: relative;
+        top: 25%;
+        margin: 0 auto;
+    }
+
+    #page_inscription div form{
+        padding: 50px;
+    }
+
+    #page_inscription div p#mdp_oublie{
+        cursor: pointer;
+        margin-top: 40px;
+        font-weight: bold;
+    }
+
+    
 // SoundManager
 
 /**
@@ -522,7 +547,7 @@
  overflow: visible;
  /* and this should probably have a high z-index. tweak as needed. */
  z-index: 999;
- display: none;
+ /* display: none; */
 }
 
 .sm2-bar-ui.fixed .bd,

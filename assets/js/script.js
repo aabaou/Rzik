@@ -313,11 +313,11 @@ $(document).ready(function(){
         // Ajoute ou supprime 
         if(yOffset < currYOffSet) {
             myNavBar.add();  
-            $player.fadeIn('400');
+            // $player.fadeIn('400');
         }
         else if(currYOffSet == yOffset){
             myNavBar.remove();
-            $player.fadeOut('400');
+            // $player.fadeOut('400');
         }
 
         
@@ -325,6 +325,23 @@ $(document).ready(function(){
 
     }
 
+
+    /**
+     * Backstretch
+     */
+    
+    if(!!$('#page_inscription').length){
+
+        // $.backstretch([
+        //   "asset/img/connexion1.jpg",
+        //   "asset/img/connexion2.jpg",
+        //   "asset/img/connexion3.jpg"
+        // ], {
+        //     duration: 4000,
+        //     transition: 'fade',
+        //     transitionDuration: 1000
+        // });
+    }
 
 
     /**
