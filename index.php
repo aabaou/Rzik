@@ -7,6 +7,7 @@
 	  <img src="./assets/img/slide3" alt="">	  
 	  <img src="./assets/img/slide4" alt="">
 	</div>
+	
 	<!--<div id="transitiontoevent">
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -31,3 +32,4 @@
 
 <script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/js/soundmanagerv2/soundmanagerv2.js"

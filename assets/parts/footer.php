@@ -8,12 +8,12 @@
       	<audio id="player" ontimeupdate="initProgressBar()">
 			  <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
 			</audio>
-    	</div>
-    	<div class="player-controls scrubber">
-		<div id="album-image">
-			<img src="https://unsplash.it/50/50/?random"></img>
 		</div>
-		<p>Oslo <small>by</small> Holy Esque</p>
+		<span id="skip-btn"></span>
+    	<div class="player-controls scrubber">
+		
+		<p><img src="https://unsplash.it/50/50/?random"></img>
+		Oslo <small>by</small> Holy Esque</p>
       	<span id="seekObjContainer">
 			  <progress id="seekObj" value="0" max="1"></progress>
 			</span>
