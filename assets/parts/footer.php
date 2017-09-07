@@ -1,4 +1,3 @@
-	<link rel="stylesheet" type="text/css" href="./assets/css/player.css">
 	<footer class="footer">
 	
 <<<<<<< HEAD
@@ -23,6 +22,9 @@
       	<small style="float: right; position: relative; right: 20px;" class="end-time"></small>
 		
     </div>
+=======
+
+>>>>>>> de139c2992f3ede63b0578460ead986b0ba148b0
     
     </footer>
 	
