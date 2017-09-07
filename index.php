@@ -9,7 +9,7 @@
 	  <img src="./assets/img/slide3" alt="">	  
 	  <img src="./assets/img/slide4" alt="">
 	</div>
-	<!--<div id="transitiontoevent">
+	<div id="transitiontoevent">
 		<div class="col-md-3 col-xs-3 center">
 			<i class="fa fa-chevron-down" aria-hidden="true"></i>
 		</div>
@@ -22,7 +22,7 @@
 	</div>
 </header>
 
-		<!-- FIN HEADER FOND -->
+		<!-- FIN HEADER FOND 
 
 		<!-- BODY -->
 
@@ -30,7 +30,21 @@
 	<div id="top" class="container">
 		<div class="division">
 			
-			<?php echo liste::piste("piste.png"); ?>
+			<div class="col-md-3 piste">
+				<img src="assets/img/piste.png" alt="">
+			</div>
+			<div class="col-md-3 piste">
+				<img src="assets/img/piste.png" alt="">
+			</div>
+			<div class="col-md-3 piste">
+				<img src="assets/img/piste.png" alt="">
+			</div>
+			<div class="col-md-3 piste">
+				<img src="assets/img/piste.png" alt="">
+			</div>
+			<div class="col-md-3 piste">
+				<img src="assets/img/piste.png" alt="">
+			</div>
 
 		</div>
 

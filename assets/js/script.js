@@ -295,6 +295,8 @@ $(document).ready(function(){
         "brand"
     ]);
 
+    $player = $('.sm2-bar-ui.fixed');
+
     /**
      * Fonction utilisé lors du défilement de la page
      */
@@ -311,11 +313,14 @@ $(document).ready(function(){
         // Ajoute ou supprime 
         if(yOffset < currYOffSet) {
             myNavBar.add();  
+            $player.fadeIn('400');
         }
         else if(currYOffSet == yOffset){
             myNavBar.remove();
+            $player.fadeOut('400');
         }
 
+        
 
 
     }

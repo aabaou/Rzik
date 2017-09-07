@@ -444,6 +444,9 @@
         width: 100%;
     }
 
+    .piste {
+    margin-bottom: 30px;
+    }
 
 // SoundManager
 
@@ -519,6 +522,7 @@
  overflow: visible;
  /* and this should probably have a high z-index. tweak as needed. */
  z-index: 999;
+ display: none;
 }
 
 .sm2-bar-ui.fixed .bd,
@@ -547,7 +551,7 @@
 .sm2-bar-ui .bd,
 .sm2-bar-ui .sm2-extra-controls {
  position: relative;
- background-color: #2288cc;
+ background-color: #333;
  /*
  transition: background 0.2s ease-in-out;
  */
@@ -560,7 +564,7 @@
  top: 0px;
  width: 100%;
  height: 100%;
- background-image: linear-gradient(to bottom, rgba(255,255,255,0.125) 5%, rgba(255,255,255,0.125) 45%, rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.1) 51%, rgba(0,0,0,0.1) 95%); /* W3C */
+ /* background-image: linear-gradient(to bottom, rgba(255,255,255,0.125) 5%, rgba(255,255,255,0.125) 45%, rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.1) 51%, rgba(0,0,0,0.1) 95%); */ /* W3C */
 }
 
 .sm2-bar-ui.flat .sm2-inline-gradient {
@@ -827,7 +831,7 @@
 }
 
 .sm2-bar-ui .sm2-playlist ul {
- position: absolute;
+ /* position: absolute; */
  left: 0px;
  top: 0px;
  width: 100%;
