@@ -11,9 +11,6 @@
 	  <img src="./assets/img/slide4" alt="">
 	</div>
 
-<<<<<<< HEAD
-	<div id="transitiontoevent">
-=======
 	
 
 <!-- 	<div id="transitiontoevent">

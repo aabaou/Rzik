@@ -1,42 +1,249 @@
-$(document).ready(function(){
+var send = {
 
+  form : function($this, $path, $function) {
+    $result = $($this).serialize();
 
-    /**
-     * Cet objet contrôle la barre de navigation. Met en œuvre l'ajout et le retrait
-     * Action sur les éléments de la barre de navigation que nous voulons changer.
-     * @type {{flagAdd: boolean, elements: string[], add: Function, remove: Function}}
-     */
+    $.ajax({
+      url : $path,
+      dataType: "html",
+      type: "POST",
+      data : $result,
+      success: function(response){
 
-    var myNavBar = {
+        var $res = JSON.parse(response);
 
-        flagAdd: true,
-
-        elements: [],
-
-        init: function (elements) {
-            this.elements = elements;
-        },
-
-        add : function() {
-            $this = this;
-            if($this.flagAdd) {
-                for(var i=0; i < $this.elements.length; i++) {
-                    document.getElementById($this.elements[i]).className += " fixed-theme";
-                }
-                $this.flagAdd = false;
-            }
-        },
-
-        remove: function() {
-            $this = this;
-            for(var i=0; i < $this.elements.length; i++) {
-                document.getElementById($this.elements[i]).className =
-                        document.getElementById($this.elements[i]).className.replace( /(?:^|\s)fixed-theme(?!\S)/g , '' );
-            }
-            $this.flagAdd = true;
+        switch ($res.status) {
+          case "success":
+            if(!!$res.message)
+             notify.success($res.message);
+            if ($function != 0)
+              $function($res.data);
+            break;
+          case "error":
+             notify.danger($res.message);
+            break;
+          default:
+             notify.danger("Erreur inconnue");
+            break;
         }
 
-    };
+
+      }
+    }).fail(function() {
+      notify.danger("Erreur inconnue");
+    });
+
+
+}
+};
+
+/**
+ * [file description] Envoi de fichier par JS !
+ * String $id L'id du fichier
+ * String $path chemin vers le formulaire d'envoi
+ */
+
+var file = {
+
+    target : function($id, $path){
+            var file = document.querySelector('#'+$id).files[0];
+            var fd = new FormData();
+            fd.append($id, file);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', $path, true);
+            xhr.upload.onprogress = function(e) {
+              if (e.lengthComputable) {
+                var percentComplete = (e.loaded / e.total) * 100;
+                console.log(percentComplete + '% uploaded');
+              }
+            };
+            xhr.onload = function() {
+              if (document.querySelector('#'+$id).status == 200) {
+                var resp = JSON.parse(document.querySelector('#'+$id).response);
+                console.log('Server got:', resp);
+                var image = document.createElement('img');
+                image.src = resp.dataUrl;
+                document.body.appendChild(image);
+              };
+            };
+            xhr.send(fd);
+          return true;
+    }
+};
+
+/**
+ * [$_GET description] Récupérer un parametre dans l'URL
+ * @param  String param 
+ * @return value
+ */
+function $_GET(param) {
+  var vars = {};
+  window.location.href.replace( location.hash, '' ).replace( 
+    /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+    function( m, key, value ) { // callback
+      vars[key] = value !== undefined ? value : '';
+    }
+  );
+
+  if ( param ) {
+    return vars[param] ? vars[param] : null;  
+  }
+  return vars;
+};
+
+/**
+ * [insertParam description] Insert un paramètre dans l'URL
+ * @param  {[type]} key   Paramètre d'url
+ * @param  {[type]} value Value liée au paramètre
+ * @return {[type]}       Fait une redirection
+ */
+function insertParam(key, value){
+    var key = encodeURI(key); 
+    var value = encodeURI(value);
+
+    var kvp = document.location.search.substr(1).split('&');
+
+
+    var i=kvp.length; var x; while(i--) 
+    {
+        x = kvp[i].split('=');
+
+        if (x[0]==key)
+        {
+            x[1] = value;
+            kvp[i] = x.join('=');
+            break;
+        }
+    }
+
+    if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+    //this will reload the page, it's likely better to store this until finished
+    document.location.search = (document.location.search == "") ? kvp.join('') : kvp.join('&'); 
+}
+
+
+function addParameterToURL(param){
+  _url = location.href;
+  _url += (_url.split('?')[1] ? '&':'?') + param;
+  return _url;
+}
+
+
+/**
+ * Notifications (info, success, danger)
+ * Ils prennent tous en paramètres un text
+ */
+var notify = {
+
+  info : function($text){
+    $.notify({
+      // options
+      icon: 'fa fa-info-circle',
+    //  title: 'Bootstrap notify',
+      message: $text,
+      // url: $url,
+    //  target: '_blank'
+    },{
+      // settings
+      element: 'body',
+      position: null,
+      type: "info",
+      allow_dismiss: true,
+      newest_on_top: false,
+      showProgressbar: false,
+      placement: {
+        from: "bottom",
+        align: "right"
+      },
+      animate: {
+        enter: 'animated fadeInDown',
+        exit: 'animated fadeOutUp'
+      },
+      offset: 20,
+      spacing: 10,
+      z_index: 1031,
+      delay: 2000,
+      timer: 3000,
+      url_target: '_blank',
+      mouse_over: null,
+
+    });
+  },
+
+  success : function($text){
+    $.notify({
+      // options
+      icon: 'fa fa-info-circle',
+    //  title: 'Bootstrap notify',
+      message: $text,
+      // url: $url,
+    //  target: '_blank'
+    },{
+      // settings
+      element: 'body',
+      position: null,
+      type: "success",
+      allow_dismiss: true,
+      newest_on_top: false,
+      showProgressbar: false,
+      placement: {
+        from: "bottom",
+        align: "right"
+      },
+      animate: {
+        enter: 'animated fadeInDown',
+        exit: 'animated fadeOutUp'
+      },
+      offset: 20,
+      spacing: 10,
+      z_index: 1031,
+      delay: 2000,
+      timer: 3000,
+      url_target: '_blank',
+      mouse_over: null,
+
+    });
+  },
+
+  danger : function($text){
+    $.notify({
+      // options
+      icon: 'fa fa-info-circle',
+    //  title: 'Bootstrap notify',
+      message: $text,
+      // url: $url,
+    //  target: '_blank'
+    },{
+      // settings
+      element: 'body',
+      position: null,
+      type: "warning",
+      allow_dismiss: true,
+      newest_on_top: false,
+      showProgressbar: false,
+      placement: {
+        from: "bottom",
+        align: "right"
+      },
+      animate: {
+        enter: 'animated fadeInDown',
+        exit: 'animated fadeOutUp'
+      },
+      offset: 20,
+      spacing: 10,
+      z_index: 1031,
+      delay: 2000,
+      timer: 3000,
+      url_target: '_blank',
+      mouse_over: null,
+
+    });
+  }
+
+
+}
+
 
 
     /**
@@ -252,7 +459,51 @@ $(document).ready(function(){
 
         }
 
+    }
+    
+
+$(document).ready(function(){
+
+
+    /**
+     * Cet objet contrôle la barre de navigation. Met en œuvre l'ajout et le retrait
+     * Action sur les éléments de la barre de navigation que nous voulons changer.
+     * @type {{flagAdd: boolean, elements: string[], add: Function, remove: Function}}
+     */
+
+    var myNavBar = {
+
+        flagAdd: true,
+
+        elements: [],
+
+        init: function (elements) {
+            this.elements = elements;
+        },
+
+        add : function() {
+            $this = this;
+            if($this.flagAdd) {
+                for(var i=0; i < $this.elements.length; i++) {
+                    document.getElementById($this.elements[i]).className += " fixed-theme";
+                }
+                $this.flagAdd = false;
+            }
+        },
+
+        remove: function() {
+            $this = this;
+            for(var i=0; i < $this.elements.length; i++) {
+                document.getElementById($this.elements[i]).className =
+                        document.getElementById($this.elements[i]).className.replace( /(?:^|\s)fixed-theme(?!\S)/g , '' );
+            }
+            $this.flagAdd = true;
+        }
+
     };
+
+
+
 
 
 
@@ -326,177 +577,6 @@ $(document).ready(function(){
     }
 
 
-    /**
-     * [$_GET description] Récupérer un parametre dans l'URL
-     * @param  String param 
-     * @return value
-     */
-    function $_GET(param) {
-      var vars = {};
-      window.location.href.replace( location.hash, '' ).replace( 
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function( m, key, value ) { // callback
-          vars[key] = value !== undefined ? value : '';
-        }
-      );
-
-      if ( param ) {
-        return vars[param] ? vars[param] : null;  
-      }
-      return vars;
-    }
-
-    /**
-     * [insertParam description] Insert un paramètre dans l'URL
-     * @param  {[type]} key   Paramètre d'url
-     * @param  {[type]} value Value liée au paramètre
-     * @return {[type]}       Fait une redirection
-     */
-    function insertParam(key, value){
-        var key = encodeURI(key); 
-        var value = encodeURI(value);
-
-        var kvp = document.location.search.substr(1).split('&');
-
-
-        var i=kvp.length; var x; while(i--) 
-        {
-            x = kvp[i].split('=');
-
-            if (x[0]==key)
-            {
-                x[1] = value;
-                kvp[i] = x.join('=');
-                break;
-            }
-        }
-
-        if(i<0) {kvp[kvp.length] = [key,value].join('=');}
-
-        //this will reload the page, it's likely better to store this until finished
-        document.location.search = (document.location.search == "") ? kvp.join('') : kvp.join('&'); 
-    }
-
-
-  function addParameterToURL(param){
-      _url = location.href;
-      _url += (_url.split('?')[1] ? '&':'?') + param;
-      return _url;
-  }
-
-    /**
-     * Notifications (info, success, danger)
-     * Ils prennent tous en paramètres un text
-     */
-    var notify = {
-
-      info : function($text){
-        $.notify({
-          // options
-          icon: 'fa fa-info-circle',
-        //  title: 'Bootstrap notify',
-          message: $text,
-          // url: $url,
-        //  target: '_blank'
-        },{
-          // settings
-          element: 'body',
-          position: null,
-          type: "info",
-          allow_dismiss: true,
-          newest_on_top: false,
-          showProgressbar: false,
-          placement: {
-            from: "bottom",
-            align: "right"
-          },
-          animate: {
-            enter: 'animated fadeInDown',
-            exit: 'animated fadeOutUp'
-          },
-          offset: 20,
-          spacing: 10,
-          z_index: 1031,
-          delay: 2000,
-          timer: 3000,
-          url_target: '_blank',
-          mouse_over: null,
-
-        });
-      },
-
-      success : function($text){
-        $.notify({
-          // options
-          icon: 'fa fa-info-circle',
-        //  title: 'Bootstrap notify',
-          message: $text,
-          // url: $url,
-        //  target: '_blank'
-        },{
-          // settings
-          element: 'body',
-          position: null,
-          type: "success",
-          allow_dismiss: true,
-          newest_on_top: false,
-          showProgressbar: false,
-          placement: {
-            from: "bottom",
-            align: "right"
-          },
-          animate: {
-            enter: 'animated fadeInDown',
-            exit: 'animated fadeOutUp'
-          },
-          offset: 20,
-          spacing: 10,
-          z_index: 1031,
-          delay: 2000,
-          timer: 3000,
-          url_target: '_blank',
-          mouse_over: null,
-
-        });
-      },
-
-      danger : function($text){
-        $.notify({
-          // options
-          icon: 'fa fa-info-circle',
-        //  title: 'Bootstrap notify',
-          message: $text,
-          // url: $url,
-        //  target: '_blank'
-        },{
-          // settings
-          element: 'body',
-          position: null,
-          type: "warning",
-          allow_dismiss: true,
-          newest_on_top: false,
-          showProgressbar: false,
-          placement: {
-            from: "bottom",
-            align: "right"
-          },
-          animate: {
-            enter: 'animated fadeInDown',
-            exit: 'animated fadeOutUp'
-          },
-          offset: 20,
-          spacing: 10,
-          z_index: 1031,
-          delay: 2000,
-          timer: 3000,
-          url_target: '_blank',
-          mouse_over: null,
-
-        });
-      },
-
-
-    }
 
 
     /**
@@ -505,15 +585,15 @@ $(document).ready(function(){
     
     if(!!$('#page_inscription').length){
 
-        // $.backstretch([
-        //   "asset/img/connexion1.jpg",
-        //   "asset/img/connexion2.jpg",
-        //   "asset/img/connexion3.jpg"
-        // ], {
-        //     duration: 4000,
-        //     transition: 'fade',
-        //     transitionDuration: 1000
-        // });
+        $.backstretch([
+          "assets/img/slide1.jpg",
+          "assets/img/slide3.jpg",
+          "assets/img/slide4.jpg"
+        ], {
+            duration: 4000,
+            transition: 'fade',
+            transitionDuration: 1000
+        });
     }
 
 

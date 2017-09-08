@@ -13,7 +13,6 @@ $password = htmlspecialchars($mysqli->real_escape_string($Methode['password'] ))
 
 $fakepassword = random_password(rand(5, 10));
 
-sleep(1);
 
 $sha2pwd = sha1(sha1($password) . sha1($password));
 
@@ -31,18 +30,17 @@ if($result->num_rows == 0)
 
 	$mysqli->query($sql);
 
-	// header('refresh: 5; Location: index.html');
+	$result = ['status' => 'success', 'message' => 'Votre compte a été crée', 'data' => 'data' ];
+
 }
 
 else {
-
-	error_log("Ce mail est déjà présent");
-	// header('refresh: 5; Location: inscription.html');
+	$result = ['status' => 'error', 'message' => 'Ce mail est déjà présent', 'data' => 'data' ];
 	
 }
+// header('Location : /index.php');
 
-
-
+echo json_encode($result);
 /* Fermeture de la connexion */
 $mysqli->close();
 

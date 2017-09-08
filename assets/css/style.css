@@ -453,9 +453,9 @@
         height: 100vh;
     }
 
-    #page_inscription div{
+    #page_inscription div.form{
         width: 500px;
-        background: rgba(255, 255, 255, 0.85);
+        background: rgb(255, 255, 255);
         text-align: center;
         position: relative;
         top: 25%;
@@ -1476,4 +1476,188 @@
  /* re-hide playlist */
  display: block;
  overflow: hidden;
+}
+body div[data-notify="container"] {
+    border-radius: 5px;
+    border: none;
+}
+
+body div[data-notify="container"].alert-info {
+    background: rgb(0, 165, 247);
+    color: #ffffff;
+    font-family: inherit;
+}
+
+body div[data-notify="container"].alert-success {
+    background: #4CAF50;
+    color: #ffffff;
+    font-family: inherit;
+}
+
+body div[data-notify="container"].alert-warning {
+    background: rgba(255, 0, 0, 0.9);
+    color: #ffffff;
+    font-family: inherit;
+}
+
+span[data-notify="icon"] {
+    font-size: 18px;
+    position: relative;
+    padding-right: 5px;
+    top: 1px;
+}
+
+span[data-notify="message"] {
+    font-size: 17px;
+    padding-right: 5px;
+}
+
+button[data-notify="dismiss"] {
+  opacity: 1;
+  text-shadow: none;
+  color: white;
+}
+
+
+
+
+/********************
+ * Button: Hover;
+ ********************/
+
+.hvr-center:not(.active) {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.hvr-center:not(.active):before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: #FF5722;
+  height: 2px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-center:not(.active):hover:before, .hvr-center:not(.active):focus:before, .hvr-center:not(.active):active:before {
+  left: 0;
+  right: 0;
+}
+
+
+/* */
+
+body .hvr-horizontal {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border: none;
+  padding: 10px 30px;
+  background: transparent;
+}
+
+
+body .hvr-horizontal.orange:before{
+  background: #ff5722;
+}
+
+body .hvr-horizontal.blue:before{
+  background: #607D8B;
+}
+
+body .hvr-horizontal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 50%;
+  transform-origin: 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-horizontal:hover, .hvr-horizontal:focus, .hvr-horizontal:active {
+  color: white!important;
+}
+
+body .hvr-horizontal:hover:before, body .hvr-horizontal:focus:before, body .hvr-horizontal:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+
+/* code for animated blinking cursor */
+.typed-cursor{
+    opacity: 1;
+    font-weight: 100;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    -ms-animation: blink 0.7s infinite;
+    -o-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-ms-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-o-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.typed-fade-out{
+    opacity: 0;
+    animation: 0;
+    transition: opacity .25s;
+}
+
+#typed, .typed-cursor{
+    font-size: 24px;
+    position: relative;
+    bottom: 2px;
 }
