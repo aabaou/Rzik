@@ -37,17 +37,33 @@
 			</div>
 
 		</div>
+    
+    
+    <a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajoutez votre Musique !</span></a>
 
 	</div>
 
 
 
+        <div class="sidebars">
+            <div class="sidebar right">
+              <a href="#" id="close" class="btn" data-action="close" data-side="right"><span><i class="fa fa-times" aria-hidden="true"></i></span></a>
+            </div>
+        </div>
 
 
 
-
-
-
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
+<p>test</p>
 
 
 <div class="sm2-bar-ui full-width fixed">
@@ -166,7 +182,7 @@
      <li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
      <li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
      <li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
-     <li><a href="../../demo/_mp3/rain.mp3">Rain</a></li>
+     <li><a href="file:///C:/Users/Famille/Downloads/DRIFTERSOp.mp3">Rain</a></li>
 
     </ul>
 

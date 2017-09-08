@@ -7,7 +7,7 @@
 		<div class="form">
 			<form id="inscriptionForm">
 				<h2 class="jump center title">
-					<span first_sentence='Vous &ecirc;tes membre ? ^500' second_sentence='Connectez-vous ! ' class="typed_now" typed='typed'></span>
+					<span first_sentence="Que l'aventure commence^500" second_sentence="inscrivez-vous ! " class="typed_now" typed="typed"></span>
 				</h2>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" name="login" type="login" id="login" required>

@@ -1,3 +1,15 @@
+var playlist = {
+
+  add : function(){
+    $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
+    $playlist.append('<li><a href="DRIFTERSOp.mp3">Drifters</a></li>');
+  },
+
+  remove: function(){
+
+  }
+}
+
 var send = {
 
   form : function($this, $path, $function) {
