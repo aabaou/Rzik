@@ -5,7 +5,7 @@
 
 	<div id="page_inscription" class="center">
 		<div class="form">
-			<form>
+			<form id="inscriptionForm">
 				<h2 class="jump center title">
 					<span first_sentence='Vous &ecirc;tes membre ? ^500' second_sentence='Connectez-vous ! ' class="typed_now" typed='typed'></span>
 				</h2>
@@ -42,7 +42,7 @@ function res_ajax($data){
 
 }
 
-	$( "form" ).on( "submit", function( event ) {
+	$( "form#inscriptionForm" ).on( "submit", function( event ) {
       event.preventDefault();
       $path = 'assets/ws/inscription.php';
       send.form(this, $path, res_ajax);
