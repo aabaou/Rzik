@@ -2,8 +2,11 @@
 
 	include 'fonctions.inc.php';
 
+	session_start();
 
 	$salt = random_password(10); // Création de Sel
+	
+	
 
 	$hostname  ="localhost";			// Nom du serveur mysql
 	$mysqluser ="root";					// login
