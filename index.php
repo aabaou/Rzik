@@ -1,5 +1,6 @@
 <?php include __DIR__.'/assets/parts/header.php' ?>
-<?php include __DIR__.'/assets/objects/list.php' ?>
+
+
 
 <!-- HEADER FOND -->
 <header id="home">
@@ -52,7 +53,6 @@
 		</div>
 
 	</div>
-
 
 
 

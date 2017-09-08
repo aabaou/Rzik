@@ -327,6 +327,179 @@ $(document).ready(function(){
 
 
     /**
+     * [$_GET description] Récupérer un parametre dans l'URL
+     * @param  String param 
+     * @return value
+     */
+    function $_GET(param) {
+      var vars = {};
+      window.location.href.replace( location.hash, '' ).replace( 
+        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function( m, key, value ) { // callback
+          vars[key] = value !== undefined ? value : '';
+        }
+      );
+
+      if ( param ) {
+        return vars[param] ? vars[param] : null;  
+      }
+      return vars;
+    }
+
+    /**
+     * [insertParam description] Insert un paramètre dans l'URL
+     * @param  {[type]} key   Paramètre d'url
+     * @param  {[type]} value Value liée au paramètre
+     * @return {[type]}       Fait une redirection
+     */
+    function insertParam(key, value){
+        var key = encodeURI(key); 
+        var value = encodeURI(value);
+
+        var kvp = document.location.search.substr(1).split('&');
+
+
+        var i=kvp.length; var x; while(i--) 
+        {
+            x = kvp[i].split('=');
+
+            if (x[0]==key)
+            {
+                x[1] = value;
+                kvp[i] = x.join('=');
+                break;
+            }
+        }
+
+        if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+        //this will reload the page, it's likely better to store this until finished
+        document.location.search = (document.location.search == "") ? kvp.join('') : kvp.join('&'); 
+    }
+
+
+  function addParameterToURL(param){
+      _url = location.href;
+      _url += (_url.split('?')[1] ? '&':'?') + param;
+      return _url;
+  }
+
+    /**
+     * Notifications (info, success, danger)
+     * Ils prennent tous en paramètres un text
+     */
+    var notify = {
+
+      info : function($text){
+        $.notify({
+          // options
+          icon: 'fa fa-info-circle',
+        //  title: 'Bootstrap notify',
+          message: $text,
+          // url: $url,
+        //  target: '_blank'
+        },{
+          // settings
+          element: 'body',
+          position: null,
+          type: "info",
+          allow_dismiss: true,
+          newest_on_top: false,
+          showProgressbar: false,
+          placement: {
+            from: "bottom",
+            align: "right"
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          },
+          offset: 20,
+          spacing: 10,
+          z_index: 1031,
+          delay: 2000,
+          timer: 3000,
+          url_target: '_blank',
+          mouse_over: null,
+
+        });
+      },
+
+      success : function($text){
+        $.notify({
+          // options
+          icon: 'fa fa-info-circle',
+        //  title: 'Bootstrap notify',
+          message: $text,
+          // url: $url,
+        //  target: '_blank'
+        },{
+          // settings
+          element: 'body',
+          position: null,
+          type: "success",
+          allow_dismiss: true,
+          newest_on_top: false,
+          showProgressbar: false,
+          placement: {
+            from: "bottom",
+            align: "right"
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          },
+          offset: 20,
+          spacing: 10,
+          z_index: 1031,
+          delay: 2000,
+          timer: 3000,
+          url_target: '_blank',
+          mouse_over: null,
+
+        });
+      },
+
+      danger : function($text){
+        $.notify({
+          // options
+          icon: 'fa fa-info-circle',
+        //  title: 'Bootstrap notify',
+          message: $text,
+          // url: $url,
+        //  target: '_blank'
+        },{
+          // settings
+          element: 'body',
+          position: null,
+          type: "warning",
+          allow_dismiss: true,
+          newest_on_top: false,
+          showProgressbar: false,
+          placement: {
+            from: "bottom",
+            align: "right"
+          },
+          animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+          },
+          offset: 20,
+          spacing: 10,
+          z_index: 1031,
+          delay: 2000,
+          timer: 3000,
+          url_target: '_blank',
+          mouse_over: null,
+
+        });
+      },
+
+
+    }
+
+
+    /**
      * Backstretch
      */
     

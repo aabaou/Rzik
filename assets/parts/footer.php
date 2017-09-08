@@ -11,3 +11,5 @@
 		<script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
+
+<?php $mysqli->close(); ?>

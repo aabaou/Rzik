@@ -1,4 +1,5 @@
-<?php include 'assets/config/fonctions.inc.php' ?>
+<?php include 'assets/config/config.inc.php' ?>
+
 <!DOCTYPE html>
 <html>
 	<head>

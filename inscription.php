@@ -1,24 +1,27 @@
 <?php include __DIR__.'/assets/parts/header.php' ?>
-<?php include __DIR__.'/assets/objects/list.php' ?>
 
 
 
 
 	<div id="page_inscription" class="center">
 		<div>
-			<form action="">
+			<form action="assets/ws/inscription.php" method="POST">
 				<h2 class="jump center title">
 					<span first_sentence='Vous &ecirc;tes membre ? ^500' second_sentence='Connectez-vous ! ' class="typed" typed='typed'></span>
 				</h2>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" type="email" id="email">
+				    <input class="mdl-textfield__input" name="login" type="login" id="login">
+				    <label class="mdl-textfield__label" for="login">login...</label>
+				  </div>
+				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" name="email" type="email" id="email">
 				    <label class="mdl-textfield__label" for="email">Email...</label>
 				  </div>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" type="password" id="password">
+				    <input class="mdl-textfield__input" name="password" type="password" id="password">
 				    <label class="mdl-textfield__label" for="password">Password...</label>
 				  </div>
-				<button type="submit" class="hvr-horizontal blue" style="display: none;">Soumettre</button>
+				<button type="submit" class="hvr-horizontal blue">Soumettre</button>
 			</form>
 		</div>
 	</div>
