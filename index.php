@@ -10,21 +10,6 @@
 	  <img src="./assets/img/slide3" alt="">	  
 	  <img src="./assets/img/slide4" alt="">
 	</div>
-
-	
-
-<!-- 	<div id="transitiontoevent">
->>>>>>> ad58c3b21c6d155dfa1d423a8d950e4e9166f387
-		<div class="col-md-3 col-xs-3 center">
-			<i class="fa fa-chevron-down" aria-hidden="true"></i>
-		</div>
-		<div class="col-md-6 col-xs-6">
-			<p>L'AVENTURE COMMENCE !</p>
-		</div>
-		<div class="col-md-3 col-xs-3 center">
-			<i class="fa fa-chevron-down" aria-hidden="true"></i>
-		</div>
-	</div> -->
 </header>
 
 		<!-- FIN HEADER FOND 
