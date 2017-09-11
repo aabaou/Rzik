@@ -48,6 +48,13 @@
         <div class="sidebars">
             <div class="sidebar right">
               <a href="#" id="close" class="btn" data-action="close" data-side="right"><span><i class="fa fa-times" aria-hidden="true"></i></span></a>
+
+
+              <div class="col-lg-12 col-md-12 ">
+                <p class="title_docs">Top</p>
+                <input id="test" name="test" type="file">
+              </div>
+              
             </div>
         </div>
 

@@ -711,5 +711,30 @@ $(document).ready(function(){
 
 
 
+    $("#test").fileinput({
+        // initialPreview: [
+        //     carteID
+        // ],
+        // initialPreviewAsData: true,
+        // initialPreviewConfig: [
+        //     {caption: "", size: "", width: "120px", key: 1, showDelete: false}
+        // ],
+        // deleteUrl: "/site/file-delete",
+        overwriteInitial: true,
+        language: 'fr',
+        uploadUrl: '#',
+        maxFileCount: 1,
+        // maxFileSize: 200,
+        showBrowse : false, // Booléen , Bouton browse
+        autoReplace : true, // Booléen , de remplacer automatiquement les fichiers dans l'aperçu une fois que la maxFileCount
+        browseOnZoneClick : true, // Booléen , que ce soit pour activer la recherche / sélection de fichiers en cliquant sur la zone de prévisualisation.
+        showCaption: false, // Booléen , pour afficher la légende du fichier. Par défaut true.
+        // showPreview : false, // Booléen , qu'il s'agisse d'afficher l'aperçu du fichier. Par défaut true.
+        showRemove : false, // Booléen , qu'il apparaisse ou non le bouton de suppression / effacement du fichier. Par défaut true.
+        showUpload: false, // Booléen , pour afficher le bouton de téléchargement du fichier. Par défaut true.
+        showCancel: false, // Booléen , qu'il s'agisse d'afficher le bouton d'annulation du téléchargement du fichier. Par défaut true.
+        showFermer: false, // Booléen , pour afficher l'icône de fermeture dans l'aperçu. Par défaut, «vrai». Cela ne sera analysé que s'il showPreviewest vrai ou lorsque vous utilisez la {close}balise dans vos modèles de prévisualisation.
+    });
+
 });
 
