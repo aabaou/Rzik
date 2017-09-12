@@ -133,7 +133,8 @@
     $('#close').click()
     $('form#ajoutMusic *').val('');
     $('.close.fileinput-remove').click();
-    $('#listSong').load('assets/ws/list.php');
+    setTimeout(()=>$('#listSong').load('assets/ws/list.php'), 2000);
+
   }
 
 
@@ -145,18 +146,6 @@
   $('#listSong').load('assets/ws/list.php');
 
 </script>
-
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
 
 
 <div class="sm2-bar-ui full-width fixed">
