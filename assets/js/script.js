@@ -611,9 +611,15 @@ $(document).ready(function(){
 
 
     $('.piste').click(function(event) {
+      $this = this;
+      playlist.add($this);
+      $titre = $($this).attr('titre');
+      notify.success($titre+" été ajouté à votre playlist");
+    });
 
-      playlist.add(this);
-      notify.success("La musique a été ajouté à votre playlist");
+    $('#addSon').click(function(event) {
+
+      $('.sidebar.right').show();
 
     });
 
