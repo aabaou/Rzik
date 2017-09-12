@@ -89,6 +89,12 @@ var file = {
             }
             var xhr = new XMLHttpRequest();
             xhr.open('POST', $path, true);
+            xhr.upload.onprogress = function(e) {
+              if (e.lengthComputable) {
+                var percentComplete = (e.loaded / e.total) * 100;
+                console.log(percentComplete + '% uploaded');
+              }
+            };
             xhr.onload = function() {
               if (this.status == 200) {
                 var resp = JSON.parse(this.response);
@@ -97,9 +103,8 @@ var file = {
                   return true;
               };
             };
+            
             xhr.send(fd);
-
-
     }
 };
 
@@ -611,9 +616,8 @@ $(document).ready(function(){
 
 
     $('.piste').click(function(event) {
-      $this = this;
-      playlist.add($this);
-      $titre = $($this).attr('titre');
+      playlist.add(this);
+      $titre = $(this).attr('titre');
       notify.success($titre+" été ajouté à votre playlist");
     });
 

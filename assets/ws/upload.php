@@ -8,15 +8,22 @@ if(empty($_POST['valide'])){
 
 	$fileNameCover = isset($MethodeF['cover']['name']) ? $MethodeF['cover']['name'] : '';
 	$fileTypeCover = isset($MethodeF['cover']['type']) ? $MethodeF['cover']['type'] : '';
-	$fileContentCover = isset($MethodeF['cover']['tmp_name']) ? file_get_contents($MethodeF['cover']['tmp_name']) : '';
 
 	$fileNameMusic = isset($MethodeF['music']['name']) ? $MethodeF['music']['name'] : '';
 	$fileTypeMusic = isset($MethodeF['music']['type']) ? $MethodeF['music']['type'] : '';
-	$fileContentMusic = isset($MethodeF['music']['tmp_name']) ? file_get_contents($MethodeF['music']['tmp_name']) : '';
 
 
-	$pathCover = "../upload/{$fileNameCover}";
-	$pathMusic = "../upload/{$fileNameMusic}";
+	$elementsCheminCover = pathinfo($fileNameCover);
+	$extensionCover = $elementsCheminCover['extension'];
+
+	$elementsCheminMusic = pathinfo($fileNameMusic);
+	$extensionMusic = $elementsCheminMusic['extension'];
+
+	$cover = sha1($fileNameCover);
+	$musique = sha1($fileNameMusic);
+
+	$pathCover = "../upload/{$cover}.{$extensionCover}";
+	$pathMusic = "../upload/{$musique}.{$extensionMusic}";
 
 	$uploadCover = upload('cover', $pathCover);
 	$uploadMusic = upload('music', $pathMusic);
@@ -30,7 +37,7 @@ if(empty($_POST['valide'])){
 
 	$res = $mysqli->query($sql);
 
-	$result = ['status' => 'success', 'message' => 'Yop', 'data' => 'data'];
+	$result = ['status' => 'success', 'message' => 'Yop', 'data' => $musique.$extensionMusic];
 
 	unset($_SESSION['uploadTime']);
 
