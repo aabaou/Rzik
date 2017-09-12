@@ -2,10 +2,12 @@
 
 	include 'fonctions.inc.php';
 
+	ini_set('upload-max-filesize', '50M');
+	ini_set('post_max_size', '50M');
+
 	session_start();
 
 	$salt = random_password(10); // Création de Sel
-	
 	
 
 	$hostname  ="localhost";			// Nom du serveur mysql

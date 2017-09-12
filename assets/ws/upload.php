@@ -37,7 +37,7 @@ if(empty($_POST['valide'])){
 
 	$res = $mysqli->query($sql);
 
-	$result = ['status' => 'success', 'message' => 'Yop', 'data' => $musique.$extensionMusic];
+	$result = ['status' => 'success', 'message' => 'Yop', 'data' => 'data'];
 
 	unset($_SESSION['uploadTime']);
 

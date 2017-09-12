@@ -28,7 +28,10 @@
 		</div>
     
     
-    <a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajoutez votre Musique !</span></a>
+    <?php 
+      if(isset($_SESSION['connect']))
+        echo '<a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajoutez votre Musique !</span></a>';
+    ?>
 
 	</div>
 
@@ -140,7 +143,6 @@
     });
 
   $('#listSong').load('assets/ws/list.php');
-  
 
 </script>
 

@@ -1,10 +1,12 @@
 var playlist = {
 
   add : function($this){
-    $source = $($this).attr('source');
-    $titre = $($this).attr('titre');
-    $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
-    $playlist.append('<li><a href="'+$source+'">'+$titre+'</a></li>');
+        $source = $($this).attr('source');
+        $titre = $($this).attr('titre');
+        $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
+        $playlist.append('<li><a href="'+$source+'">'+$titre+'</a></li>');
+        $titre = $($this).attr('titre');
+        notify.success($titre+" été ajouté à votre playlist");
   },
 
   remove: function(){
@@ -615,11 +617,6 @@ $(document).ready(function(){
     }
 
 
-    $('.piste').click(function(event) {
-      playlist.add(this);
-      $titre = $(this).attr('titre');
-      notify.success($titre+" été ajouté à votre playlist");
-    });
 
     $('#addSon').click(function(event) {
 
