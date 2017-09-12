@@ -30,6 +30,7 @@ if($pwd == $res->trackm){
 
 $_SESSION['connect'] = $can_connect;
 $_SESSION['username'] = $res->username;
+$_SESSION['userID'] = $res->id;
 
 
 header('Location: ../../index.php'); 
