@@ -16,6 +16,10 @@
 
 		<!-- BODY -->
 
+    <!-- Music part à retirer -->
+    <?php include __DIR__.'/music.php' ?>
+    <!-- fin part -->
+
 
 	<div id="top" class="container">
 		<div id="listSong" class="division">
