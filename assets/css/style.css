@@ -27,6 +27,28 @@
         height: 100%;
     }
 
+    .coverbg{
+        backdrop-filter: blur(7px);
+        background-size: cover;
+        background-repeat: repeat;
+        -webkit-filter: filter(value);
+        -moz-filter: filter(value);
+        -o-filter: filter(value);
+        -ms-filter: filter(value);
+    }
+
+    .coverbg *{
+        filter: blur(0px);
+        -webkit-filter: filter(value);
+        -moz-filter: filter(value);
+        -o-filter: filter(value);
+        -ms-filter: filter(value);
+    }
+
+    albumcover{
+        max-width: 200px;
+        max-height: 200px;
+    }
     .center{
         margin-left: auto;
         margin-right: auto;
