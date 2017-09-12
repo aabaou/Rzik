@@ -15,12 +15,6 @@ if(empty($_POST['valide'])){
 	$fileContentMusic = isset($MethodeF['music']['tmp_name']) ? file_get_contents($MethodeF['music']['tmp_name']) : '';
 
 
-	$dataUrl = 'data:' . $fileTypeMusic . ';base64,' . base64_encode($fileContentMusic);
-
-	$elementsChemin = pathinfo($fileNameMusic);
-	$extension = $elementsChemin['extension'];
-
-
 	$pathCover = "../upload/{$fileNameCover}";
 	$pathMusic = "../upload/{$fileNameMusic}";
 
@@ -36,7 +30,7 @@ if(empty($_POST['valide'])){
 
 	$res = $mysqli->query($sql);
 
-	$result = ['status' => 'success', 'message' => 'Yop', 'data' => $sql];
+	$result = ['status' => 'success', 'message' => 'Yop', 'data' => 'data'];
 
 	unset($_SESSION['uploadTime']);
 
@@ -64,7 +58,7 @@ else{
 
 	
 
-	$result = ['status' => 'success', 'message' => 'Ce mail est déjà présent', 'data' => $sql ];
+	$result = ['status' => 'success', 'message' => 'Ce mail est déjà présent', 'data' => 'data' ];
 
 }
 
