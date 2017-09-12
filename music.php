@@ -1,6 +1,3 @@
-<?php include __DIR__.'/assets/parts/header.php' ?>
-
-<div class="container" style="padding-top: 100px;">
 <div class="col-md-12">
     <div class="coverbg" style="background-img: url("../assets/upload/cover.jpg")">
         <div class="col-md-9">
@@ -15,6 +12,7 @@
 </div>
 <div class="col-md-12">
 <div class="jumbotron">
+<div class="container">
     <div class="input-group">
         <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
 	    <span class="input-group-btn" onclick="addComment()">     
@@ -32,5 +30,4 @@
     </ul>
     </div>
     </div>
-</div>
-    <?php include __DIR__.'/assets/parts/footer.php' ?>
+    </div>
