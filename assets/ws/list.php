@@ -17,7 +17,9 @@
 
     $champs .= '
               <div class="col-md-3 piste" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
-                  <img src="assets/upload/'.$data->cover.'" alt="">
+                  <div class="song" style="background-image: url(assets/upload/'.$data->cover.')";">
+                    
+                  </div>
               </div>      
     ';
 

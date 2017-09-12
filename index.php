@@ -139,6 +139,7 @@
       send.form(this, $path, res_ajax);
     });
 
+  $('#listSong').load('assets/ws/list.php')
   
 
 </script>
