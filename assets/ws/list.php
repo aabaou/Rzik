@@ -20,6 +20,8 @@
                   <div class="song" style="background-image: url(assets/upload/'.$data->cover.')";">
                     
                   </div>
+                  <p class="titre">'.$data->titre.'</p>
+                  <p class="artiste">'.$data->artiste.'</p>
               </div>      
     ';
 

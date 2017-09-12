@@ -1,4 +1,12 @@
 <div class="col-md-12">
+<<<<<<< HEAD
+    <div class="col-md-9">
+        <h2>Titre</h2>
+        <h4>by Artiste</h4>
+        <p>Description :  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu sapien luctus, consectetur magna et, interdum nisl. Integer vestibulum enim ac justo faucibus, eget mattis diam molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla ut vehicula nulla, ac placerat velit. Sed pellentesque ex volutpat ultricies pharetra. Praesent vel sollicitudin odio, vitae mollis diam. Praesent quis elit ac dui fringilla maximus. Nullam suscipit arcu id ultricies varius.</p>
+    </div>
+    <div class="col-md-3">
+=======
     <div class="coverbg" style="background-img: url("../assets/upload/cover.jpg")">
         <div class="col-md-9">
             <h2>Titre</h2>
@@ -8,6 +16,7 @@
         <div class="col-md-3">
             <img src="assets/upload/cover.jpg" height="200" width="200">
         </div>
+>>>>>>> a10e5321d6afce346c4c5544467911d5543948d9
     </div>
 </div>
 <div class="col-md-12">

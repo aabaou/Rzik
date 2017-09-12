@@ -1786,3 +1786,13 @@ body .sidebar.right .hvr-horizontal {
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.titre{
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+.artiste{
+    color: #797979;
+}
