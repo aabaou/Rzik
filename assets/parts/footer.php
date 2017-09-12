@@ -32,6 +32,8 @@
 			});
 		</script>
 	</body>
+
+	
 </html>
 
 <?php $mysqli->close(); ?>
