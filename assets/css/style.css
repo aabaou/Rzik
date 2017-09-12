@@ -447,12 +447,14 @@
     .piste {
     position: relative;
     margin-bottom: 30px;
+    cursor: pointer;
     }
 
 
     #page_inscription{
         height: 100vh;
     }
+
 
     #page_inscription div.form{
         width: 500px;
@@ -463,6 +465,15 @@
         margin: 0 auto;
     }
 
+    div.form{
+        background: rgb(255, 255, 255);
+        text-align: center;
+        position: relative;
+        top: 25%;
+        margin: 0 auto;
+        padding: 30px;
+    }
+    
     #page_inscription div form{
         padding: 50px;
     }
@@ -1479,6 +1490,7 @@
  overflow: hidden;
 }
 body div[data-notify="container"] {
+    z-index: 9999!important;
     border-radius: 5px;
     border: none;
 }
@@ -1679,7 +1691,7 @@ body .hvr-horizontal:hover:before, body .hvr-horizontal:focus:before, body .hvr-
     top: 0;
     right: 0;
     bottom: 0;
-    width: 270px;
+    width: 750px;
     background: #f9f9f9;
 }
 
@@ -1707,6 +1719,7 @@ body .hvr-horizontal:hover:before, body .hvr-horizontal:focus:before, body .hvr-
     font-size: 2em;
     text-align: center;
     z-index: 9999;
+    overflow-y: auto;
 }
 
 
@@ -1716,6 +1729,28 @@ body .hvr-horizontal:hover:before, body .hvr-horizontal:focus:before, body .hvr-
     top: 10px;
     color: black;
     font-size: 17px;
+}
+
+
+.sidebar.right label{
+    text-align: left;
+    font-size: 16px;
+    width: 100%;
+}
+
+div.form label{
+    text-align: left;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+.sidebar.right{
+    color: black;
+}
+
+body .sidebar.right .hvr-horizontal {
+    font-size: 16px;
 }
 
 #addSon{

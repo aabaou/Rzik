@@ -1,8 +1,10 @@
 var playlist = {
 
-  add : function(){
+  add : function($this){
+    $source = $($this).attr('source');
+    $titre = $($this).attr('titre');
     $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
-    $playlist.append('<li><a href="DRIFTERSOp.mp3">Drifters</a></li>');
+    $playlist.append('<li><a href="'+$source+'">'+$titre+'</a></li>');
   },
 
   remove: function(){
@@ -19,7 +21,7 @@ var send = {
       url : $path,
       dataType: "html",
       type: "POST",
-      data : $result,
+      data : $result + '& valide=' + 1,
       success: function(response){
 
         var $res = JSON.parse(response);
@@ -46,7 +48,27 @@ var send = {
     });
 
 
-}
+},
+
+
+
+
+  test : function($this, $path, $function) {
+    $result = $($this).serialize();
+
+    $.ajax({
+      url : $path,
+      dataType: "html",
+      type: "POST",
+      data : $result,
+      success: function(response){
+          console.dir(response);
+        }
+    }).fail(function() {
+      notify.danger("Erreur inconnue");
+    });
+  }
+
 };
 
 /**
@@ -55,12 +77,16 @@ var send = {
  * String $path chemin vers le formulaire d'envoi
  */
 
+
 var file = {
 
-    target : function($id, $path){
-            var file = document.querySelector('#'+$id).files[0];
+    target : function($obj, $path){
             var fd = new FormData();
-            fd.append($id, file);
+            for (value in obj){
+              obj[value] = document.getElementById(value).files[0];
+              console.dir(obj[value]);
+              fd.append(value , obj[value]);
+            }
             var xhr = new XMLHttpRequest();
             xhr.open('POST', $path, true);
             xhr.upload.onprogress = function(e) {
@@ -70,12 +96,9 @@ var file = {
               }
             };
             xhr.onload = function() {
-              if (document.querySelector('#'+$id).status == 200) {
-                var resp = JSON.parse(document.querySelector('#'+$id).response);
+              if (this.status == 200) {
+                var resp = JSON.parse(this.response);
                 console.log('Server got:', resp);
-                var image = document.createElement('img');
-                image.src = resp.dataUrl;
-                document.body.appendChild(image);
               };
             };
             xhr.send(fd);
@@ -560,6 +583,7 @@ $(document).ready(function(){
 
     $player = $('.sm2-bar-ui.fixed');
 
+
     /**
      * Fonction utilisé lors du défilement de la page
      */
@@ -589,7 +613,11 @@ $(document).ready(function(){
     }
 
 
+    $('.piste').click(function(event) {
 
+      playlist.add(this);
+
+    });
 
     /**
      * Backstretch
@@ -711,7 +739,7 @@ $(document).ready(function(){
 
 
 
-    $("#test").fileinput({
+    $("#cover, #music").fileinput({
         // initialPreview: [
         //     carteID
         // ],
