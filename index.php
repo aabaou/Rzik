@@ -16,10 +16,6 @@
 
 		<!-- BODY -->
 
-    <!-- Music part à retirer -->
-    <?php include __DIR__.'/music.php' ?>
-    <!-- fin part -->
-
 
 	<div id="top" class="container">
 		<div id="listSong" class="division">
@@ -133,7 +129,7 @@
     $('#close').click()
     $('form#ajoutMusic *').val('');
     $('.close.fileinput-remove').click();
-    $('#listSong').load('assets/ws/list.php');
+    setTimeout(()=>$('#listSong').load('assets/ws/list.php'), 2500);
   }
 
 
@@ -146,17 +142,10 @@
 
 </script>
 
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
-<p>test</p>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 <div class="sm2-bar-ui full-width fixed">
@@ -252,7 +241,7 @@
     <ul class="sm2-playlist-bd">
 
      <!-- item with "download" link -->
-     <li>
+<!--      <li>
       <div class="sm2-row">
        <div class="sm2-col sm2-wide">
         <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3"><b>SonReal</b> - LA<span class="label">Explicit</span></a>
@@ -261,21 +250,10 @@
         <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3" target="_blank" title="Download &quot;LA&quot;" class="sm2-icon sm2-music sm2-exclude">Download this track</a>
        </div>
       </div>
-     </li>
+     </li> -->
 
      <!-- standard one-line items -->
-     <li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Let%20Me%20%28Prod%202oolman%29.mp3"><b>SonReal</b> - Let Me <span class="label">Explicit</span></a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20People%20Asking.mp3"><b>SonReal</b> - People Asking <span class="label">Explicit</span></a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20Already%20There%20Remix%20ft.%20Rich%20Kidd%2C%20Saukrates.mp3"><b>SonReal</b> - Already There Remix ft. Rich Kidd, Saukrates <span class="label">Explicit</span></a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/The%20Fugitives%20-%20Graffiti%20Sex.mp3"><b>The Fugitives</b> - Graffiti Sex</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/Adrian%20Glynn%20-%20Seven%20Or%20Eight%20Days.mp3"><b>Adrian Glynn</b> - Seven Or Eight Days</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20I%20Tried.mp3"><b>SonReal</b> - I Tried</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/mpc/20060826%20-%20Armstrong.mp3">Armstrong Beat</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/mpc/20090119%20-%20Untitled%20Groove.mp3">Untitled Groove</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/birds-in-kauai-128kbps-aac-lc.mp4">Birds In Kaua'i (AAC)</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/20130320%20-%20Po%27ipu%20Beach%20Waves.ogg">Po'ipu Beach Waves (OGG)</a></li>
-     <li><a href="http://freshly-ground.com/data/audio/sm2/bottle-pop.wav">A corked beer bottle (WAV)</a></li>
-     <li><a href="file:///C:/Users/Famille/Downloads/DRIFTERSOp.mp3">Rain</a></li>
+
 
     </ul>
 

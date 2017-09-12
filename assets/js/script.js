@@ -6,7 +6,7 @@ var playlist = {
         $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
         $playlist.append('<li><a href="'+$source+'">'+$titre+'</a></li>');
         $titre = $($this).attr('titre');
-        notify.success($titre+" été ajouté à votre playlist");
+        notify.info($titre+" été ajouté à votre playlist");
   },
 
   remove: function(){

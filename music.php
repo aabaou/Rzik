@@ -5,7 +5,6 @@
         <p>Description :  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu sapien luctus, consectetur magna et, interdum nisl. Integer vestibulum enim ac justo faucibus, eget mattis diam molestie. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla ut vehicula nulla, ac placerat velit. Sed pellentesque ex volutpat ultricies pharetra. Praesent vel sollicitudin odio, vitae mollis diam. Praesent quis elit ac dui fringilla maximus. Nullam suscipit arcu id ultricies varius.</p>
     </div>
     <div class="col-md-3">
-        <img src="https://unsplash.it/200/200/?random">
     </div>
 </div>
 <div class="col-md-6">
