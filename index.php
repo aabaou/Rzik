@@ -18,39 +18,9 @@
 
 
 	<div id="top" class="container">
-		<div class="division">
-
-    <?php
-
-            if (empty($index))
-              $index = 0;
-
-
-            $champs = '';
-
-            $sql = "SELECT * FROM musics";
-
-            $result = $mysqli->query($sql);
-
-            while($data = $result->fetch_object()) {
-
-              $champs .= '
-                        <div class="col-md-3 piste" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
-                            <img src="assets/upload/'.$data->cover.'" alt="">
-                        </div>      
-              ';
-
-              $index++;
-              if($index == 6)
-                break;
-            }
-
+		<div id="listSong" class="division">
   
-
-
-            echo $champs;
-            ?>
-
+      
 		</div>
     
     
@@ -146,18 +116,23 @@
 
 <script>
 
-function res_ajax($data){
-  console.dir($data);
-}
 
   var obj = {cover: 'cover', music: 'music'};
   $path = "assets/ws/upload.php";
 
+  function res_ajax($data){
+    file.target(obj, $path);
+
+    $('#close').click()
+    $('form#ajoutMusic *').val('');
+    $('.close.fileinput-remove').click();
+    $('#listSong').load('assets/ws/list.php')
+  }
+
+
   $( "form#ajoutMusic" ).on( "submit", function( event ) {
       event.preventDefault();
-      $validate = file.target(obj, $path);
-      if($validate == true);
-        send.form(this, $path, res_ajax);
+      send.form(this, $path, res_ajax);
     });
 
   

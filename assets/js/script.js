@@ -89,20 +89,17 @@ var file = {
             }
             var xhr = new XMLHttpRequest();
             xhr.open('POST', $path, true);
-            xhr.upload.onprogress = function(e) {
-              if (e.lengthComputable) {
-                var percentComplete = (e.loaded / e.total) * 100;
-                console.log(percentComplete + '% uploaded');
-              }
-            };
             xhr.onload = function() {
               if (this.status == 200) {
                 var resp = JSON.parse(this.response);
                 console.log('Server got:', resp);
+                if(!!resp)
+                  return true;
               };
             };
             xhr.send(fd);
-          return true;
+
+
     }
 };
 
@@ -616,6 +613,7 @@ $(document).ready(function(){
     $('.piste').click(function(event) {
 
       playlist.add(this);
+      notify.success("La musique a été ajouté à votre playlist");
 
     });
 

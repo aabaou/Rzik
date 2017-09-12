@@ -27,17 +27,18 @@ if(empty($_POST['valide'])){
 	$uploadCover = upload('cover', $pathCover);
 	$uploadMusic = upload('music', $pathMusic);
 
-	$track = time();
-
 	$userID = $_SESSION['userID'];
 
-	$_SESSION['uploadTime'] = $track;
+	$track  = $_SESSION['uploadTime'];
 
-	$sql = "INSERT INTO musics(cover, file, Users_id, track, date_upload ) VALUES('$pathCover', '$pathMusic', '$userID', '$track', $track)"; 
+	$sql = "UPDATE musics SET cover = '$pathCover', file = '$pathMusic' WHERE Users_id='$userID' AND track ='$track' ";
+
 
 	$res = $mysqli->query($sql);
 
-	$result = ['status' => 'success', 'message' => 'Yop', 'data' => $res];
+	$result = ['status' => 'success', 'message' => 'Yop', 'data' => $sql];
+
+	unset($_SESSION['uploadTime']);
 
 }
 else{
@@ -52,14 +53,16 @@ else{
 
 
 	$userID = $_SESSION['userID'];
-	$track = $_SESSION['uploadTime'];
+	$track = $_SESSION['uploadTime'] = time();
 
 
-	$sql = "UPDATE musics SET titre = '$titre', artiste = '$artiste', compositeur = '$compositeur', genres = '$genre' WHERE Users_id='$userID' AND track ='$track' ";
+
+	$sql = "INSERT INTO musics(titre, artiste, compositeur, genres, Users_id, track ) VALUES('$titre', '$artiste', '$compositeur', '$genre', '$userID', '$track')";
+
 
 	$mysqli->query($sql);
 
-	unset($_SESSION['uploadTime']);
+	
 
 	$result = ['status' => 'success', 'message' => 'Ce mail est déjà présent', 'data' => $sql ];
 
