@@ -1,16 +1,58 @@
 var playlist = {
 
-  add : function($this){
+  addRemove : function($this){
         $source = $($this).attr('source');
         $titre = $($this).attr('titre');
+        $song = $($this).attr('song');
         $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
-        $playlist.append('<li><a href="'+$source+'">'+$titre+'</a></li>');
-        $titre = $($this).attr('titre');
-        notify.info($titre+" été ajouté à votre playlist");
+        $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
+        $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
+
+        $.ajax({
+          url : 'assets/ws/addPlaylist.php',
+          dataType: "html",
+          type: "POST",
+          data :  'song=' + $song,
+          success: function(response){
+            resp = parseInt(response);
+            if(!!resp){
+              $playlist.append('<li id="'+$song+'"><a href="'+$source+'">'+$titre+'</a><span onclick="playlist.remove(this)">x</span></li>');
+              notify.info($titre+" à été ajouté à votre playlist");
+            }else {
+              $('#'+$song).remove();
+              notify.info($titre+" à été supprimé de votre playlist");
+              // notify.info($titre+" est déjà dans votre playlist");
+            }
+          }
+        }).fail(function() {
+          notify.danger("Erreur inconnue");
+        });
   },
 
-  remove: function(){
+  remove : function($this){
+        $titre = $($this).parent().find('a').text();
+        $song = $($this).parent().attr('id');
+        $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
+        $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
 
+        $.ajax({
+          url : 'assets/ws/addPlaylist.php',
+          dataType: "html",
+          type: "POST",
+          data :  'song=' + $song,
+          success: function(response){
+
+            resp = parseInt(response);
+            if(!resp){
+              $($this).parent().remove();
+              notify.info($titre+" à été supprimé de votre playlist");
+            }else {
+              notify.danger("Une erreur s'est produite");
+            }
+          }
+        }).fail(function() {
+          notify.danger("Erreur inconnue");
+        });
   }
 }
 

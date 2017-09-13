@@ -31,6 +31,7 @@ if($pwd == $res->trackm){
 $_SESSION['connect'] = $can_connect;
 $_SESSION['username'] = $res->username;
 $_SESSION['userID'] = $res->id;
+$_SESSION['key'] = 'ilovetities';
 
 
 header('Location: ../../index.php'); 

@@ -1,4 +1,4 @@
-	<div class="sm2-bar-ui full-width fixed">
+<div class="sm2-bar-ui full-width fixed">
 
  <div class="bd sm2-main-controls">
 
@@ -89,6 +89,30 @@
   <div class="sm2-playlist-wrapper">
 
     <ul class="sm2-playlist-bd">
+
+
+<!--      <li>
+      <div class="sm2-row">
+       <div class="sm2-col sm2-wide">
+        <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3"><b>SonReal</b> - LA<span class="label">Explicit</span></a>
+       </div>
+       <div class="sm2-col">
+        <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3" target="_blank" title="Download &quot;LA&quot;" class="sm2-icon sm2-music sm2-exclude">Download this track</a>
+       </div>
+      </div>
+     </li> -->
+
+     <!-- standard one-line items -->
+	
+
+
+    </ul>
+
+  </div>
+
+ </div>
+
+</div>
 
      <!-- item with "download" link -->
 	<footer class="footer">

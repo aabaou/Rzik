@@ -152,28 +152,6 @@
 
 
 
-<!--      <li>
-      <div class="sm2-row">
-       <div class="sm2-col sm2-wide">
-        <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3"><b>SonReal</b> - LA<span class="label">Explicit</span></a>
-       </div>
-       <div class="sm2-col">
-        <a href="http://freshly-ground.com/data/audio/sm2/SonReal%20-%20LA%20%28Prod%20Chin%20Injetti%29.mp3" target="_blank" title="Download &quot;LA&quot;" class="sm2-icon sm2-music sm2-exclude">Download this track</a>
-       </div>
-      </div>
-     </li> -->
-
-     <!-- standard one-line items -->
-
-
-    </ul>
-
-  </div>
-
- </div>
-
-</div>
-
 
 
 
@@ -189,6 +167,10 @@
 
 <?php include __DIR__.'/assets/parts/footer.php' ?>
 
+<script>
+  $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
+  $playlist.load('assets/ws/playlist.php');
+</script>
 <script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="assets/js/soundmanagerv2/soundmanagerv2.js"
