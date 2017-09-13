@@ -1365,6 +1365,7 @@
 
 .sm2-playlist-wrapper ul li {
  border-bottom: 1px solid rgba(0,0,0,0.05);
+ position: relative;
 }
 
 .sm2-playlist-wrapper ul li:nth-child(odd) {
@@ -1798,4 +1799,13 @@ body .sidebar.right .hvr-horizontal {
 
 .artiste{
     color: #797979;
+}
+
+.sm2-playlist-wrapper ul.sm2-playlist-bd span{
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 15px;
+    padding: 2px;
+    cursor: pointer;
 }

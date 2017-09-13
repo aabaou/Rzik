@@ -9,19 +9,28 @@
 
   $champs = '';
 
-  $sql = "SELECT * FROM musics";
+  $userID = $_SESSION['userID'];
+  $key = $_SESSION['key']; 
+
+  $sql = "SELECT * FROM musics WHERE Users_id='$userID' ";
 
   $result = $mysqli->query($sql);
 
   while($data = $result->fetch_object()) {
 
+    $id = cryptS($data->id, $key, random_password(10));
+    
     $champs .= '
-              <div class="col-md-3 piste" onclick="playlist.add(this)" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
+              <div class="col-md-3 piste">
+              <span onclick="playlist.addRemove(this)" song="'.$id.'" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
                   <div class="song" style="background-image: url(assets/upload/'.$data->cover.')";">
                     
                   </div>
+              </span>
+              <a href="music.php?q='.$id.'">
                   <p class="titre">'.$data->titre.'</p>
                   <p class="artiste">'.$data->artiste.'</p>
+              </a>
               </div>      
     ';
 
