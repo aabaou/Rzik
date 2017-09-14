@@ -1,13 +1,78 @@
 var playlist = {
 
-  add : function(){
-    $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
-    $playlist.append('<li><a href="DRIFTERSOp.mp3">Drifters</a></li>');
+  addRemove : function($this){
+        $source = $($this).attr('source');
+        $titre = $($this).attr('titre');
+        $song = $($this).attr('song');
+        $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
+        $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
+        $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
+
+        $.ajax({
+          url : 'assets/ws/addPlaylist.php',
+          dataType: "html",
+          type: "POST",
+          data :  'song=' + $song,
+          success: function(response){
+            resp = parseInt(response);
+            if(!!resp){
+              $playlist.append('<li id="'+$song+'"><a href="'+$source+'">'+$titre+'</a><span onclick="playlist.remove(this)">x</span></li>');
+              notify.info($titre+" à été ajouté à votre playlist");
+            }else {
+              $('#'+$song).remove();
+              notify.info($titre+" à été supprimé de votre playlist");
+              // notify.info($titre+" est déjà dans votre playlist");
+            }
+          }
+        }).fail(function() {
+          notify.danger("Erreur inconnue");
+        });
   },
 
-  remove: function(){
+  remove : function($this){
+        $titre = $($this).parent().find('a').text();
+        $song = $($this).parent().attr('id');
+        $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
+        $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
+
+        $.ajax({
+          url : 'assets/ws/addPlaylist.php',
+          dataType: "html",
+          type: "POST",
+          data :  'song=' + $song,
+          success: function(response){
+
+            resp = parseInt(response);
+            if(!resp){
+              $($this).parent().remove();
+              notify.info($titre+" à été supprimé de votre playlist");
+            }else {
+              notify.danger("Une erreur s'est produite");
+            }
+          }
+        }).fail(function() {
+          notify.danger("Erreur inconnue");
+        });
+  }
+}
+
+
+// Filtrer les musiques
+var filter = {
+
+  song : function($this){
+    $genre = $($this).val();
+
+    if(!!$genre){
+      $('.piste').hide();
+      $('.piste').filter('[genre="'+$genre+'"]').show();
+    }
+    else{
+      $('.piste').show();
+    }
 
   }
+
 }
 
 var send = {
@@ -19,7 +84,7 @@ var send = {
       url : $path,
       dataType: "html",
       type: "POST",
-      data : $result,
+      data : $result + '& valide=' + 1,
       success: function(response){
 
         var $res = JSON.parse(response);
@@ -46,7 +111,27 @@ var send = {
     });
 
 
-}
+},
+
+
+
+
+  test : function($this, $path, $function) {
+    $result = $($this).serialize();
+
+    $.ajax({
+      url : $path,
+      dataType: "html",
+      type: "POST",
+      data : $result,
+      success: function(response){
+          console.dir(response);
+        }
+    }).fail(function() {
+      notify.danger("Erreur inconnue");
+    });
+  }
+
 };
 
 /**
@@ -55,12 +140,16 @@ var send = {
  * String $path chemin vers le formulaire d'envoi
  */
 
+
 var file = {
 
-    target : function($id, $path){
-            var file = document.querySelector('#'+$id).files[0];
+    target : function($obj, $path){
             var fd = new FormData();
-            fd.append($id, file);
+            for (value in obj){
+              obj[value] = document.getElementById(value).files[0];
+              console.dir(obj[value]);
+              fd.append(value , obj[value]);
+            }
             var xhr = new XMLHttpRequest();
             xhr.open('POST', $path, true);
             xhr.upload.onprogress = function(e) {
@@ -70,16 +159,15 @@ var file = {
               }
             };
             xhr.onload = function() {
-              if (document.querySelector('#'+$id).status == 200) {
-                var resp = JSON.parse(document.querySelector('#'+$id).response);
+              if (this.status == 200) {
+                var resp = JSON.parse(this.response);
                 console.log('Server got:', resp);
-                var image = document.createElement('img');
-                image.src = resp.dataUrl;
-                document.body.appendChild(image);
+                if(!!resp)
+                  return true;
               };
             };
+            
             xhr.send(fd);
-          return true;
     }
 };
 
@@ -560,6 +648,7 @@ $(document).ready(function(){
 
     $player = $('.sm2-bar-ui.fixed');
 
+
     /**
      * Fonction utilisé lors du défilement de la page
      */
@@ -590,6 +679,11 @@ $(document).ready(function(){
 
 
 
+    $('#addSon').click(function(event) {
+
+      $('.sidebar.right').show();
+
+    });
 
     /**
      * Backstretch
@@ -625,8 +719,6 @@ $(document).ready(function(){
      * Détection du scroll au rafraichissement de la page
      */
     offSetManager();
-
-
 
 
 
@@ -690,8 +782,25 @@ $(document).ready(function(){
 
 
 
+  function langage() {
+      $('.file-fr').fileinput({
+          language: 'fr',
+          uploadUrl: '#',
+          maxFileCount: 1,
+          // maxFileSize: 200,
+          showBrowse : false, // Booléen , Bouton browse
+          autoReplace : true, // Booléen , de remplacer automatiquement les fichiers dans l'aperçu une fois que la maxFileCount
+          browseOnZoneClick : true, // Booléen , que ce soit pour activer la recherche / sélection de fichiers en cliquant sur la zone de prévisualisation.
+          showCaption: false, // Booléen , pour afficher la légende du fichier. Par défaut true.
+          // showPreview : false, // Booléen , qu'il s'agisse d'afficher l'aperçu du fichier. Par défaut true.
+          showRemove : false, // Booléen , qu'il apparaisse ou non le bouton de suppression / effacement du fichier. Par défaut true.
+          showUpload: false, // Booléen , pour afficher le bouton de téléchargement du fichier. Par défaut true.
+          showCancel: false, // Booléen , qu'il s'agisse d'afficher le bouton d'annulation du téléchargement du fichier. Par défaut true.
+          showFermer: false, // Booléen , pour afficher l'icône de fermeture dans l'aperçu. Par défaut, «vrai». Cela ne sera analysé que s'il showPreviewest vrai ou lorsque vous utilisez la {close}balise dans vos modèles de prévisualisation.
+      });
+  }
 
-
+  langage();
 
     /**
      * Sticky
@@ -711,7 +820,7 @@ $(document).ready(function(){
 
 
 
-    $("#test").fileinput({
+    $("#cover, #music").fileinput({
         // initialPreview: [
         //     carteID
         // ],

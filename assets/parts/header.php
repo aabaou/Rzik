@@ -144,10 +144,10 @@
 		        <div class="col-md-8">
 			        <div id="navbar" class="collapse navbar-collapse">
 			            <ul class="nav navbar-nav">
-			                <li><a href="#" class="hvr-center"></a></li>
+<!-- 			                <li><a href="#" class="hvr-center"></a></li>
 			                <li><a href="#" class="hvr-center"></a></li>
 			                <li><a href="#" class="hvr-horizontal" ></a></li>
-							<li><a href="#" class="hvr-horizontal" ></a></li>
+							<li><a href="#" class="hvr-horizontal" ></a></li> -->
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<?php 
 								if(isset($_SESSION['connect'])){ 
@@ -215,3 +215,4 @@
 			    </div>
 		    </div><!-- /.container -->
 		</nav><!-- /.navbar -->
+		<script src="assets/js/list.js" type="text/javascript" charset="utf-8"></script>
