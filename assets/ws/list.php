@@ -7,7 +7,7 @@
     $index = 0;
 
 
-  $champs = '';
+  $champs = '<ul class="list">';
 
   $userID = $_SESSION['userID'];
   $key = $_SESSION['key']; 
@@ -16,12 +16,16 @@
 
   $result = $mysqli->query($sql);
 
+
+
   while($data = $result->fetch_object()) {
 
-    $id = cryptS($data->id, $key, random_password(10));
+    $id = cryptS($data->id, $key, '0123456789');
     
     $champs .= '
-              <div class="col-md-3 piste">
+          
+            <li>
+              <div class="col-md-3 piste" genre="'.$data->genres.'">
               <span onclick="playlist.addRemove(this)" song="'.$id.'" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
                   <div class="song" style="background-image: url(assets/upload/'.$data->cover.')";">
                     
@@ -31,16 +35,16 @@
                   <p class="titre">'.$data->titre.'</p>
                   <p class="artiste">'.$data->artiste.'</p>
               </a>
-              </div>      
+              </div>  
+            </li>    
     ';
 
-    $index++;
-    if($index == 8)
-      break;
+    // $index++;
+    // if($index == 8)
+    //   break;
   }
 
-
-
+  $champs .= "</ul>";
 
   echo $champs;
 ?>

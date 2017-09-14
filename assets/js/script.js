@@ -56,6 +56,25 @@ var playlist = {
   }
 }
 
+
+// Filtrer les musiques
+var filter = {
+
+  song : function($this){
+    $genre = $($this).val();
+
+    if(!!$genre){
+      $('.piste').hide();
+      $('.piste').filter('[genre="'+$genre+'"]').show();
+    }
+    else{
+      $('.piste').show();
+    }
+
+  }
+
+}
+
 var send = {
 
   form : function($this, $path, $function) {
@@ -700,8 +719,6 @@ $(document).ready(function(){
      * Détection du scroll au rafraichissement de la page
      */
     offSetManager();
-
-
 
 
 

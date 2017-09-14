@@ -126,3 +126,4 @@
 			    </div>
 		    </div><!-- /.container -->
 		</nav><!-- /.navbar -->
+		<script src="assets/js/list.js" type="text/javascript" charset="utf-8"></script>
