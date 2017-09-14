@@ -13,7 +13,7 @@
 
   while($data = $result->fetch_object()) {
 
-    $id = cryptS($data->id, $key, random_password(10));
+    $id = cryptS($data->id, $key, "0123456789");
 
     $champs .= "
              <li id='$id'><a href='assets/upload/{$data->file}'>$data->titre</a><span onclick='playlist.remove(this)'>x</span></li>   

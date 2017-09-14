@@ -3,21 +3,70 @@
 
 
 <!-- HEADER FOND -->
-<header id="home">
+<!-- <header id="home">
 	<div class="slider_home">
 	  <img src="./assets/img/slide1" alt="">
 	  <img src="./assets/img/slide2" alt="">
 	  <img src="./assets/img/slide3" alt="">	  
 	  <img src="./assets/img/slide4" alt="">
 	</div>
-</header>
+</header> -->
 
+<div id="platine" class="relative">
+  <video id="turntable-video" loop="" autoplay="" onclick="if (!this.paused) { this.pause(); } else { this.play(); }">
+              <source src="./assets/img/platine.webm" type="video/webm">
+  <!--             <source src="./assets/img/platine.mp4">
+              <source src="./assets/img/platine.mov" type="video/mp4"> -->
+              <img id="turntable-static-video" src="./assets/img/platinePoster.jpg" alt="" style="width:100%;max-width:1920px">
+  </video>
+  <?php 
+  if(empty($_SESSION['connect']))
+    echo '<span first_sentence="Bienvenue sur Rzik ! ^500" second_sentence="La plateforme d\'écoute " class="typed_now" typed="typed"></span>';
+  else
+    echo '<span first_sentence="Bonjour '.$_SESSION['username'].' ! ^500" second_sentence="Votre playlist vous attend " class="typed_now" typed="typed"></span>';
+  ?>
+</div>
 		<!-- FIN HEADER FOND 
 
 		<!-- BODY -->
 
 
 	<div id="top" class="container">
+
+  <?php
+
+    if (empty($index))
+      $index = 0;
+
+
+    $select = '';
+
+    $userID = $_SESSION['userID'];
+
+    $option = '<li class="mdl-menu__item">Tous</li>';
+
+
+    $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
+
+    $result2 = $mysqli->query($sql2);
+
+    while($data2 = $result2->fetch_object()) {
+      $option .= '<li class="mdl-menu__item">' .  $data2->genres . '</li>';
+      $index++;
+    }
+
+      $select = '
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+              <input class="mdl-textfield__input" onchange="filter.song(this)" type="text" value="Tous" id="selectSong" readonly tabIndex="-1">
+              <label for="selectSong" class="mdl-textfield__label">Genres</label>
+              <ul for="selectSong" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+              ' . $option . '
+              </ul>
+            </div>
+          ';
+
+          echo $select;
+    ?>
 		<div id="listSong" class="division">
   
       
@@ -33,9 +82,9 @@
 
 
 
-        <div class="sidebars">
-            <div class="sidebar right">
-              <a href="#" id="close" class="btn" data-action="close" data-side="right"><span><i class="fa fa-times" aria-hidden="true"></i></span></a>
+  <div class="sidebars">
+      <div class="sidebar right">
+        <a href="#" id="close" class="btn" data-action="close" data-side="right"><span><i class="fa fa-times" aria-hidden="true"></i></span></a>
 
     <form id="ajoutMusic">
 
@@ -119,6 +168,8 @@
 
 <script>
 
+$(document).ready(function() {
+  
 
   var obj = {cover: 'cover', music: 'music'};
   $path = "assets/ws/upload.php";
@@ -141,6 +192,8 @@
 
   $('#listSong').load('assets/ws/list.php');
 
+  typed.now();
+});
 </script>
 
 

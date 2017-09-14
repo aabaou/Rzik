@@ -16,12 +16,14 @@
 
   $result = $mysqli->query($sql);
 
+
+
   while($data = $result->fetch_object()) {
 
-    $id = cryptS($data->id, $key, random_password(10));
+    $id = cryptS($data->id, $key, '0123456789');
     
     $champs .= '
-              <div class="col-md-3 piste">
+              <div class="col-md-3 piste" genre="'.$data->genres.'">
               <span onclick="playlist.addRemove(this)" song="'.$id.'" source ="assets/upload/'.$data->file.'" titre="'.$data->titre.'">
                   <div class="song" style="background-image: url(assets/upload/'.$data->cover.')";">
                     
@@ -34,12 +36,10 @@
               </div>      
     ';
 
-    $index++;
-    if($index == 8)
-      break;
+    // $index++;
+    // if($index == 8)
+    //   break;
   }
-
-
 
 
   echo $champs;
