@@ -193,10 +193,9 @@ if(isset($_SESSION['connect'])){
 
 <script>
 
+
 $(document).ready(function() {
   
-
-
 
   obj = {cover: 'cover', music: 'music'};
   $path = "assets/ws/upload.php";
@@ -220,6 +219,7 @@ $(document).ready(function() {
         var userList = new List('searchSong', options);
       });
   }
+
 
 
   $( "form#ajoutMusic" ).on( "submit", function( event ) {
