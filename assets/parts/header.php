@@ -69,14 +69,15 @@
           document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
         }
       }, {scope: 'email'});
+      location.reload();
     }
 
     // Fetch the user profile data from facebook
     function getFbUserData(){
       FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
         function (response) {
-          document.getElementById('fbLink').setAttribute("onclick","fbLogout()");
-          document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
+          document.getElementById('login-dp').setAttribute("onclick","fbLogout()");
+          document.getElementById('login-dp').innerHTML = 'Logout from Facebook';
           document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
           document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
           // Save user data
@@ -88,8 +89,8 @@
     // Logout from facebook
     function fbLogout() {
       FB.logout(function() {
-        document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-        document.getElementById('fbLink').innerHTML = '<img src="fblogin.png"/>';
+        document.getElementById('desconn').setAttribute("onclick","fbLogin()");
+        document.getElementById('desconn').innerHTML = '<img src="fblogin.png"/>';
         document.getElementById('userData').innerHTML = '';
         document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
       });
@@ -97,8 +98,27 @@
 
     // Save user data to the database
     function saveUserData(userData){
-      $.post('../ws/userData.php', {oauth_provider:'facebook',userData: JSON.stringify(userData)}, function(data){ return true; });
+      $.post('assets/ws/userData.php', {userData: JSON.stringify(userData)}, function(){return true;});
+
+
+      /*$data = JSON.stringify(userData);
+      console.dir($data);
+      $.ajax({
+        url : 'assets/ws/userData.php',
+        contentType: "html",
+        type: "POST",
+        data : "userData="+$data.toString(),
+        success: function(response, statut){
+          alert(statut);
+          console.dir(response);
+          $('#log').append(response);
+
+        }
+      }).fail(function() {
+        notify.danger("Erreur inconnue");
+      });*/
     }
+
   </script>
 	<body>
 
@@ -140,7 +160,7 @@
 							<div class="col-md-12">
 								 <form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Disconnect</button>
+											 <button type="submit" id ="desconn" class="btn btn-primary btn-block">Disconnect</button>
 										</div>
 								 </form>
 							</div>

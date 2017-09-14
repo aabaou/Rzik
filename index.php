@@ -59,6 +59,9 @@
         </div>
 
 
+<div id="log">
+
+</div>
 
 <p>test</p>
 <p>test</p>
