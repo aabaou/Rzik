@@ -62,9 +62,15 @@ var filter = {
 
   song : function($this){
     $genre = $($this).val();
-    console.log($genre);
-    $('.piste').hide();
-    $('.piste').filter('[genre="'+$genre+'"]').show();
+
+    if(!!$genre){
+      $('.piste').hide();
+      $('.piste').filter('[genre="'+$genre+'"]').show();
+    }
+    else{
+      $('.piste').show();
+    }
+
   }
 
 }

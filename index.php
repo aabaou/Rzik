@@ -31,48 +31,68 @@
 		<!-- BODY -->
 
 
-	<div id="top" class="container">
+	<div id="searchSong" class="container">
 
-  <?php
+  
+<?php
 
-    if (empty($index))
-      $index = 0;
+if(isset($_SESSION['connect'])){
 
-
-    $select = '';
-
-    $userID = $_SESSION['userID'];
-
-    $option = '<li class="mdl-menu__item">Tous</li>';
+      if (empty($index))
+        $index = 0;
 
 
-    $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
+      $select = '';
 
-    $result2 = $mysqli->query($sql2);
+      $userID = $_SESSION['userID'];
 
-    while($data2 = $result2->fetch_object()) {
-      $option .= '<li class="mdl-menu__item">' .  $data2->genres . '</li>';
-      $index++;
-    }
+      $option = '<li class="mdl-menu__item"></li>';
 
-      $select = '
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-              <input class="mdl-textfield__input" onchange="filter.song(this)" type="text" value="Tous" id="selectSong" readonly tabIndex="-1">
-              <label for="selectSong" class="mdl-textfield__label">Genres</label>
-              <ul for="selectSong" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-              ' . $option . '
-              </ul>
-            </div>
-          ';
 
-          echo $select;
-    ?>
-		<div id="listSong" class="division">
+      $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
+
+      $result2 = $mysqli->query($sql2);
+
+      while($data2 = $result2->fetch_object()) {
+        $option .= '<li class="mdl-menu__item">' .  $data2->genres . '</li>';
+        $index++;
+      }
+
+        $select = '
+          <h2>Playlist</h2><hr/>
+            <div class="col-lg-6 col-md-6 ">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" onchange="filter.song(this)" type="text" id="selectSong" readonly tabIndex="-1">
+                <label for="selectSong" class="mdl-textfield__label">Genres</label>
+                <ul for="selectSong" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                ' . $option . '
+                </ul>
+              </div>
+              </div>
+              <div class="col-lg-6 col-md-6 ">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input search" name="search" type="search" id="search">
+                  <label class="mdl-textfield__label" for="search">Titre...</label>
+                </div>
+              </div>
+            ';
+
+            echo $select;
+}
+
+ ?>
+
+<?php 
+
+  if(isset($_SESSION['connect'])){
+		
+    echo '<div id="listSong" class="division">
   
       
-		</div>
+		</div>';
+  }
     
-    
+?>    
     <?php 
       if(isset($_SESSION['connect']))
         echo '<a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajoutez votre Musique !</span></a>';
@@ -113,6 +133,9 @@
     <div class="col-lg-6 col-md-6 ">
 
     <?php
+
+        if(isset($_SESSION['connect'])){
+
             if (empty($option))
               $option = '';
 
@@ -144,6 +167,8 @@
 
 
             echo $champs;
+
+          }
             ?>
 
             </div>
@@ -171,7 +196,9 @@
 $(document).ready(function() {
   
 
-  var obj = {cover: 'cover', music: 'music'};
+
+
+  obj = {cover: 'cover', music: 'music'};
   $path = "assets/ws/upload.php";
 
   function res_ajax($data){
@@ -180,8 +207,18 @@ $(document).ready(function() {
     $('#close').click()
     $('form#ajoutMusic *').val('');
     $('.close.fileinput-remove').click();
-    setTimeout(()=>$('#listSong').load('assets/ws/list.php'), 2500);
+    setTimeout(refresh(), 2500);
 
+  }
+
+  function refresh(){
+      $('#listSong').load('assets/ws/list.php', function(){
+          var options = {
+          valueNames: [ 'titre', 'artiste' ]
+        };
+
+        var userList = new List('searchSong', options);
+      });
   }
 
 
@@ -190,10 +227,21 @@ $(document).ready(function() {
       send.form(this, $path, res_ajax);
     });
 
-  $('#listSong').load('assets/ws/list.php');
+  $('#listSong').load('assets/ws/list.php', function(){
+      var options = {
+      valueNames: [ 'titre', 'artiste' ]
+    };
+
+    var userList = new List('searchSong', options);
+  });
 
   typed.now();
+
 });
+
+
+
+
 </script>
 
 

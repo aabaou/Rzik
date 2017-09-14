@@ -1810,6 +1810,10 @@ body .sidebar.right .hvr-horizontal {
     cursor: pointer;
 }
 
+#platine{
+    overflow-x: hidden;
+}
+
 #platine span{
     position: relative;
     top: -300px;
@@ -1817,4 +1821,17 @@ body .sidebar.right .hvr-horizontal {
     font-size: 23px;
     color: white;
     text-transform: uppercase;
+}
+
+#imageRadio{
+
+
+}
+
+.list{
+
+}
+
+.list li{
+    display: block;
 }
