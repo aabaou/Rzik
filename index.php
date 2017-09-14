@@ -193,6 +193,9 @@ if(isset($_SESSION['connect'])){
 
 <script>
 
+<div id="log">
+
+</div>
 
 $(document).ready(function() {
   

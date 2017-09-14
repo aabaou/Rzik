@@ -31,6 +31,95 @@
         <!-- JQuery -->
 		<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
+  <script>
+    window.fbAsyncInit = function() {
+      // FB JavaScript SDK configuration and setup
+      FB.init({
+        appId      : '830871210408145', // FB App ID
+        cookie     : true,  // enable cookies to allow the server to access the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.8' // use graph api version 2.8
+      });
+
+      // Check whether the user already logged in
+      FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          //display user data
+          getFbUserData();
+        }
+      });
+    };
+
+    // Load the JavaScript SDK asynchronously
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Facebook login with JavaScript SDK
+    function fbLogin() {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          // Get and display the user profile data
+          getFbUserData();
+        } else {
+          document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+      }, {scope: 'email'});
+      location.reload();
+    }
+
+    // Fetch the user profile data from facebook
+    function getFbUserData(){
+      FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+        function (response) {
+          document.getElementById('login-dp').setAttribute("onclick","fbLogout()");
+          document.getElementById('login-dp').innerHTML = 'Logout from Facebook';
+          document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+          document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+          // Save user data
+          saveUserData(response);
+
+        });
+    }
+
+    // Logout from facebook
+    function fbLogout() {
+      FB.logout(function() {
+        document.getElementById('desconn').setAttribute("onclick","fbLogin()");
+        document.getElementById('desconn').innerHTML = '<img src="fblogin.png"/>';
+        document.getElementById('userData').innerHTML = '';
+        document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
+      });
+    }
+
+    // Save user data to the database
+    function saveUserData(userData){
+      $.post('assets/ws/userData.php', {userData: JSON.stringify(userData)}, function(){return true;});
+
+
+      /*$data = JSON.stringify(userData);
+      console.dir($data);
+      $.ajax({
+        url : 'assets/ws/userData.php',
+        contentType: "html",
+        type: "POST",
+        data : "userData="+$data.toString(),
+        success: function(response, statut){
+          alert(statut);
+          console.dir(response);
+          $('#log').append(response);
+
+        }
+      }).fail(function() {
+        notify.danger("Erreur inconnue");
+      });*/
+    }
+
+  </script>
 	<body>
 
 		<!-- Fixed navbar -->
@@ -71,7 +160,7 @@
 							<div class="col-md-12">
 								 <form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Disconnect</button>
+											 <button type="submit" id ="desconn" class="btn btn-primary btn-block">Disconnect</button>
 										</div>
 								 </form>
 							</div>
@@ -87,7 +176,7 @@
 							<div class="col-md-12">
 								Login via
 								<div class="social-buttons">
-									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+									<a href="javascript:void(0);" onclick="fbLogin()" class="btn btn-fb" id="fbLink"><i class="fa fa-facebook"></i> Facebook</a>
 									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
 								</div>
                                 or
