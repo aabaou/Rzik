@@ -65,7 +65,7 @@ else{
 
 	
 
-	$result = ['status' => 'success', 'message' => 'Ce mail est déjà présent', 'data' => 'data' ];
+	$result = ['status' => 'success', 'message' => $dico['email_already_exist'], 'data' => 'data' ];
 
 }
 

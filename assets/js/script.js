@@ -4,6 +4,8 @@ var playlist = {
         $source = $($this).attr('source');
         $titre = $($this).attr('titre');
         $song = $($this).attr('song');
+		$lang = $($this).getElementById('lang');
+		
         $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
         $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
         $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
@@ -17,21 +19,36 @@ var playlist = {
             resp = parseInt(response);
             if(!!resp){
               $playlist.append('<li id="'+$song+'"><a href="'+$source+'">'+$titre+'</a><span onclick="playlist.remove(this)">x</span></li>');
-              notify.info($titre+" à été ajouté à votre playlist");
+			  if($lang == 'fr'){
+				  notify.info($titre+" à été ajouté à votre playlist");
+			  }else{
+				  notify.info($titre+" added to your playlist");
+			  }
+              
             }else {
               $('#'+$song).remove();
-              notify.info($titre+" à été supprimé de votre playlist");
+			  if($lang == 'fr'){
+				  notify.info($titre+" à été supprimé de votre playlist");
+			  }else{
+				  notify.info($titre+" successfully deleted from the playlist");
+			  }
+              
               // notify.info($titre+" est déjà dans votre playlist");
             }
           }
         }).fail(function() {
-          notify.danger("Erreur inconnue");
+			if($lang == 'fr'){
+				  notify.danger("Erreur inconnue");
+			  }else{
+				  notify.danger("Unknown error");
+			  }
         });
   },
 
   remove : function($this){
         $titre = $($this).parent().find('a').text();
         $song = $($this).parent().attr('id');
+		$lang = $($this).getElementById('lang');
         $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
         $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
 
@@ -45,13 +62,27 @@ var playlist = {
             resp = parseInt(response);
             if(!resp){
               $($this).parent().remove();
-              notify.info($titre+" à été supprimé de votre playlist");
+			  if($lang == 'fr'){
+				  notify.info($titre+" à été supprimé de votre playlist");
+			  }else{
+				  notify.info($titre+" successfully deleted from the playlist");
+			  }
+              
             }else {
-              notify.danger("Une erreur s'est produite");
+				if($lang == 'fr'){
+				  notify.danger("Une erreur s'est produite");
+			  }else{
+				  notify.danger("An error has occured");
+			  }
+              
             }
           }
         }).fail(function() {
-          notify.danger("Erreur inconnue");
+          if($lang == 'fr'){
+			  notify.danger("Erreur inconnue");
+		  }else{
+			  notify.danger("Unknown error");
+		  }
         });
   }
 }
@@ -60,7 +91,7 @@ var send = {
 
   form : function($this, $path, $function) {
     $result = $($this).serialize();
-
+	$lang = $($this).getElementById('lang');
     $.ajax({
       url : $path,
       dataType: "html",
@@ -81,14 +112,22 @@ var send = {
              notify.danger($res.message);
             break;
           default:
-             notify.danger("Erreur inconnue");
+             if($lang == 'fr'){
+				  notify.danger("Erreur inconnue");
+			  }else{
+				  notify.danger("Unknown error");
+			  }
             break;
         }
 
 
       }
     }).fail(function() {
-      notify.danger("Erreur inconnue");
+      if($lang == 'fr'){
+		  notify.danger("Erreur inconnue");
+	  }else{
+		  notify.danger("Unknown error");
+	  }
     });
 
 
@@ -99,7 +138,8 @@ var send = {
 
   test : function($this, $path, $function) {
     $result = $($this).serialize();
-
+	$lang = $($this).getElementById('lang');
+	
     $.ajax({
       url : $path,
       dataType: "html",
@@ -109,7 +149,11 @@ var send = {
           console.dir(response);
         }
     }).fail(function() {
-      notify.danger("Erreur inconnue");
+      if($lang == 'fr'){
+		  notify.danger("Erreur inconnue");
+	  }else{
+		  notify.danger("Unknown error");
+	  }
     });
   }
 

@@ -26,7 +26,7 @@
     
     <?php 
       if(isset($_SESSION['connect']))
-        echo '<a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajoutez votre Musique !</span></a>';
+        echo '<a href="#" id="addSon" class="btn" data-action="open" data-side="right"><span><i class="fa fa-plus-square-o" aria-hidden="true"></i> '.$dico['add_music'].' !</span></a>';
     ?>
 
 	</div>
@@ -149,7 +149,7 @@
 <br/>
 <br/>
 
-
+<input type='hidden' name='lang' id='lang' value="<?php echo($_SESSION['lang']); ?>"/>
 
 
 
