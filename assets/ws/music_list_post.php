@@ -19,7 +19,7 @@ $Methode = $_POST;
 
 
 	$sql = "INSERT INTO comments(comment, Users_id, Musics_id ) VALUES('$comment', '$userID', '$musicID');";
-
+error_log($sql);
 
 	$mysqli->query($sql);
 

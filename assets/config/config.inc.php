@@ -1,11 +1,28 @@
 <?php
 
 	include 'fonctions.inc.php';
-
+	
+	session_start();
+	
+	if(empty($_SESSION['lang'])){
+	$_SESSION['lang'] = 'fr';
+	}
+	
+	if($_SESSION['lang'] != 'en'){
+		$_SESSION['lang'] = 'fr';
+	}
+	
+	if($_SESSION['lang'] == 'en'){
+		include 'dico_en.php';
+	}else{
+		include 'dico_fr.php';
+	}
+	
+	
 	ini_set('upload-max-filesize', '50M');
 	ini_set('post_max_size', '50M');
 
-	session_start();
+	
 
 	$salt = random_password(10); // Création de Sel
 

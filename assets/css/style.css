@@ -198,7 +198,7 @@ html body ul.logo_point li{
 
 #music-detail img {
     position: absolute;
-    right: 400px;
+    right: 0px;
 }
 
 #background-music {
@@ -212,9 +212,12 @@ html body ul.logo_point li{
     -ms-filter: filter(value);
 }
 
-#info-music {
-    
+#comment-container {
+    padding-top: 20px;
+    background-color: #EBE1E1;
+    height: 30vh;
 }
+
 
 /************************************************************ Fin Outils ************************************************************/
 
@@ -224,13 +227,13 @@ html body ul.logo_point li{
 min-width: 250px;
 padding: 14px 14px 0;
 overflow:hidden;
-background-color:rgba(49,49,49,.85);
+background-color:rgba(255, 255, 255, 0.01);
 }
 #login-dp .help-block{
 font-size:12px    
 }
 #login-dp .bottom{
-background-color:rgba(49,49,49,.85  );
+background-color:rgba(255, 255, 255, 0.01);
 border-top:1px solid #ddd;
 clear:both;
 padding:14px;
