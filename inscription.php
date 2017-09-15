@@ -7,21 +7,21 @@
 		<div class="form">
 			<form id="inscriptionForm">
 				<h2 class="jump center title">
-					<span first_sentence="Que l'aventure commence^500" second_sentence="inscrivez-vous ! " class="typed_now" typed="typed"></span>
+					<span first_sentence="<?php echo($dico['started']); ?>^500" second_sentence="<?php echo($dico['sign_up']); ?> ! " class="typed_now" typed="typed"></span>
 				</h2>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" name="login" type="login" id="login" required>
-				    <label class="mdl-textfield__label" for="login">login...</label>
+				    <label class="mdl-textfield__label" for="login"><?php echo($dico['id']); ?>...</label>
 				  </div>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" name="email" type="email" id="email" required>
-				    <label class="mdl-textfield__label" for="email">Email...</label>
+				    <label class="mdl-textfield__label" for="email"><?php echo($dico['email']); ?>...</label>
 				  </div>
 				  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				    <input class="mdl-textfield__input" name="password" type="password" id="password" required>
-				    <label class="mdl-textfield__label" for="password">Password...</label>
+				    <label class="mdl-textfield__label" for="password"><?php echo($dico['password']); ?>...</label>
 				  </div>
-				<button type="submit" class="hvr-horizontal blue">Soumettre</button>
+				<button type="submit" class="hvr-horizontal blue"><?php echo($dico['submit']); ?></button>
 			</form>
 		</div>
 	</div>
