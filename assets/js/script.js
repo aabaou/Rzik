@@ -92,7 +92,7 @@ var playlist = {
         $source = $($this).attr('source');
         $titre = $($this).attr('titre');
         $song = $($this).attr('song');
-		$lang = $($this).getElementById('lang');
+		    $lang = $('#lang').val();
 		
         $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
         $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
@@ -136,7 +136,7 @@ var playlist = {
   remove : function($this){
         $titre = $($this).parent().find('a').text();
         $song = $($this).parent().attr('id');
-		$lang = $($this).getElementById('lang');
+		    $lang = $('#lang').val();
         $('div.sm2-bar-ui.full-width.fixed.playlist-open').removeClass('playlist-open');
         $('div.bd.sm2-playlist-drawer.sm2-element').attr('style','');
 
@@ -198,7 +198,7 @@ var send = {
 
   form : function($this, $path, $function) {
     $result = $($this).serialize();
-	$lang = $($this).getElementById('lang');
+	$lang = $('#lang').val();
     $.ajax({
       url : $path,
       dataType: "html",
@@ -245,7 +245,7 @@ var send = {
 
   test : function($this, $path, $function) {
     $result = $($this).serialize();
-	$lang = $($this).getElementById('lang');
+	$lang = $('#lang').val();
 	
     $.ajax({
       url : $path,

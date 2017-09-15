@@ -35,6 +35,7 @@
         <!-- JQuery -->
 		<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/js/list.js" type="text/javascript" charset="utf-8"></script>
 	</head>
   <script>
     window.fbAsyncInit = function() {
@@ -126,6 +127,8 @@
 
   </script>
 	<body>
+
+	<input id="lang" type="hidden" value="<?php echo $_SESSION['lang'] ?>">
 
 		<!-- Fixed navbar -->
 		<nav id="header" class="navbar navbar-fixed-top">
