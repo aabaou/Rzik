@@ -25,7 +25,12 @@
 	
 
 	$salt = random_password(10); // Création de Sel
-	
+
+	########## app ID and app SECRET (Replace with yours) #############
+	$appId = '830871210408145'; //Facebook App ID
+	$appSecret = 'ed9897bb507dfd5d0e1e5c4e0786698f'; // Facebook App Secret
+	$return_url = 'http://localhost/Rzik/';  //path to script folder
+	$fbPermissions = 'publish_actions,email'; //more permissions : https://developers.facebook.com/docs/authentication/permissions/
 
 	$hostname  ="localhost";			// Nom du serveur mysql
 	$mysqluser ="root";					// login
