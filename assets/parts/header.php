@@ -19,6 +19,7 @@
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/tools.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/ui.css">
 		<!-- END CSS -->
 
 		<!-- Favicon -->
@@ -30,6 +31,7 @@
         
         <!-- JQuery -->
 		<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
   <script>
     window.fbAsyncInit = function() {

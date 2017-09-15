@@ -123,10 +123,12 @@
 	<!-- FIN BODY -->
 		<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
 		<script src="assets/js/jquery.backstretch.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/js/soundmanager2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/js/soundmanager2.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/bar-ui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/js/fr.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/fr.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/table_filter.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			$(document).ready(function () {
 			    // All sides
