@@ -14,35 +14,43 @@ $res = $result->fetch_object();
 ?>
 <div class="relative">
     <div id="background-music" style="background-image: url('assets/upload/<?php echo $res->cover ?>')" ></div>
-        <div id="info-music" class="container">
-            <div id="music-detail" class="col-md-12">
+        <div id="info-music" class="container-fluid">
+            <div id="music-detail" class="container">
     
-            <div class="col-md-9">
-                <h2><?php echo $res->titre ?></h2>
-                <h4>by <?php echo $res->artiste ?></h4>
-                <p><?php echo $res->description ?></p>
-            </div>
-            <div class="col-md-3">
-                <img src="assets/upload/<?php echo $res->cover ?>" height="250" width="250">
-            </div>
-            <div class="col-md-4">
-                <span class="glyphicon glyphicon-thumbs-up">
+                <div class="col-md-9">
+                    <h2><?php echo $res->titre ?></h2>
+                    <h4>by <?php echo $res->artiste ?></h4>
+                    <p><?php echo $res->description ?></p>
+                    <p></p>
+                    <p><i class="fa fa-play-circle" style="font-size: 5em"></i></p>
+                </div>
+                <div class="col-md-3">
+                    <img src="assets/upload/<?php echo $res->cover ?>" height="250" width="250">
+                </div>
+                <div class="col-md-4"></div>
+                
+                <div class="col-md-2">
+                    
+                </div>
             </div>
         </div>
     </div>
     
 </div>
-    <div class="container">
-        <div class="col-md-6">
+    <div id="comment-container" class="container-fluid">
+        <div class="col-md-5">
                 <div class="input-group">
                     <form id="comment-music">
-                    <input type="text" id="userComment" name="comment" class="form-control input-sm chat-input" placeholder="Laissez un commentaire.."   />
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				    <input class="mdl-textfield__input" name="comment" type="text" id="userComment" >
+				    <label class="mdl-textfield__label" for="comment">Commentaire</label>
+				  </div>
                     <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
-	            <span class="input-group-btn">       
-                    <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Comment</button>
+                    <button type="submit" class="hvr-horizontal blue" >Poster</button>
                     </form>
                 </span>
-                </div>
+        </div>
+                
 
                 <script>
                     $(document).ready(function(){
@@ -113,7 +121,7 @@ $res = $result->fetch_object();
                         $('#comment-music').on( "submit", function( event ) {
                             event.preventDefault();
                             $path = "assets/ws/music_list_post.php";
-                            if(!!$('#comment-music').val())
+                            if(!!$('#userComment').val())
                                 send.form(this, $path, res_ajax);
                             else
                                 notify.danger("Veuillez écrire un commentaire");
@@ -124,7 +132,7 @@ $res = $result->fetch_object();
                 </script>
 <?php
     $sql2 = "SELECT * FROM comments, musics, users WHERE musics.id = comments.Musics_id AND musics.id = '$idMusic' AND users.id = comments.Users_id";
-    
+    error_log($sql2);
     
     $result2 = $mysqli->query($sql2);
     $select ='';
@@ -144,6 +152,38 @@ $res = $result->fetch_object();
 
         echo $select;
             ?>
+            </div>
+            <script>
+            $(document).ready(function(){
+                
+                $('#like-unlike').on( "click", function( event ) {
+                            $path = "assets/ws/like.php";
+                            
+                            
+                            send.form(this, $path, ($data)=>{
+                                if(!!$data)
+                                    $("#likeButton").attr("class", "fa fa-thumbs-up");
+                                else
+                                    $("#likeButton").attr("class", "fa fa-thumbs-o-up");
+                                console.log(!!$data);
+
+
+
+                            });
+                        });
+            });
+
+            
+</script>
+
+
+            <div class="col-md-3">
+                <p></p>
+                <form id="like-unlike">
+                    <i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 1.5em;"> <h5>Nombre de j'aime </h5>
+                    <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
+
+                </form>
             </div>
         
     </div>

@@ -17,6 +17,7 @@
         <!-- END Meta -->
 		
 		<!-- CSS -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/tools.css">
 		<!-- END CSS -->
@@ -71,7 +72,7 @@
 							<div class="col-md-12">
 								 <form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Disconnect</button>
+											 <button type="submit" class="hvr-horizontal blue">Disconnect</button>
 										</div>
 								 </form>
 							</div>
