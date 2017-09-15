@@ -154,25 +154,13 @@
 			                <li><a href="#" class="hvr-horizontal" ></a></li>
 							<li><a href="#" class="hvr-horizontal" ></a></li> -->
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<?php 
-								if(isset($_SESSION['connect'])){ 
-									echo("<b>".$_SESSION['username']."</b>"); 
-							?> 
-								<span class="caret"></span>
 									<?php 
 										if(isset($_SESSION['connect'])){ 
 											echo("<b>".$_SESSION['username']."</b>"); 
 									?> 
 									<span class="caret"></span>
 								</a>
-<<<<<<< HEAD
-			<ul id="login-dp" class="dropdown-menu">
-					 <div class="row">
-							<div class="col-md-12">
-								 <form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											 <button type="submit" class="hvr-horizontal blue">Disconnect</button>
-=======
+
 								<ul id="login-dp" class="dropdown-menu">
 									<div class="row">
 										<div class="col-md-12">
@@ -181,7 +169,6 @@
 													<button type="submit" class="btn btn-primary btn-block"><?php echo($dico['disconnect']); ?></button>
 												</div>
 											</form>
->>>>>>> 42a91ffc5f67961ed0ec06243ab785766bf9b579
 										</div>
 									</div>
 									<?php
