@@ -191,11 +191,20 @@ if(isset($_SESSION['connect'])){
             </div>
         </div>
 
+
 <script>
 
-<div id="log">
+  function refresh(){
+      $('#listSong').load('assets/ws/list.php', function(){
+          var options = {
+          valueNames: [ 'titre', 'artiste' ]
+        };
 
-</div>
+        var userList = new List('searchSong', options);
+      });
+      
+  }
+
 
 $(document).ready(function() {
   
@@ -213,15 +222,6 @@ $(document).ready(function() {
 
   }
 
-  function refresh(){
-      $('#listSong').load('assets/ws/list.php', function(){
-          var options = {
-          valueNames: [ 'titre', 'artiste' ]
-        };
-
-        var userList = new List('searchSong', options);
-      });
-  }
 
 
 
