@@ -205,7 +205,7 @@ html body ul.logo_point li{
     filter: blur(40px);
     background-size: 70% 100%;
     background-repeat: repeat;
-    height: 70vh;
+    height: 60vh;
     -webkit-filter: filter(value);
     -moz-filter: filter(value);
     -o-filter: filter(value);
@@ -215,7 +215,7 @@ html body ul.logo_point li{
 #comment-container {
     padding-top: 20px;
     background-color: #EBE1E1;
-    height: 30vh;
+    height: 40vh;
 }
 
 
@@ -227,13 +227,13 @@ html body ul.logo_point li{
 min-width: 250px;
 padding: 14px 14px 0;
 overflow:hidden;
-background-color:rgba(255, 255, 255, 0.01);
+background-color:rgba(52, 49, 49, 0.56);
 }
 #login-dp .help-block{
 font-size:12px    
 }
 #login-dp .bottom{
-background-color:rgba(255, 255, 255, 0.01);
+background-color:rgba(52, 49, 49, 0.56);
 border-top:1px solid #ddd;
 clear:both;
 padding:14px;
