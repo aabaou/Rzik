@@ -54,7 +54,6 @@
 
 
       $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
-      error_log($sql2);
       $result2 = $mysqli->query($sql2);
 
       while($data2 = $result2->fetch_object()) {

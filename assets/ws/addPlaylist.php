@@ -16,8 +16,6 @@
   $sql = "SELECT * FROM ecoute WHERE Musics_id='$songID' AND Users_id='$userID'";
   $result = $mysqli->query($sql);
 
-  error_log($sql);
-
   // Si la playlist est déjà présente
   if($result->num_rows == 0)
   {

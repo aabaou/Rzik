@@ -18,7 +18,6 @@ class table {
 		$table = '<div class="panel table">
 		<div class="panel-content">
 		<div class="dropdown">
-            <span id="addCol" data-toggle="dropdown" aria-expanded="false"><span>Colonne :</span><i class="fa fa-plus" aria-hidden="true"></i></span>
             <ul class="dropdown-menu">';
 			foreach ($t_head as $title) {
 				$table .= '<li class="columns"><a href="#"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="' . $title . '">

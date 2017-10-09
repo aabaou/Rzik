@@ -123,13 +123,14 @@ var filter = {
 
   song : function($this){
     $genre = $($this).val();
-
+    $piste = $('.piste');
+    
     if(!!$genre){
-      $('.piste').hide();
-      $('.piste').filter('[genre="'+$genre+'"]').show();
+      $piste.hide();
+      $piste.filter('[genre="'+$genre+'"]').show();
     }
     else{
-      $('.piste').show();
+      $piste.show();
     }
 
   }

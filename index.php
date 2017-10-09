@@ -130,46 +130,46 @@
             </div>
       </div>
 
-    <div class="col-lg-6 col-md-6 ">
+      <div class="col-lg-6 col-md-6 ">
 
-    <?php
+        <?php
 
-        if(isset($_SESSION['connect'])){
+            if(isset($_SESSION['connect'])){
 
-            if (empty($option))
-              $option = '';
+                if (empty($option))
+                  $option = '';
 
-            if (empty($index))
-              $index = 0;
+                if (empty($index))
+                  $index = 0;
 
-            $option = '<li class="mdl-menu__item"></li>';
+                $option = '<li class="mdl-menu__item"></li>';
 
-            $id = $attr_name = $name = "genre";
+                $id = $attr_name = $name = "genre";
 
-            $sql = "SELECT * FROM r_genres";
+                $sql = "SELECT * FROM r_genres";
 
-            $result = $mysqli->query($sql);
+                $result = $mysqli->query($sql);
 
-            while($data = $result->fetch_object()) {
-              $option .= '<li class="mdl-menu__item">' .  $data->genre . '</li>';
-              $index++;
-            }
+                while($data = $result->fetch_object()) {
+                  $option .= '<li class="mdl-menu__item">' .  $data->genre . '</li>';
+                  $index++;
+                }
 
-              $champs = '
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                      <input class="mdl-textfield__input" type="text" id="'.$id.'" name=' . $attr_name . ' readonly tabIndex="-1">
-                      <label for="'.$id.'" class="mdl-textfield__label">' . $name . '</label>
-                      <ul for="'.$id.'" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                      ' . $option . '
-                      </ul>
-                    </div>
-                  ';
+                  $champs = '
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                          <input class="mdl-textfield__input" type="text" id="'.$id.'" name=' . $attr_name . ' readonly tabIndex="-1">
+                          <label for="'.$id.'" class="mdl-textfield__label">' . $name . '</label>
+                          <ul for="'.$id.'" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                          ' . $option . '
+                          </ul>
+                        </div>
+                      ';
 
 
-            echo $champs;
+                echo $champs;
 
-          }
-            ?>
+              }
+              ?>
 
             </div>
             <div class="col-lg-6 col-md-6 ">
@@ -185,7 +185,7 @@
               <button type="submit" class="hvr-horizontal blue">Soumettre</button>
             </div>
             
-</form>
+    </form>
 
 
             </div>
@@ -226,8 +226,6 @@ $(document).ready(function() {
   }
 
 
-
-
   $( "form#ajoutMusic" ).on( "submit", function( event ) {
       event.preventDefault();
       send.form(this, $path, res_ajax);
@@ -249,7 +247,6 @@ $(document).ready(function() {
 
 
 </script>
-
 
 <br/>
 <br/>

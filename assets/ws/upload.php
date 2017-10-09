@@ -5,7 +5,7 @@ include '../config/config.inc.php';
 if(empty($_POST['valide'])){
 
 	$MethodeF = $_FILES;
-
+	error_log("_______________File________________");
 	$fileNameCover = isset($MethodeF['cover']['name']) ? $MethodeF['cover']['name'] : '';
 	$fileTypeCover = isset($MethodeF['cover']['type']) ? $MethodeF['cover']['type'] : '';
 
@@ -33,7 +33,8 @@ if(empty($_POST['valide'])){
 	$track  = $_SESSION['uploadTime'];
 
 	$sql = "UPDATE musics SET cover = '$pathCover', file = '$pathMusic' WHERE Users_id='$userID' AND track ='$track' ";
-
+	
+	error_log($sql);
 
 	$res = $mysqli->query($sql);
 
@@ -45,7 +46,8 @@ if(empty($_POST['valide'])){
 else{
 
 	$Methode = $_POST;
-
+	
+	error_log("_______________POST________________");
 	$titre = isset($Methode['titre']) ? $Methode['titre'] : '' ;
 	$artiste = isset($Methode['artiste']) ? $Methode['artiste'] : '' ;
 	$compositeur = isset($Methode['compositeur']) ? $Methode['compositeur'] : '' ;
@@ -60,6 +62,7 @@ else{
 
 	$sql = "INSERT INTO musics(titre, artiste, compositeur, genres, Users_id, track ) VALUES('$titre', '$artiste', '$compositeur', '$genre', '$userID', '$track')";
 
+	error_log($sql);
 
 	$mysqli->query($sql);
 

@@ -1,8 +1,11 @@
+<?php include 'assets/config/config.inc.php' ?>
+<?php include 'assets/objects/table.php' ?>
+<?php include 'assets/objects/Page_top.php' ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title>Dashboard | EOS Venture</title>
+	<title>Dashboard | Rzik</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -12,9 +15,11 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/material.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
+	<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<!-- <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png"> -->
 	<!-- <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png"> -->
 </head>

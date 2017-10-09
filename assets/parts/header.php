@@ -160,12 +160,14 @@
 										<div class="form-group">
 											 <button type="submit" onclick="fbLogout();" class="hvr-horizontal blue">Disconnect</button>
 										</div>
+									</form>
 									</div>
 									<?php
 										}else{echo("<b>".$dico['login']."</b>");
 									?> 
 									<span class="caret"></span>
 								</a>
+
 
 								<ul id="login-dp" class="dropdown-menu">
 									<div class="row">

@@ -21,13 +21,11 @@ $sha2pwd = sha1(sha1($param->password) . sha1($param->password));
 
 
 $sql = "SELECT * FROM users WHERE mail = '$param->email' AND trackm = '$sha2pwd'";
-error_log($param->email);
-error_log($param->password);
 $result = $mysqli->query($sql);
 
 $res = $result->fetch_object();
 
-if($res->num_rows == 0)
+if($result->num_rows != 0)
 {
 
 	$pwd = sha1(sha1($param->password) . sha1($param->password));
