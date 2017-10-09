@@ -54,71 +54,13 @@ $res = $result->fetch_object();
 
                 <script>
                     $(document).ready(function(){
-                        var send = {
-
-                            form : function($this, $path, $function) {
-                                $result = $($this).serialize();
-
-                                $.ajax({
-                                url : $path,
-                                dataType: "html",
-                                type: "POST",
-                                data : $result + '& valide=' + 1,
-                                success: function(response){
-
-                                    var $res = JSON.parse(response);
-
-                                    switch ($res.status) {
-                                    case "success":
-                                        if(!!$res.message)
-                                        notify.success($res.message);
-                                        if ($function != 0)
-                                        $function($res.data);
-                                        break;
-                                    case "error":
-                                        notify.danger($res.message);
-                                        break;
-                                    default:
-                                        notify.danger("Erreur inconnue");
-                                        break;
-                                    }
-
-
-                                }
-                                }).fail(function() {
-                                notify.danger("Erreur inconnue");
-                                });
-
-
-                            },
-
-
-
-
-                            test : function($this, $path, $function) {
-                                $result = $($this).serialize();
-
-                                $.ajax({
-                                url : $path,
-                                dataType: "html",
-                                type: "POST",
-                                data : $result,
-                                success: function(response){
-                                    console.dir(response);
-                                    }
-                                }).fail(function() {
-                                notify.danger("Erreur inconnue");
-                                });
-                            }
-
-                            };
 
                         function res_ajax(){
                             $('#userComment').val('');
 
                         }
 
-                        $('#comment-music').on( "submit", function( event ) {
+                        $('form#comment-music').on( "submit", function( event ) {
                             event.preventDefault();
                             $path = "assets/ws/music_list_post.php";
                             if(!!$('#userComment').val())
@@ -160,12 +102,13 @@ $res = $result->fetch_object();
                             $path = "assets/ws/like.php";
                             
                             
-                            send.form(this, $path, ($data)=>{
-                                if(!!$data)
-                                    $("#likeButton").attr("class", "fa fa-thumbs-up");
+                            send.form(this, $path, function($data){
+                                $like = $("i#likeButton");
+                                if($data =='like')
+                                    $like.attr("class", "fa fa-thumbs-up");
                                 else
-                                    $("#likeButton").attr("class", "fa fa-thumbs-o-up");
-                                console.log(!!$data);
+                                    $like.attr("class", "fa fa-thumbs-o-up");
+                                console.log($data);
 
 
 
@@ -180,12 +123,29 @@ $res = $result->fetch_object();
             <div class="col-md-3">
                 <p></p>
                 <form id="like-unlike">
-                    <i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 1.5em;"> <h5>Nombre de j'aime </h5>
-                    <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
+                <?php 
+                    $musicIDCrypt = $_GET['q'];
+                    $key = $_SESSION['key'];
+                    $musicID = decryptS($musicIDCrypt, $key, random_password(10));
 
-                    <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1">
-                    <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input" checked>
-                    <i class="mdl-icon-toggle__label material-icons">format_bold</i>
+                    $userID = $_SESSION['userID'];
+
+                    $sql = "SELECT * FROM likes WHERE music_id = '$musicID' AND user_id= '$userID'";
+
+                    $result = $mysqli->query($sql);
+
+
+                    // Si le mail est déjà présent
+                    if($result->num_rows == 0)
+                        echo '<i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 1.5em;"> </i>';
+                    else
+                        echo '<i id="likeButton" class="fa fa-thumbs-up" style="font-size: 1.5em;"> </i>';
+
+                ?>
+                        <div>
+                            <h5>Nombre de j'aime </h5>
+                            <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
+                        </div>
                   </label>
                   
 

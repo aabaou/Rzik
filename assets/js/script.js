@@ -217,6 +217,8 @@ var send = {
             break;
           case "error":
              notify.danger($res.message);
+             if ($function != 0)
+                $function($res.data);
             break;
           default:
              if($lang == 'fr'){

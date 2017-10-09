@@ -25,23 +25,24 @@ if($result->num_rows == 0)
 
 	$mysqli->query($sql);
 
-	$result = ['status' => 'success', 'message' => 'La musique a été ajouté aux j\'aime', 'data' => 'like' ];
+	$result2 = ['status' => 'success', 'message' => 'La musique a été ajouté aux j\'aime', 'data' => 'like' ];
 
 }
 
-else {
+if($result->num_rows != 0) {
     $sql = "DELETE FROM likes WHERE music_id = '$musicID' AND user_id= '$userID'";
 
 	$mysqli->query($sql);
 
-    $result = ['status' => 'error', 'message' => 'La musique a été ajouté aux j\'aime', 'data' => 'dislike' ];
-    
-    
+    $result2 = ['status' => 'error', 'message' => 'La musique a été retiré des j\'aime', 'data' => 'dislike' ];
+
 }
 // header('Location : /index.php');
 
-echo json_encode($result);
+
+echo json_encode($result2);
 /* Fermeture de la connexion */
+unset($result2);
 $mysqli->close();
 
 ?>
