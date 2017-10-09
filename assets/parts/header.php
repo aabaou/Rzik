@@ -158,7 +158,7 @@
 							<div class="col-md-12">
 								 <form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
-											 <button type="submit" class="hvr-horizontal blue">Disconnect</button>
+											 <button type="submit" onclick="fbLogout();" class="hvr-horizontal blue">Disconnect</button>
 										</div>
 									</div>
 									<?php
@@ -172,7 +172,7 @@
 										<div class="col-md-12">
 											<?php echo($dico['login_via']); ?>
 											<div class="social-buttons">
-												<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+												<a href="#" class="btn btn-fb" onclick="fbLogin()"><i class="fa fa-facebook"></i> Facebook</a>
 												<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
 											</div>
 											<?php echo($dico['or']); ?>
