@@ -10,7 +10,7 @@
 			<div class="clearfix"></div>
 			<footer>
 				<div class="container-fluid">
-					<p class="copyright">&copy; 2017 <a href="http://www.eosventure.com/" target="_blank">Eos Venture</a>. All Rights Reserved.</p>
+					<p class="copyright">&copy; 2017 Rzik. All Rights Reserved.</p>
 				</div>
 			</footer>
 		</div>
@@ -25,7 +25,6 @@
 	    <script src="assets/js/table_filter.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
 	    <script src="assets/js/list.js"></script>
-		<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/script.js"></script>
 	</body>
 

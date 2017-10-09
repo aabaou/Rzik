@@ -25,7 +25,7 @@ $result = $mysqli->query($sql);
 
 $res = $result->fetch_object();
 
-if($result->num_rows != 0)
+if($result->num_rows != 0 && $res->status == '1')
 {
 
 	$pwd = sha1(sha1($param->password) . sha1($param->password));

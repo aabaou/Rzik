@@ -130,6 +130,8 @@
     <script src="assets/js/table_filter.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/list.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
 		<script>
 			$(document).ready(function () {
 			    // All sides

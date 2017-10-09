@@ -2318,3 +2318,19 @@ input[type='search']{
 #table_users_filter, #table_musics_filter{
   visibility: hidden;
 }
+
+
+body .modal-header {
+    background-color: #2B333E;
+    color: white;
+    text-transform: uppercase;
+}
+
+body .modal-footer {
+    padding: 10px;
+    text-align: right;
+}
+
+body .titre{
+  cursor: pointer;
+}

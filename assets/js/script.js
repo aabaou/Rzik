@@ -124,7 +124,7 @@ var filter = {
   song : function($this){
     $genre = $($this).val();
     $piste = $('.piste');
-    
+
     if(!!$genre){
       $piste.hide();
       $piste.filter('[genre="'+$genre+'"]').show();
@@ -185,7 +185,60 @@ var send = {
 
 },
 
+        manual : function($params, $path, $function) {
 
+            $result = '';
+            i = 0;
+
+            last = Object.keys($params).length -1;
+
+            for (obj in $params){
+              if(i != last)
+                $result += obj+'='+$($params[obj]).val()+'&';
+              else
+                $result += obj+'='+$($params[obj]).val();
+              i++;
+            }
+            $.ajax({
+                url : $path,
+                dataType: "html",
+                type: "POST",
+                data : $result,
+                success: function(response) {
+
+                    var $res = JSON.parse(response);
+
+                    switch ($res.status) {
+                        case "success":
+                            if ($res.message)
+                                notify.success($res.message);
+                            if ($function != 0)
+                                $function($res.data);
+                            break;
+                        case "error":
+                            if (!!$res.message)
+                                notify.danger($res.message);
+                            else
+      if($lang == 'fr')
+      notify.danger("Erreur inconnue");
+    else
+      notify.danger("Unknown error");
+                            break;
+                        default:
+      if($lang == 'fr')
+      notify.danger("Erreur inconnue");
+    else
+      notify.danger("Unknown error");
+                        break;
+                    }
+                }
+            }).fail(function() {
+      if($lang == 'fr')
+      notify.danger("Erreur inconnue");
+    else
+      notify.danger("Unknown error");
+            });
+        },
 
 
   test : function($this, $path, $function) {
@@ -923,4 +976,3 @@ $(document).ready(function(){
     });
 
 });
-
