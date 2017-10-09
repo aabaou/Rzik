@@ -183,6 +183,12 @@ $res = $result->fetch_object();
                     <i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 1.5em;"> <h5>Nombre de j'aime </h5>
                     <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
 
+                    <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1">
+                    <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input" checked>
+                    <i class="mdl-icon-toggle__label material-icons">format_bold</i>
+                  </label>
+                  
+
                 </form>
             </div>
         
