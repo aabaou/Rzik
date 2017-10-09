@@ -1,90 +1,32 @@
- /****  Tables Dynamic  ****/
-function tableDynamic() {
-    if ($('.table-dynamic').length && $.fn.dataTable) {
-        $('.table-dynamic').each(function () {
-            var $opt = {};
-            // Tools: export to Excel, CSV, PDF & Print
-            if ($(this).hasClass('table-tools')) {
-                $opt.sDom = "<'row'<'col-md-6'f><'col-md-6'T>r>t<'row'<'col-md-6'i><'spcol-md-6an6'p>>",
-                $opt.oTableTools = {
-                    "sSwfPath": "assets/plugins/datatables/swf/copy_csv_xls_pdf.swf",
-                    "aButtons": ["csv", "xls", "pdf", "print"],
-                    "sScrollX": "100%",
-                    "autoWidth": "true"
-                };
-            }
-            if ($(this).hasClass('no-header')) {
-                $opt.bFilter = false;
-                $opt.bLengthChange = false;
-            }
-            if ($(this).hasClass('no-footer')) {
-                $opt.bInfo = false;
-                $opt.bPaginate = false;
-            }
-            if ($(this).hasClass('filter-head')) {
-                var i = 0;
-                $('.filter-head thead th').each(function () {
-                    i++;
-                    var $title = $('.filter-head thead th').eq($(this).index()).text();
-                    // $(this).append('<input type="text" onclick="stopPropagation(event);" class="form-control" placeholder="Filter '+$title+'" />');
-                    $(this).append('<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label block"><input class="mdl-textfield__input" type="text" onclick="stopPropagation(event);" id="filtre'+i+'"><label class="mdl-textfield__label" for="filtre'+i+'">Filtre '+$title+'</label></div>');
-                });
-                var table = $('.filter-head').DataTable();
-                $(".filter-head thead input").on('keyup change', function () {
-                    table.column($(this).parent().parent().index()+':visible').search(this.value).draw();
-                });
-            }
-            if ($(this).hasClass('filter-footer')) {
-                $('.filter-footer tfoot th').each(function () {
-                    var $title = $('.filter-footer thead th').eq($(this).index()).text();
-                    $(this).html('<input type="text" class="form-control" placeholder="Filter ' + $title + '" />');
-                });
-                var table = $('.filter-footer').DataTable();
-                $(".filter-footer tfoot input").on('keyup change', function () {
-                    table.column($(this).parent().index()+':visible').search(this.value).draw();
-                });
-            }
-            if ($(this).hasClass('filter-select')) {
-                $(this).DataTable({
-                    initComplete: function () {
-                        var api = this.api();
+$(document).ready(function() {
 
-                        api.columns().indexes().flatten().each(function (i) {
-                            var column = api.column(i);
-                            var select = $('<select class="form-control" data-placeholder="Select to filter"><option value=""></option></select>')
-                                .appendTo($(column.footer()).empty())
-                                .on('change', function () {
-                                    var val = $(this).val();
+  /*-----------------------------------/
+  /*  TOP NAVIGATION AND LAYOUT
+  /*----------------------------------*/
 
-                                    column
-                                        .search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
+  $('.btn-toggle-fullwidth').on('click', function() {
 
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="'+d+'">'+d+'</option>')
-                            });
-                        });
-                    }
-                });
-            }
-            if (!$(this).hasClass('filter-head') && !$(this).hasClass('filter-footer') && !$(this).hasClass('filter-select')) {
-                var oTable = $(this).dataTable($opt);
-                oTable.fnDraw();
-            }
+    if(!$('body').hasClass('layout-fullwidth')) 
+      $('body').addClass('layout-fullwidth');
+    else 
+      $('body').removeClass('layout-fullwidth').removeClass('layout-default'); // also remove default behaviour if set
 
-        });
+
+    $(this).find('.lnr').toggleClass('lnr-arrow-left-circle lnr-arrow-right-circle');
+
+
+    if($(window).innerWidth() < 1025) {
+      if(!$('body').hasClass('offcanvas-active')) 
+        $('body').addClass('offcanvas-active');
+      else
+        $('body').removeClass('offcanvas-active');
     }
-}
+  });
 
-/* Function for datables filter in head */
-function stopPropagation(evt) {
-    if (evt.stopPropagation !== undefined) {
-        evt.stopPropagation();
-    } else {
-        evt.cancelBubble = true;
-    }
-}
+
+});
+
+
 
 var playlist = {
 

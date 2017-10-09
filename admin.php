@@ -36,11 +36,43 @@
   <?php
     echo table::data_table(['Titres',
                         'Artiste',
-                        'Music'], 'table_projet');
+                        'Music'], 'table_musics');
 
             $lignes = '';
 
   $sql = "SELECT * FROM musics WHERE 1=1";
+
+  $result = $mysqli->query($sql);
+
+            while($data = $result->fetch_object()) {
+                // Lignes du tableau
+                $lignes .= '<tr>';
+                $lignes .= '<td>' . htmlspecialchars($data->titre) . '</td>' . PHP_EOL;
+                $lignes .= '<td>' . htmlspecialchars($data->artiste) . '</td>' . PHP_EOL;
+                $lignes .= '<td><audio controls="controls">
+                    <source src="assets/upload/'.$data->file.'"  />
+                  </audio></td>
+                ' . PHP_EOL;
+                $lignes .= '</tr>' . PHP_EOL;
+            }
+            echo $lignes;
+  ?>
+  </tbody>
+  </table>
+
+</div>
+
+
+
+<div class="col-lg-12 col-md-12">
+  <?php
+    echo table::data_table(['Titres',
+                        'Artiste',
+                        'Music'], 'table_users');
+
+            $lignes = '';
+
+  $sql = "SELECT * FROM musics";
 
   $result = $mysqli->query($sql);
 

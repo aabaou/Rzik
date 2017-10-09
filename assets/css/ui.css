@@ -1100,7 +1100,7 @@ address {
   font-size: 12px;
 }
 .btn:hover {
-  color: #fff;
+  color: #000;
   outline: 0;
   outline: none;
 }
