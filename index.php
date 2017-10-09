@@ -36,49 +36,49 @@
   
 <?php
 
-if(isset($_SESSION['connect'])){
+// if(isset($_SESSION['connect'])){
 
-      if (empty($index))
-        $index = 0;
-
-
-      $select = '';
-
-      $userID = $_SESSION['userID'];
-
-      $option = '<li class="mdl-menu__item"></li>';
+//       if (empty($index))
+//         $index = 0;
 
 
-      $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
+//       $select = '';
 
-      $result2 = $mysqli->query($sql2);
+//       $userID = $_SESSION['userID'];
 
-      while($data2 = $result2->fetch_object()) {
-        $option .= '<li class="mdl-menu__item">' .  $data2->genres . '</li>';
-        $index++;
-      }
+//       $option = '<li class="mdl-menu__item"></li>';
 
-        $select = '
-          <h2>Playlist</h2><hr/>
-            <div class="col-lg-6 col-md-6 ">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                <input class="mdl-textfield__input" onchange="filter.song(this)" type="text" id="selectSong" readonly tabIndex="-1">
-                <label for="selectSong" class="mdl-textfield__label">Genres</label>
-                <ul for="selectSong" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                ' . $option . '
-                </ul>
-              </div>
-              </div>
-              <div class="col-lg-6 col-md-6 ">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input search" name="search" type="search" id="search">
-                  <label class="mdl-textfield__label" for="search">Titre...</label>
-                </div>
-              </div>
-            ';
 
-            echo $select;
-}
+//       $sql2 = "SELECT DISTINCT genres FROM musics WHERE Users_id='$userID' ";
+
+//       $result2 = $mysqli->query($sql2);
+
+//       while($data2 = $result2->fetch_object()) {
+//         $option .= '<li class="mdl-menu__item">' .  $data2->genres . '</li>';
+//         $index++;
+//       }
+
+//         $select = '
+//           <h2>Playlist</h2><hr/>
+//             <div class="col-lg-6 col-md-6 ">
+//               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+//                 <input class="mdl-textfield__input" onchange="filter.song(this)" type="text" id="selectSong" readonly tabIndex="-1">
+//                 <label for="selectSong" class="mdl-textfield__label">Genres</label>
+//                 <ul for="selectSong" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+//                 ' . $option . '
+//                 </ul>
+//               </div>
+//               </div>
+//               <div class="col-lg-6 col-md-6 ">
+//                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+//                   <input class="mdl-textfield__input search" name="search" type="search" id="search">
+//                   <label class="mdl-textfield__label" for="search">Titre...</label>
+//                 </div>
+//               </div>
+//             ';
+
+//             echo $select;
+// }
 
  ?>
 
@@ -181,7 +181,7 @@ if(isset($_SESSION['connect'])){
               <input id="music" name="music" type="file"/>
             </div>
             
-            <div class="col-lg-12 col-md-12 ">
+            <div class="col-lg-12 col-md-12 center">
               <button type="submit" class="hvr-horizontal blue">Soumettre</button>
             </div>
             
@@ -201,6 +201,9 @@ if(isset($_SESSION['connect'])){
         };
 
         var userList = new List('searchSong', options);
+
+        getmdlSelect.init(".getmdl-select");
+        
       });
       
   }

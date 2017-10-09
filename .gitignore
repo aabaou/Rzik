@@ -1,8 +1,2 @@
-
-assets/img/slide2.jpg
-assets/css/player.css
-assets/img/slide2.jpg
-assets/parts/footer.php
-index.php
-assets/parts/footer.php
-index.php
+.gitignore
+assets/upload

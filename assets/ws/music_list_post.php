@@ -23,7 +23,6 @@ error_log($sql);
 
 	$mysqli->query($sql);
 
-    error_log($sql);
     
 	$result = ['status' => 'success', 'message' => 'Votre commentaire a bien été ajouté', 'data' => 'data' ];
 

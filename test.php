@@ -1,82 +1,84 @@
-<?php include __DIR__.'/assets/parts/header.php' ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
 
 
+    <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+      <form id="ajoutMusic">
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+      <div class="col-lg-6 col-md-6 ">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" name="titre" type="titre" id="titre">
+              <label class="mdl-textfield__label" for="titre">Titre...</label>
+            </div>
+      </div>
 
-<div id="users">
-
-<!-- class="search" automagically makes an input a search field. -->
-  <input class="search" placeholder="Search" />
-<!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
-  <button class="sort" data-sort="name">
-    Sort
-  </button>
-
-<!-- Child elements of container with class="list" becomes list items -->
-  <ul class="list">
-    <li>
-<!-- The innerHTML of children with class="name" becomes this items "name" value -->
-      <h3 class="name">Jonny Stromberg</h3>
-      <p class="born">1986</p>
-    </li>
-    <li>
-      <h3 class="name">Jonas Arnklint</h3>
-      <p class="born">1985</p>
-    </li>
-    <li>
-      <h3 class="name">Martina Elm</h3>
-      <p class="born">1986</p>
-    </li>
-    <li>
-      <h3 class="name">Gustaf Lindqvist</h3>
-      <p class="born">1983</p>
-    </li>
-  </ul>
-
-</div>
+      <div class="col-lg-6 col-md-6 ">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" name="artiste" type="artiste" id="artiste">
+              <label class="mdl-textfield__label" for="artiste">Artiste...</label>
+            </div>
+      </div>
 
 
+      <div class="col-lg-6 col-md-6 ">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" name="compositeur" type="compositeur" id="compositeur">
+              <label class="mdl-textfield__label" for="compositeur">Compositeur...</label>
+            </div>
+      </div>
+
+    <div class="col-lg-6 col-md-6 ">
+
+    <?php
+
+              $champs = '
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                      <input class="mdl-textfield__input" type="text" id="top" name="yop" readonly tabIndex="-1">
+                      <label for="top" class="mdl-textfield__label">Test</label>
+                      <ul for="top" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                      <li class="mdl-menu__item">FSFD</li>
+                      <li class="mdl-menu__item">TR</li>
+                      <li class="mdl-menu__item">FSTRFD</li>
+                      <li class="mdl-menu__item">FSDFFD</li>  
+                      </ul>
+                    </div>
+                  ';
+
+
+            echo $champs;
+
+          
+            ?>
+
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+              <label for="cover">Cover : </label>
+              <input id="cover" name="cover" type="file"/>
+            </div>
+            <div class="col-lg-6 col-md-6 ">
+              <label for="music">Musique : </label>
+              <input id="music" name="music" type="file"/>
+            </div>
+            
+            <div class="col-lg-12 col-md-12 ">
+              <button type="submit" class="hvr-horizontal blue">Soumettre</button>
+            </div>
+            
+</form>
+<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
 <script>
-
-  var options = {
-    valueNames: [ 'name', 'born' ]
-  };
-
-  var userList = new List('users', options);
+  
+$(document).ready(function () {
+  getmdlSelect.init(".getmdl-select");
+});
 
 </script>
-
-
-		<!-- FIN BODY -->
-
-
-<?php include __DIR__.'/assets/parts/footer.php' ?>
-
-<script>
-  $playlist = $('div.sm2-playlist-wrapper ul.sm2-playlist-bd');
-  $playlist.load('assets/ws/playlist.php');
-</script>
-<script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="assets/js/soundmanagerv2/soundmanagerv2.js"
+</body>
+</html>
