@@ -15,16 +15,18 @@
   
   foreach ($Methode as $cle => $value) {
 
-    error_log('__'.$value);
+    
       switch ($cle) {
           case 'user':
             $userID = decryptS($value, $key, random_password(10));
             $update->$cle = trim(htmlspecialchars($userID));
+            error_log('__'.$userID);
             break;    
 
           case 'action':
             $action = decryptS($value, $key, random_password(10));
             $update->$cle = trim(htmlspecialchars($action));
+            error_log('__'.$userID);
             break;  
 
           default:

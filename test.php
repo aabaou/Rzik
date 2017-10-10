@@ -1,84 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="">
+<div class="col-lg-12 col-md-12">
+  <?php
+  $key = $_SESSION['key'];
+
+    echo table::data_table(['Nom',
+                        'Mail',
+                        'Statut'], 'table_users');
+
+            $lignes = '';
+
+  $sql = "SELECT * FROM users";
+
+  $result = $mysqli->query($sql);
+
+            while($data = $result->fetch_object()) {
+              switch ($data->statut) {
+                case '0':
+                  $statut = 'Accepté';
+                  break;
+                case '1':
+                  $statut = 'Banni';
+                  break;             
+                default:
+                  $statut = 'Error';
+                  break;
+              }              
+                // Lignes du tableau
+                $lignes .= '<tr class="users" data-user='.cryptS($data->id, $key, random_password(10)).' data-username='. htmlspecialchars($data->username) .'>';
+                $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
+                $lignes .= '<td>' . htmlspecialchars($data->mail) . '</td>' . PHP_EOL;
+                $lignes .= '<td>' . htmlspecialchars($statut) . '</td>' . PHP_EOL;
+                $lignes .= '</tr>' . PHP_EOL;
+            }
+            echo $lignes;
+  ?>
+  </tbody>
+  </table>
+
+</div>
 
 
-    <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body>
-      <form id="ajoutMusic">
-
-      <div class="col-lg-6 col-md-6 ">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="titre" type="titre" id="titre">
-              <label class="mdl-textfield__label" for="titre">Titre...</label>
-            </div>
-      </div>
-
-      <div class="col-lg-6 col-md-6 ">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="artiste" type="artiste" id="artiste">
-              <label class="mdl-textfield__label" for="artiste">Artiste...</label>
-            </div>
-      </div>
-
-
-      <div class="col-lg-6 col-md-6 ">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" name="compositeur" type="compositeur" id="compositeur">
-              <label class="mdl-textfield__label" for="compositeur">Compositeur...</label>
-            </div>
-      </div>
-
-    <div class="col-lg-6 col-md-6 ">
-
-    <?php
-
-              $champs = '
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                      <input class="mdl-textfield__input" type="text" id="top" name="yop" readonly tabIndex="-1">
-                      <label for="top" class="mdl-textfield__label">Test</label>
-                      <ul for="top" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                      <li class="mdl-menu__item">FSFD</li>
-                      <li class="mdl-menu__item">TR</li>
-                      <li class="mdl-menu__item">FSTRFD</li>
-                      <li class="mdl-menu__item">FSDFFD</li>  
-                      </ul>
-                    </div>
-                  ';
-
-
-            echo $champs;
-
-          
-            ?>
-
-            </div>
-            <div class="col-lg-6 col-md-6 ">
-              <label for="cover">Cover : </label>
-              <input id="cover" name="cover" type="file"/>
-            </div>
-            <div class="col-lg-6 col-md-6 ">
-              <label for="music">Musique : </label>
-              <input id="music" name="music" type="file"/>
-            </div>
-            
-            <div class="col-lg-12 col-md-12 ">
-              <button type="submit" class="hvr-horizontal blue">Soumettre</button>
-            </div>
-            
-</form>
-<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
 <script>
-  
-$(document).ready(function () {
-  getmdlSelect.init(".getmdl-select");
-});
+  $('.users').on('click', function(event) {
+    $this = $(this);
+    $user = $this.data('user');
+    $username = $this.data('username');
+
+    $('#username').text($username);
+    $('#user').val($user);
+    $('#modal').click();
+
+    event.stopPropagation();
+  });
+
+  $obj = {user : '#user', action : '#action'};
+  $path = 'assets/ws/usersValidate.php';
+
+  $('.selectId').click(function(event) {
+    $this = $(this);
+    $data = $this.data('value');
+    $('.inputSelect[type="hidden"]').val($data);
+  });
+
+
+  $('#sendSubmit').on('click', function(event) {
+      event.preventDefault();
+      send.manual($obj, $path, 
+        function(){
+          $('#modal').click();
+          setTimeout(()=>refresh(),1500);
+        }
+      );
+  });
 
 </script>
-</body>
-</html>
