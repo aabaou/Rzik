@@ -131,6 +131,8 @@
     <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/list.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 		<script>
 			$(document).ready(function () {
