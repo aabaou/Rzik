@@ -17,9 +17,9 @@
 
     error_log('__'.$value);
       switch ($cle) {
-          case 'music':
-            $songID = decryptS($value, $key, random_password(10));
-            $update->$cle = trim(htmlspecialchars($songID));
+          case 'user':
+            $userID = decryptS($value, $key, random_password(10));
+            $update->$cle = trim(htmlspecialchars($userID));
             break;    
 
           case 'action':
@@ -28,20 +28,14 @@
             break;  
 
           default:
-            $update->$cle = trim(htmlspecialchars($value));
+            // $update->$cle = trim(htmlspecialchars($value));
             break;
       }
   }
 
 
-  $sql1 = "SELECT * FROM musics WHERE id = '$update->music'";
 
-  $result = $mysqli->query($sql1);
-
-  $res = $result->fetch_object();
-
-
-  $sql2 = "UPDATE musics SET status = '$update->action' WHERE id = '$update->music'";
+  $sql2 = "UPDATE users SET statut = '$update->action' WHERE id = '$update->user'";
   $resultSend = ['status' => 'success', 'message' => 'Le statut a été modifié', 'data' => ' ' ];
 
 

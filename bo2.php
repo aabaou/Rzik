@@ -10,49 +10,40 @@
 
 <div class="division">
 
+
+
+
 <div class="col-lg-12 col-md-12">
   <?php
-    $key = $_SESSION['key'];
+  $key = $_SESSION['key'];
 
-    echo table::data_table(['Titres',
-                        'Artiste',
-                        'Music',
-                        'statut'], 'table_musics');
+    echo table::data_table(['Nom',
+                        'Mail',
+                        'Statut'], 'table_users');
 
             $lignes = '';
 
-  $sql = "SELECT * FROM musics WHERE 1=1";
+  $sql = "SELECT * FROM users";
 
   $result = $mysqli->query($sql);
 
-
             while($data = $result->fetch_object()) {
-
-            switch ($data->status) {
-              case '0':
-                $statut = 'En attente';
-                break;
-              case '1':
-                $statut = 'Validé';
-                break;  
-              case '2':
-                $statut = 'Refusé';
-                break;            
-              default:
-                $statut = 'Error';
-                break;
-            }
-
-
+              switch ($data->statut) {
+                case '0':
+                  $statut = 'Accepté';
+                  break;
+                case '1':
+                  $statut = 'Banni';
+                  break;             
+                default:
+                  $statut = 'Error';
+                  break;
+              }              
                 // Lignes du tableau
-                $lignes .= '<tr>';
-                $lignes .= '<td class="titre" data-titre='.htmlspecialchars($data->titre).' data-music='.cryptS($data->id, $key, random_password(10)).'>' . htmlspecialchars($data->titre) . '</td>' . PHP_EOL;
-                $lignes .= '<td class="titre" data-titre='.htmlspecialchars($data->titre).' data-music='.cryptS($data->id, $key, random_password(10)).'>' . htmlspecialchars($data->artiste) . '</td>' . PHP_EOL;
-                $lignes .= '<td><audio controls="controls">
-                    <source src="assets/upload/'.$data->file.'"  />
-                  </audio></td>
-                ' . PHP_EOL;
-                $lignes .= '<td class="titre" data-titre='.htmlspecialchars($data->titre).' data-music='.cryptS($data->id, $key, random_password(10)).'>' . htmlspecialchars($statut) . '</td>' . PHP_EOL;
+                $lignes .= '<tr class="users" data-user='.cryptS($data->id, $key, random_password(10)).' data-username='. htmlspecialchars($data->username) .'>';
+                $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
+                $lignes .= '<td>' . htmlspecialchars($data->mail) . '</td>' . PHP_EOL;
+                $lignes .= '<td>' . htmlspecialchars($statut) . '</td>' . PHP_EOL;
                 $lignes .= '</tr>' . PHP_EOL;
             }
             echo $lignes;
@@ -62,16 +53,16 @@
 
 </div>
 
-</div>
-</div>
-
-
 
 </div>
 
 
-<!-- Trigger the modal with a button -->
-<button type="button" id="modal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+
+
+
+</div>
+</div>
+
 
 <!-- Modal -->
 <div id="myModal2" class="modal fade" role="dialog">
@@ -129,7 +120,7 @@
               ?>
         </div>
         </div>
-        <input id="music" name="music" type="hidden">
+        <input id="user" name="user" type="hidden">
       </form>
       <div class="modal-footer">
         <div class="col-lg-12 col-md-12 center">
@@ -141,32 +132,30 @@
   </div>
 </div>
 
-
-				
 <?php include 'assets/parts/Footer2.php'; ?>
 
 <script>
-  $('.titre').on('click', function(event) {
+  $('.users').on('click', function(event) {
     $this = $(this);
-    $titre = $this.data('titre');
-    $music = $this.data('music');
+    $user = $this.data('user');
+    $username = $this.data('username');
 
-    $('#titre').text($titre);
-    $('#music').val($music);
+    $('#username').text($username);
+    $('#user').val($user);
     $('#modal').click();
 
     event.stopPropagation();
   });
 
-  $obj = {music : '#music', action : '#action'};
-  $path = 'assets/ws/validate.php';
-
+  $obj = {user : '#user', action : '#action'};
+  $path = 'assets/ws/usersValidate.php';
 
   $('.selectId').click(function(event) {
     $this = $(this);
     $data = $this.data('value');
     $('.inputSelect[type="hidden"]').val($data);
   });
+
 
   $('#sendSubmit').on('click', function(event) {
       event.preventDefault();

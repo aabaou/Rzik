@@ -7659,7 +7659,7 @@
 			}
 			else {
 				// Otherwise create a row with a wrapper
-				var created = $('<tr><td/></tr>');
+				var created = $('<tr>ffqs<td/></tr>');
 				$('td', created)
 					.addClass( k )
 					.html( r )

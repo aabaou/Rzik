@@ -2315,8 +2315,8 @@ input[type='search']{
     margin-bottom: 20px;
 }
 
-#table_users_filter, #table_musics_filter{
-  visibility: hidden;
+.dataTables_filter{
+  text-align: right;
 }
 
 
@@ -2331,6 +2331,53 @@ body .modal-footer {
     text-align: right;
 }
 
-body .titre{
+body .titre, body .users{
   cursor: pointer;
+}
+
+body div[data-notify="container"] {
+z-index: 9999!important;
+border-radius: 5px;
+border: none;
+}
+
+body div[data-notify="container"].alert-info {
+background: rgb(0, 165, 247);
+color: #ffffff;
+font-family: inherit;
+}
+
+body div[data-notify="container"].alert-success {
+background: #4CAF50;
+color: #ffffff;
+font-family: inherit;
+}
+
+body div[data-notify="container"].alert-warning {
+background: rgba(255, 0, 0, 0.9);
+color: #ffffff;
+font-family: inherit;
+}
+
+span[data-notify="icon"] {
+font-size: 18px;
+position: relative;
+padding-right: 5px;
+top: 1px;
+}
+
+span[data-notify="message"] {
+font-size: 17px;
+padding-right: 5px;
+}
+
+button[data-notify="dismiss"] {
+opacity: 1;
+text-shadow: none;
+color: white;
+}
+
+
+#modal{
+  display: none;
 }

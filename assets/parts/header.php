@@ -27,7 +27,7 @@
         <!-- END Favicon -->  
         
         <!-- JQuery -->
-		<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="assets/js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
   <script>
     window.fbAsyncInit = function() {
