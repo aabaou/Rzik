@@ -37,7 +37,10 @@
                 break;  
               case '2':
                 $statut = 'Refusé';
-                break;            
+                break; 
+              case '3':
+                $statut = 'Privé';
+                break;                
               default:
                 $statut = 'Error';
                 break;

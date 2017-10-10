@@ -2,7 +2,7 @@
 
 <?php include 'assets/parts/Sidebar.php'; ?>
 
-<?php echo page_top::add("Admin","",""); ?>
+<?php echo page_top::add("Admin : Liste des utilisateurs","",""); ?>
 
     <!-- BODY -->
 
@@ -10,16 +10,13 @@
 
 <div class="division">
 
-
-
-
 <div class="col-lg-12 col-md-12">
   <?php
-  $key = $_SESSION['key'];
+    $key = $_SESSION['key'];
 
-    echo table::data_table(['Nom',
-                        'Mail',
-                        'Statut'], 'table_users');
+    echo table::data_table(['Titres',
+                        'Artiste',
+                        'Music'], 'table_musics');
 
             $lignes = '';
 
@@ -27,18 +24,22 @@
 
   $result = $mysqli->query($sql);
 
+
             while($data = $result->fetch_object()) {
-              switch ($data->statut) {
-                case '0':
-                  $statut = 'Accepté';
-                  break;
-                case '1':
-                  $statut = 'Banni';
-                  break;             
-                default:
-                  $statut = 'Error';
-                  break;
-              }              
+
+            switch ($data->statut) {
+              case '0':
+                $statut = 'Accepté';
+                break;
+              case '1':
+                $statut = 'Banni';
+                break;           
+              default:
+                $statut = 'Error';
+                break;
+            }
+
+
                 // Lignes du tableau
                 $lignes .= '<tr class="users" data-user='.cryptS($data->id, $key, random_password(10)).' data-username='. htmlspecialchars($data->username) .'>';
                 $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
@@ -53,16 +54,16 @@
 
 </div>
 
+</div>
+</div>
+
+
 
 </div>
 
 
-
-
-
-</div>
-</div>
-
+<!-- Trigger the modal with a button -->
+<button type="button" id="modal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
 
 <!-- Modal -->
 <div id="myModal2" class="modal fade" role="dialog">
@@ -93,7 +94,7 @@
 
                 $id = $attr_name = $name = "Statut";
 
-                $sql = "SELECT * FROM r_statut_music";
+                $sql = "SELECT * FROM r_statut";
 
                 $result = $mysqli->query($sql);
 
@@ -132,6 +133,8 @@
   </div>
 </div>
 
+
+        
 <?php include 'assets/parts/Footer2.php'; ?>
 
 <script>
