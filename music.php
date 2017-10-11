@@ -22,7 +22,7 @@ $res = $result->fetch_object();
                     <h4>by <?php echo $res->artiste ?></h4>
                     <p><?php echo $res->description ?></p>
                     <p></p>
-                    <p><i class="fa fa-play-circle" style="font-size: 5em"></i></p>
+                    <!--<p><i class="fa fa-play-circle" style="font-size: 5em"></i></p>-->
                 </div>
                 <div class="col-md-3">
                     <img src="assets/upload/<?php echo $res->cover ?>" height="250" width="250">
@@ -37,16 +37,18 @@ $res = $result->fetch_object();
     </div>
     
 </div>
+<div class="container">
     <div id="comment-container" class="container-fluid">
-        <div class="col-md-5">
+        <div class="col-md-8">
                 <div class="input-group">
-                    <form id="comment-music">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				    <input class="mdl-textfield__input" name="comment" type="text" id="userComment" >
-				    <label class="mdl-textfield__label" for="comment">Commentaire</label>
-				  </div>
+                        <form id="comment-music">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				        <input class="mdl-textfield__input" name="comment" type="text" id="userComment" style="display: inline-block">
+                        <label class="mdl-textfield__label" for="comment">Commentaire</label>
                     <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
-                    <button type="submit" class="hvr-horizontal blue" >Poster</button>
+                    <button type="submit" class="hvr-horizontal blue" style="display: inline-block">Poster</button>
+				  </div>
+                    
                     </form>
                 </span>
         </div>
@@ -119,7 +121,7 @@ $res = $result->fetch_object();
             
 </script>
 
-
+<div class="col-md-1"></div>
             <div class="col-md-3">
                 <p></p>
                 <form id="like-unlike">
@@ -137,13 +139,22 @@ $res = $result->fetch_object();
 
                     // Si le mail est déjà présent
                     if($result->num_rows == 0)
-                        echo '<i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 1.5em;"> </i>';
+                        echo '<i id="likeButton" class="fa fa-thumbs-o-up" style="font-size: 2.5em;"> </i>';
                     else
-                        echo '<i id="likeButton" class="fa fa-thumbs-up" style="font-size: 1.5em;"> </i>';
+                        echo '<i id="likeButton" class="fa fa-thumbs-up" style="font-size: 2.5em;"> </i>';
 
                 ?>
-                        <div>
-                            <h5>Nombre de j'aime </h5>
+                        <div id="like-container">
+                            <h5>
+                            <?php 
+                            $sql = "SELECT COUNT(music_id) AS compte FROM likes WHERE music_id = '$musicID'";
+                            $result = $mysqli->query($sql);
+                            $res = $result->fetch_object();
+
+                            echo '<strong><h4>'.$res->compte."</strong> j'aimes</h4>";
+                            
+                            ?>
+                            </h5>
                             <input type="hidden" name="music" value="<?php echo $_GET['q']; ?>" />
                         </div>
                   </label>
@@ -151,7 +162,7 @@ $res = $result->fetch_object();
 
                 </form>
             </div>
-        
+        </div>
     </div>
 </div>
 <?php include __DIR__.'/assets/parts/footer.php' ?>
