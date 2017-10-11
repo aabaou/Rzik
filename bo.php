@@ -167,11 +167,7 @@
   $path = 'assets/ws/validate.php';
 
 
-  $('.selectId').click(function(event) {
-    $this = $(this);
-    $data = $this.data('value');
-    $('.inputSelect[type="hidden"]').val($data);
-  });
+
 
   $('#sendSubmit').on('click', function(event) {
       event.preventDefault();

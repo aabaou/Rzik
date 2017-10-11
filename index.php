@@ -126,6 +126,27 @@
               ?>
 
             </div>
+
+            <div class="col-lg-6 col-md-6 ">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                <input class="mdl-textfield__input" type="text" id="visible" readonly tabIndex="-1">
+                <label for="visible" class="mdl-textfield__label">Visibilité</label>
+                <ul for="visible" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                  <li class="mdl-menu__item"></li>
+                  <li class="mdl-menu__item selectId"  data-value="0">Public</li>
+                  <li class="mdl-menu__item selectId"  data-value="3">Privé</li>
+                </ul>
+                <input type="hidden" id="visible" name="visible" class="inputSelect">
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 ">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="description" type="description" id="description">
+                    <label class="mdl-textfield__label" for="description">Description...</label>
+                  </div>
+            </div>      
+
             <div class="col-lg-6 col-md-6 ">
               <label for="cover">Cover : </label>
               <input id="cover" name="cover" type="file"/>

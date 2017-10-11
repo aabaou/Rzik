@@ -28,6 +28,7 @@ if($result->num_rows == 0)
 
 	$sql = "INSERT INTO users(mail, password, username, trackm, r_roles_id) VALUES('$email','$fakepassword','$userName', '$sha2pwd', '1')"; 
 
+	error_log($sql);
 	$mysqli->query($sql);
 
 	$result = ['status' => 'success', 'message' => 'Votre compte a été crée', 'data' => 'data' ];

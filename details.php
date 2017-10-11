@@ -14,7 +14,8 @@
       <div class="col-lg-12 col-md-12">
 
         <div class="col-lg-6 col-md-6">
-          <div id="graph">
+          <div class="graph">
+            <h2 class="graphTitle">Commentaire</h2>
             <div class='wrapper'>
               <div class='chart' id='p1'>
                 <canvas id='c1' value="1"></canvas>
@@ -24,7 +25,8 @@
         </div>
 
         <div class="col-lg-6 col-md-6">
-          <div id="graph">
+          <div class="graph">
+            <h2 class="graphTitle">Like</h2>
             <div class='wrapper'>
               <div class='chart' id='p2'>
                 <canvas id='c2' value="2"></canvas>
@@ -60,10 +62,11 @@
 
                       // Lignes du tableau
                       $lignes .= '<tr class="comments">';
-                      $lignes .= '<td>' . htmlspecialchars($data->comment) . '</td>' . PHP_EOL;
-                      $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
-                      $lignes .= '<td>' . date_YMD_WithoutRest($data->Jour) . '</td>' . PHP_EOL;
+                        $lignes .= '<td>' . htmlspecialchars($data->comment) . '</td>' . PHP_EOL;
+                        $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
+                        $lignes .= '<td>' . date_YMD_WithoutRest($data->Jour) . '</td>' . PHP_EOL;
                       $lignes .= '</tr>' . PHP_EOL;
+                      
                   }
                   echo $lignes;
         ?>

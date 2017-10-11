@@ -1,6 +1,23 @@
 <?php include 'assets/config/config.inc.php' ?>
 <?php include 'assets/objects/table.php' ?>
 <?php include 'assets/objects/Page_top.php' ?>
+
+<?php 
+	if(isset($_SESSION['admin'])){
+		if($_SESSION['admin'] == 2){
+
+
+		}
+		else{
+		header('Location: index.php'); 
+		}
+	}
+	else{
+		header('Location: index.php'); 
+	}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +49,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="assets/img/logo.png" alt="Rzik Logo" class="img-responsive logo"></a>
+				<a href="index.php"><img src="assets/img/logo.png" alt="Rzik Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">

@@ -908,11 +908,16 @@ var notify = {
 
 window.onload = ()=>{
   $('#loader').detach();
+  getmdlSelect.init(".getmdl-select");
 }
 
 $(document).ready(function(){
 
-  
+    $('.selectId').click(function(event) {
+      $this = $(this);
+      $data = $this.data('value');
+      $('.inputSelect[type="hidden"]').val($data);
+    });
 
     /**
      * Cet objet contrôle la barre de navigation. Met en œuvre l'ajout et le retrait
