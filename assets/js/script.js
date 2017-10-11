@@ -569,6 +569,129 @@ var notify = {
 
 
     /**
+     * Création de camembert et graphique
+     * @param  Array  Tableau label [description]
+     * @param  Array  Tableau data  [description]
+     * @param  Int         Séléction du canvas data  [description]
+     * @return {[type]}       [description]
+     */
+    var chart = {
+        camembert : function($label, $data, $idnumber) {
+
+            var myPieChart = null;
+            var c1 = document.getElementById("c" + $idnumber);
+            var parent = document.getElementById("p" + $idnumber);
+            c1.width = parent.offsetWidth - 40;
+            c1.height = parent.offsetHeight - 20;
+
+            var data1 = {
+            labels : $label,
+            datasets : [
+              {
+                  data: $data,
+                  backgroundColor: [
+                      "#FF6384",
+                      "#36A2EB",
+                      "#1DFF00",
+                      "#FFFA00",
+                      "#FA00FF",
+                      "#FF000C",
+                      "#00FFD4",
+                      "#968EFF",
+                      "#FFAE75",
+                      "#FF8C00",
+                      "#1000FF"
+
+                  ],
+                  hoverBackgroundColor: [
+                      "#FF6384",
+                      "#36A2EB",
+                      "#1DFF00",
+                      "#FFFA00",
+                      "#FA00FF",
+                      "#FF000C",
+                      "#00FFD4",
+                      "#968EFF",
+                      "#FFAE75",
+                      "#FF8C00",
+                      "#1000FF"
+
+                  ]
+              }
+            ]
+            }
+
+            var options1 = {
+               animation: {
+                  animateRotate:true,
+                  animateScale:true
+              }
+            }
+
+            // Clear
+            if (window.myPieChart != undefined)
+            window.myPieChart.destroy();
+
+            // Nouvel Donnée
+            window.myPieChart   = new Chart("c" + $idnumber, {
+              type: 'pie',
+              data: data1,
+              options: options1
+            });
+        },
+
+        graphique : function($label, $data, $idnumber) {
+              var c1 = document.getElementById("c" + $idnumber);
+              var parent = document.getElementById("p" + $idnumber);
+              c1.width = parent.offsetWidth + 20 ;
+              c1.height = parent.offsetHeight + 20;
+
+              var data1 = {
+                labels : $label,
+                datasets : [{
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    pointStyle : 'circle',    // Style de point
+                    pointBackgroundColor: '#fff', // Couleur des points
+                    borderColor: '#000',      // Contour des points
+
+                    pointHoverBackgroundColor: '#000', // Couleur des points en Hover
+                    borderHoverColor: '#000',      // Contour des points en Hover
+                    pointHoverBorderWidth: 2,   // Taille des points en Hover
+
+                    capBezierPoints: 1, // Courbe de bézier (Bool)
+                    fill: 1,       // Ombrage du tracé (Bool)
+                    showLine: 1,  // Afficher le tracé (Bool)
+                    spanGaps: 0,  // les lignes seront tracées entre des points sans données nulles ou nulles (Bool)
+                    responsive: true,
+
+                    data : $data
+                  }]
+              }
+
+              var options1 = {
+                 legend: {
+                      display: 0,
+                      text: 'Latence'
+                  },
+                  hover: {
+                    animationDuration : 400
+                  }
+
+              }
+          // Clear
+          // if (window.chartInstance != undefined)
+            // window.chartInstance.destroy();
+
+          // Nouvel Donnée
+          window.chartInstance = new Chart("c" + $idnumber, {
+              type: 'line',
+              data: data1,
+              options: options1
+          });
+          }
+    }
+
+    /**
      * Cet objet contrôle l'animation Typed
      */
     var typed = {
@@ -782,10 +905,14 @@ var notify = {
         }
 
     }
-    
+
+window.onload = ()=>{
+  $('#loader').detach();
+}
 
 $(document).ready(function(){
 
+  
 
     /**
      * Cet objet contrôle la barre de navigation. Met en œuvre l'ajout et le retrait
