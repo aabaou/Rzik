@@ -1,3 +1,12 @@
+<div id="loader">
+  <div class="contener_general">
+        <div class="contener_mixte"><div class="ballcolor ball_1">&nbsp;</div></div>
+        <div class="contener_mixte"><div class="ballcolor ball_2">&nbsp;</div></div>
+        <div class="contener_mixte"><div class="ballcolor ball_3">&nbsp;</div></div>
+        <div class="contener_mixte"><div class="ballcolor ball_4">&nbsp;</div></div>
+  </div>
+</div>
+
 <div class="sm2-bar-ui full-width fixed">
 
  <div class="bd sm2-main-controls">
@@ -121,9 +130,8 @@
 	
 
 	<!-- FIN BODY -->
-		<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
-		<script src="assets/js/jquery.backstretch.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/datatables/jquery.dataTables.min.js"></script>
+	<script src="assets/js/tools.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/jquery.backstretch.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/soundmanager2.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/bar-ui.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/fr.js" type="text/javascript" charset="utf-8"></script>
@@ -131,7 +139,6 @@
     <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/list.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 		<script>
