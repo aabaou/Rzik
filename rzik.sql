@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 10 Octobre 2017 à 12:27
+-- Généré le :  Mer 11 Octobre 2017 à 07:31
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -40,7 +40,9 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `comment`, `Musics_id`, `Users_id`, `date`) VALUES
 (1, 'dsds', 2, 24, '2017-09-15 23:23:51'),
-(2, 'azerty', 1, 24, '2017-10-09 20:10:47');
+(2, 'azerty', 1, 24, '2017-10-09 20:10:47'),
+(3, 'fdf', 1, 24, '2017-10-10 20:29:08'),
+(4, 'dfsdfds', 1, 24, '2017-10-10 20:29:18');
 
 -- --------------------------------------------------------
 
@@ -77,16 +79,19 @@ INSERT INTO `ecoute` (`id`, `Musics_id`, `Users_id`, `date`) VALUES
 
 CREATE TABLE `likes` (
   `music_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `likes`
 --
 
-INSERT INTO `likes` (`music_id`, `user_id`) VALUES
-(2, 24),
-(5, 24);
+INSERT INTO `likes` (`music_id`, `user_id`, `date`) VALUES
+(2, 24, '2017-10-10 20:49:21'),
+(5, 24, '2017-10-10 20:49:21'),
+(1, 24, '2017-10-10 20:49:46'),
+(3, 24, '2017-10-10 23:45:58');
 
 -- --------------------------------------------------------
 
@@ -121,8 +126,9 @@ CREATE TABLE `musics` (
 --
 
 INSERT INTO `musics` (`id`, `titre`, `artiste`, `likes`, `ecoute`, `lentgth`, `cover`, `compositeur`, `download`, `date_upload`, `date_creation`, `description`, `file`, `explicit`, `genres`, `Users_id`, `track`, `playlist`, `status`) VALUES
-(1, 'Drifters', 'Cyril', NULL, NULL, NULL, '../upload/d24991c89aff4d888c019cd3b8135edc573723ab.jpg', 'Bowada', NULL, '2017-10-09 20:10:27', NULL, NULL, '../upload/bf196a7755753c4f4ced8026f00b460b32dd1c40.mp3', NULL, 'RnB', 24, '1507572627', 0, 0),
-(2, 'Coucou', 'azerty', NULL, NULL, NULL, '../upload/3bdcd90af17fd54e2e10b05297bfc2d2b837a8e7.jpg', 'Azerty', NULL, '2017-10-09 22:59:36', NULL, NULL, '../upload/5a11bbf4f621939200ff4b8015005b2d232e192e.mp3', NULL, 'RnB', 24, '1507582776', 0, 0);
+(1, 'Drifters', 'Cyril', NULL, NULL, NULL, '../upload/d24991c89aff4d888c019cd3b8135edc573723ab.jpg', 'Bowada', NULL, '2017-10-09 20:10:27', NULL, NULL, '../upload/bf196a7755753c4f4ced8026f00b460b32dd1c40.mp3', NULL, 'RnB', 24, '1507572627', 1, 0),
+(2, 'Coucou', 'azerty', NULL, NULL, NULL, '../upload/3bdcd90af17fd54e2e10b05297bfc2d2b837a8e7.jpg', 'Azerty', NULL, '2017-10-09 22:59:36', NULL, NULL, '../upload/5a11bbf4f621939200ff4b8015005b2d232e192e.mp3', NULL, 'RnB', 24, '1507582776', 1, 0),
+(3, 'Kiba', 'Cyril', NULL, NULL, NULL, '../upload/7ef6851a8f666471934ed75eae9083616abd5843.jpg', 'Azerty', NULL, '2017-10-10 22:35:55', NULL, NULL, '../upload/9d2267c2225f2875fe4290c6347b45573d247e1f.mp3', NULL, 'Trap', 24, '1507667755', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -257,7 +263,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `mail`, `password`, `username`, `r_roles_id`, `statut`, `trackm`) VALUES
-(1, 'cyril@gmail.com', 'azerty', 'azerty', 1, 0, 'dfhjhsgfedzss'),
+(1, 'cyril@gmail.com', 'azerty', 'azerty', 1, 1, 'dfhjhsgfedzss'),
 (3, 'cyrilbaril@gmail.com', 'fa6unbu4', 'freebox', 1, 0, '84d2c09491e835e6b2260b16b07e413a31fe0360'),
 (4, 'cyrilbaril@gmail.com', 'NeQki', 'freebox', 1, 0, 'e42ca1eecc69194485629eeb6d8e7f3b0fdedd42'),
 (5, 'cyrilbaril@gmail.com', 'iunQ6o8', 'freebox', 1, 0, '0b4f68002794198a7f350839f8fe6658228e2f00'),
@@ -273,7 +279,7 @@ INSERT INTO `users` (`id`, `mail`, `password`, `username`, `r_roles_id`, `statut
 (15, 'cyrilbeaeezrrtil@gmail.com', '7NCYXkkLox', 'freebox', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
 (16, 'cyrille7@yopmail.com', 'Htm3aHC', 'azert', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
 (17, 'cyrille@yopmail.com', 'kgPG4', 'az', 1, 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(18, 'cyrillez@yopmail.com', 'sHgjcc', 'az', 1, 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
+(18, 'cyrillez@yopmail.com', 'sHgjcc', 'az', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
 (19, 'cyrilleza@yopmail.com', 'pTQWf18', 'az', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
 (20, 'cyrille7az@yopmail.com', 'HXue7T1k', 'cyrille', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
 (21, 'cyrille7azA@yopmail.com', 'bn8CqPJ9C', 'cyrille', 1, 0, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
@@ -355,7 +361,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `ecoute`
 --
@@ -365,7 +371,7 @@ ALTER TABLE `ecoute`
 -- AUTO_INCREMENT pour la table `musics`
 --
 ALTER TABLE `musics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `playlists`
 --

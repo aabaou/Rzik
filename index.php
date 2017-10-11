@@ -231,4 +231,3 @@ $(document).ready(function() {
 </script>
 <script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="assets/js/soundmanagerv2/soundmanagerv2.js"></script>

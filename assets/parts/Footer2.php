@@ -8,6 +8,14 @@
 
 			<!-- END MAIN -->
 			<div class="clearfix"></div>
+			<div id="loader">
+			  <div class="contener_general">
+			        <div class="contener_mixte"><div class="ballcolor ball_1">&nbsp;</div></div>
+			        <div class="contener_mixte"><div class="ballcolor ball_2">&nbsp;</div></div>
+			        <div class="contener_mixte"><div class="ballcolor ball_3">&nbsp;</div></div>
+			        <div class="contener_mixte"><div class="ballcolor ball_4">&nbsp;</div></div>
+			  </div>
+			</div>
 			<footer>
 				<div class="container-fluid">
 					<p class="copyright">&copy; 2017 Rzik. All Rights Reserved.</p>

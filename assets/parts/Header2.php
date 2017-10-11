@@ -21,6 +21,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<script src="assets/js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
 	<!-- <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png"> -->
 	<!-- <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png"> -->
 </head>

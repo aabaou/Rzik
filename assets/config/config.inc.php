@@ -4,6 +4,8 @@
 	
 	session_start();
 	
+	define('SRC', 'http://localhost/Rzik/');
+
 	if(empty($_SESSION['lang'])){
 	$_SESSION['lang'] = 'fr';
 	}
