@@ -138,8 +138,13 @@
     <script src="assets/js/table_filter.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/script.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/list.js"></script>
+<<<<<<< HEAD
     <!-- <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script> -->
     <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+=======
+    <!--<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+>>>>>>> 384534ec0eb9d991c03f7cfe06c2e1b2312d816c
 
 		<script>
 			$(document).ready(function () {

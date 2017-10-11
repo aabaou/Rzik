@@ -25,4 +25,11 @@ $Methode = $_POST;
 
 echo json_encode($result);
 
+
+// Affichage des likes 
+
+    $sql2 = "SELECT COUNT(*) FROM likes WHERE music_id = '$musicID';"
+
+    $mysqli->query($sql2);
+
 ?>

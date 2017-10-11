@@ -25,6 +25,7 @@ html body{
 
 html, body{
     height: 100%;
+    margin-bottom: 100px;
 }
 
 .coverbg{
@@ -205,7 +206,8 @@ html body ul.logo_point li{
     filter: blur(40px);
     background-size: 70% 100%;
     background-repeat: repeat;
-    height: 60vh;
+    height: 50vh;
+    margin-bottom: 30px;
     -webkit-filter: filter(value);
     -moz-filter: filter(value);
     -o-filter: filter(value);
@@ -214,10 +216,14 @@ html body ul.logo_point li{
 
 #comment-container {
     padding-top: 20px;
-    background-color: rgb(248, 248, 248);
-    height: 40vh;
-}
+    background-color: white;
+    height: 50vh;
+    }
 
+#like-container {
+    border: 1px;
+    border-color: rgb(22, 22, 22)
+}
 
 /************************************************************ Fin Outils ************************************************************/
 
