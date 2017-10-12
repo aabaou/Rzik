@@ -2,10 +2,10 @@
 
 	include 'fonctions.inc.php';
 	
+	define('SRC', 'http://localhost/Rzik/');
+	
 	session_start();
 	
-	define('SRC', 'http://localhost/Rzik/');
-
 	if(empty($_SESSION['lang'])){
 	$_SESSION['lang'] = 'fr';
 	}
@@ -34,9 +34,9 @@
 	$return_url = 'http://localhost/Rzik/';  //path to script folder
 	$fbPermissions = 'publish_actions,email'; //more permissions : https://developers.facebook.com/docs/authentication/permissions/
 
-	$hostname  ="localhost";			// Nom du serveur mysql
-	$mysqluser ="root";					// login
-	$mysqlpswd ="";					// password
+	$hostname  ="192.168.100.140";			// Nom du serveur mysql
+	$mysqluser ="rzik";					// login
+	$mysqlpswd ="password";					// password
 	$database  ="rzik";	// Nom de la base de données
 	date_default_timezone_set('Europe/Paris');
 

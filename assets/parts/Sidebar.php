@@ -6,6 +6,7 @@
 						<li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="bo.php" class=""><i class="lnr lnr-music-note"></i> <span>Musiques</span></a></li>
 						<li><a href="bo2.php" class=""><i class="lnr lnr-users"></i> <span>Utilisateurs</span></a></li>
+						<li><a href="bo3.php" class=""><i class="lnr lnr-mic"></i> <span>Radio</span></a></li>
 					</ul>
 				</nav>
 			</div>

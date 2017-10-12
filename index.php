@@ -28,9 +28,19 @@
 </div>
 		<!-- FIN HEADER FOND 
 
+
 		<!-- BODY -->
 
-
+  <div class="container">
+    <div class="division">
+      <h2>WebRadio</h2>
+      <hr>
+      <audio id="webradio" controls>
+        <source src="http://192.168.100.144:8000/ice.ogg" type="audio/ogg">
+      </audio>
+    </div>
+  </div>
+  
 	<div id="searchSong" class="container">
 
   
@@ -223,10 +233,6 @@ $(document).ready(function() {
 
 </script>
 
-<br/>
-<br/>
-<br/>
-<br/>
 
 <input type='hidden' name='lang' id='lang' value="<?php echo($_SESSION['lang']); ?>"/>
 

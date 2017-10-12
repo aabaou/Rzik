@@ -88,6 +88,14 @@ function refresh(){
   $(document).attr('location','');
 }
 
+function playPause() {
+  var song = document.getElementsByTagName('audio')[0];
+  if (song.paused)
+     song.play();
+  else
+     song.pause();
+}
+       
 $(document).ready(function() {
 
   tableDynamic();
