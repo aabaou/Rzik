@@ -52,6 +52,8 @@ else{
 	$artiste = isset($Methode['artiste']) ? $Methode['artiste'] : '' ;
 	$compositeur = isset($Methode['compositeur']) ? $Methode['compositeur'] : '' ;
 	$genre = isset($Methode['genre']) ? $Methode['genre'] : '' ;
+	$visible = isset($Methode['visible']) ? $Methode['visible'] : '' ;
+	$description = isset($Methode['description']) ? $Methode['description'] : '' ;
 
 
 
@@ -60,7 +62,7 @@ else{
 
 
 
-	$sql = "INSERT INTO musics(titre, artiste, compositeur, genres, Users_id, track ) VALUES('$titre', '$artiste', '$compositeur', '$genre', '$userID', '$track')";
+	$sql = "INSERT INTO musics(titre, artiste, compositeur, genres, Users_id, track, description,  status ) VALUES('$titre', '$artiste', '$compositeur', '$genre', '$userID', '$track', '$description', '$visible')";
 
 	error_log($sql);
 

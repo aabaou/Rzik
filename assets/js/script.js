@@ -88,6 +88,14 @@ function refresh(){
   $(document).attr('location','');
 }
 
+function playPause() {
+  var song = document.getElementsByTagName('audio')[0];
+  if (song.paused)
+     song.play();
+  else
+     song.pause();
+}
+       
 $(document).ready(function() {
 
   tableDynamic();
@@ -908,9 +916,15 @@ var notify = {
 
 window.onload = ()=>{
   $('#loader').detach();
+  getmdlSelect.init(".getmdl-select");
 }
 
 $(document).ready(function(){
+
+    $('.selectId').click(function(event) {
+      $this = $(this);
+      $data = $this.data('value');
+      $('.inputSelect[type="hidden"]').val($data);
 
     $('#myCarousel').carousel({
         interval: 10000
@@ -928,6 +942,7 @@ $(document).ready(function(){
         else {
             $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
         }
+
     });
 
     /**

@@ -57,7 +57,7 @@
                   </audio></td>
                 ' . PHP_EOL;
                 $lignes .= '<td class="titre" data-titre='.htmlspecialchars($data->titre).' data-music='.cryptS($data->id, $key, random_password(10)).'>' . htmlspecialchars($statut) . '</td>' . PHP_EOL;
-              $lignes .= '<td onclick="location.href=\''.SRC.'details.php?q='.cryptS($data->id, $key, random_password(10)).'\'"> Détails </td>' . PHP_EOL;
+              $lignes .= '<td onclick="location.href=\'./details.php?q='.cryptS($data->id, $key, random_password(10)).'\'"> Détails </td>' . PHP_EOL;
                 $lignes .= '</tr>' . PHP_EOL;
             }
             echo $lignes;
@@ -167,11 +167,7 @@
   $path = 'assets/ws/validate.php';
 
 
-  $('.selectId').click(function(event) {
-    $this = $(this);
-    $data = $this.data('value');
-    $('.inputSelect[type="hidden"]').val($data);
-  });
+
 
   $('#sendSubmit').on('click', function(event) {
       event.preventDefault();

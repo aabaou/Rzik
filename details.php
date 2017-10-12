@@ -14,7 +14,8 @@
       <div class="col-lg-12 col-md-12">
 
         <div class="col-lg-6 col-md-6">
-          <div id="graph">
+          <div class="graph">
+            <h2 class="graphTitle">Commentaire</h2>
             <div class='wrapper'>
               <div class='chart' id='p1'>
                 <canvas id='c1' value="1"></canvas>
@@ -24,7 +25,8 @@
         </div>
 
         <div class="col-lg-6 col-md-6">
-          <div id="graph">
+          <div class="graph">
+            <h2 class="graphTitle">Like</h2>
             <div class='wrapper'>
               <div class='chart' id='p2'>
                 <canvas id='c2' value="2"></canvas>
@@ -49,7 +51,7 @@
 
                   $lignes = '';
 
-                  $sql = "SELECT comment, DATE(date) AS Jour, Users_id, username FROM comments 
+                  $sql = "SELECT comments.id AS commentId , comment, DATE(date) AS Jour, Users_id, username FROM comments 
                   INNER JOIN users ON users.id = comments.Users_id 
                   WHERE Musics_id = ".decryptS($_GET['q'], $key, random_password(10));
 
@@ -59,11 +61,12 @@
                   while($data = $result->fetch_object()) {
 
                       // Lignes du tableau
-                      $lignes .= '<tr class="comments">';
-                      $lignes .= '<td>' . htmlspecialchars($data->comment) . '</td>' . PHP_EOL;
-                      $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
-                      $lignes .= '<td>' . date_YMD_WithoutRest($data->Jour) . '</td>' . PHP_EOL;
+                      $lignes .= '<tr class="comments" data-comment='.cryptS($data->commentId, $key, random_password(10)).'>';
+                        $lignes .= '<td>' . htmlspecialchars($data->comment) . '</td>' . PHP_EOL;
+                        $lignes .= '<td>' . htmlspecialchars($data->username) . '</td>' . PHP_EOL;
+                        $lignes .= '<td>' . date_YMD_WithoutRest($data->Jour) . '</td>' . PHP_EOL;
                       $lignes .= '</tr>' . PHP_EOL;
+                      
                   }
                   echo $lignes;
         ?>
@@ -80,10 +83,63 @@
 </div>
 
 
+<!-- Trigger the modal with a button -->
+<button type="button" id="modal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Commentaire</h4>
+      </div>
+      <form id="validate">
+        <div class="modal-body">
+          <p>Voulez-vous supprimer ce commentaire ?</p>
+        </div>
+        <input id="commentID" name="commentID" type="hidden">
+      </form>
+      <div class="modal-footer">
+        <div class="col-lg-12 col-md-12 center">
+          <button id="sendSubmit" type="submit" class="hvr-horizontal blue">Soumettre</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
      <!-- Script -->
     <script charset="utf-8">
 
       $(document).ready(function(){
+
+          $objSuppr = {commentID : '#commentID'};
+          $pathSuppr = 'assets/ws/deleteComment.php';
+
+
+          $('.comments').on('click', function(event) {
+            $this = $(this);
+            $commentID = $this.data('comment');
+            $('#commentID').val($commentID);
+
+            $('#modal').click();
+
+            event.stopPropagation();
+          });
+
+          $('#sendSubmit').on('click', function(event) {
+              event.preventDefault();
+              send.manual($objSuppr, $pathSuppr, 
+                function(){
+                  $('#modal').click();
+                  setTimeout(()=>refresh(),1500);
+                }
+              );
+          });
 
           $obj1 = {c1 : '#c1', getRef : '#url'};
           $obj2 = {c2 : '#c2', getRef : '#url'};

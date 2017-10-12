@@ -1,6 +1,25 @@
 <?php include 'assets/config/config.inc.php' ?>
 <?php include 'assets/objects/table.php' ?>
 <?php include 'assets/objects/Page_top.php' ?>
+<?php 
+
+	$userIdTest = $_SESSION['userID'];
+	$sql = "SELECT * FROM users WHERE id = '$userIdTest'";
+
+	$result = $mysqli->query($sql);
+
+
+	$res = $result->fetch_object();
+
+	if($res->r_roles_id == 2){
+
+	}
+	else{
+		header("Location: index.php"); 
+	}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +51,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="assets/img/logo.png" alt="Rzik Logo" class="img-responsive logo"></a>
+				<a href="index.php"><img src="assets/img/logo.png" alt="Rzik Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -49,13 +68,18 @@
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i>
+								<span><?php echo $_SESSION['username']; ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+							<form class="form" role="form" method="post" action="assets/ws/deconnexion.php" accept-charset="UTF-8" id="login-nav">
+								<button type="submit" style="
+									    background: transparent;
+									    border: none;
+									    margin: 0 auto;
+									    text-align: center;
+									    width: 100%;
+									"><i class="lnr lnr-exit"></i> <span>Logout</span></button>
+							</form>
 							</ul>
 						</li>
 					</ul>

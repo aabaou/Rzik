@@ -19,13 +19,20 @@ foreach ($Methode as $key => $value) {
 $sha2pwd = sha1(sha1($param->password) . sha1($param->password));
 
 
-
 $sql = "SELECT * FROM users WHERE mail = '$param->email' AND trackm = '$sha2pwd'";
 $result = $mysqli->query($sql);
 
+$sqlBanni = "SELECT statut FROM users WHERE mail = '$param->email' AND trackm = '$sha2pwd'";
+$resultBanni = $mysqli->query($sqlBanni);
+
+
 $res = $result->fetch_object();
 
-if($result->num_rows != 0)
+$resBanni = $resultBanni->fetch_object();
+
+error_log($result->num_rows.'__'.$res->r_roles_id.'__'.$resBanni->statut);
+
+if($result->num_rows != 0 && $resBanni->statut == 0)
 {
 
 	$pwd = sha1(sha1($param->password) . sha1($param->password));
@@ -41,11 +48,23 @@ if($result->num_rows != 0)
 	$_SESSION['userID'] = $res->id;
 	$_SESSION['key'] = 'ilovetities';
 
+	if($res->r_roles_id != 2)
+		header('Location: ../../index.php'); 
+	else{
+		header('Location: ../../bo.php'); 
+		$_SESSION['admin'] = $res->r_roles_id;
+	}
+}	
+
+
+elseif($result->num_rows == 0 && $resBanni->statut == 0){
 	header('Location: ../../index.php'); 
 }
 
+
+
 else{
-	header('Location: ../../index.php'); 
+	die('Vous êtes banni');
 }
 
 

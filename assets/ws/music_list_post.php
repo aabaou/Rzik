@@ -23,13 +23,13 @@ $Methode = $_POST;
 	$result = ['status' => 'success', 'message' => 'Votre commentaire a bien été ajouté', 'data' => 'data' ];
 
 
-echo json_encode($result);
+    echo json_encode($result);
 
 
 // Affichage des likes 
 
-    $sql2 = "SELECT COUNT(*) FROM likes WHERE music_id = '$musicID';"
+    // $sql2 = "SELECT COUNT(*) FROM likes WHERE music_id = '$musicID';"
 
-    $mysqli->query($sql2);
+    // $mysqli->query($sql2);
 
 ?>

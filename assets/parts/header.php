@@ -125,14 +125,27 @@
 <!-- 				            <img src="/Rzik/img/.png" alt="">
 				            <img src="/Rzik/img/.png" alt=""> -->
 			            </a>
+
 			    </div>
 		        <div class="col-md-6">
 			        <div id="navbar" class="collapse navbar-collapse">
 			            <ul class="nav navbar-nav">
 <!-- 			            <li><a href="#" class="hvr-center"></a></li>
 			                <li><a href="#" class="hvr-center"></a></li>
-			                <li><a href="#" class="hvr-horizontal" ></a></li>
-							<li><a href="#" class="hvr-horizontal" ></a></li> -->
+			                <li><a href="#" class="hvr-horizontal" ></a></li>-->
+							<?php 	
+								$userIdTest = $_SESSION['userID'];
+								$sql = "SELECT * FROM users WHERE id = '$userIdTest'";
+
+								$result = $mysqli->query($sql);
+
+
+								$res = $result->fetch_object();
+
+								if($res->r_roles_id == 2){
+									echo '<li><a href="bo.php" class="hvr-horizontal" >BackOffice</a></li>';
+								}
+							?>
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<?php 
 										if(isset($_SESSION['connect'])){ 
