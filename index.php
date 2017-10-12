@@ -48,7 +48,7 @@
     <?php
     $top10 = statistique_top_10();
     while($res = $top10->fetch_object()){
-      print('<div><h3>'.$res->titre.'</h3><img src="assets/upload/'.$res->cover.'"></div>');
+      //print('<div><h3>'.$res->titre.'</h3><img src="assets/upload/'.$res->cover.'"></div>');
       print('<div onclick="playlist.addRemove(this)" song="'.$res->music_id.'" source ="assets/upload/'.$res->file.'" titre="'.$res->titre.'">
         <h3>'.$res->titre.'</h3>
         <img src="assets/upload/'.$res->cover.'">

@@ -133,18 +133,20 @@
 <!-- 			            <li><a href="#" class="hvr-center"></a></li>
 			                <li><a href="#" class="hvr-center"></a></li>
 			                <li><a href="#" class="hvr-horizontal" ></a></li>-->
-							<?php 	
-								$userIdTest = $_SESSION['userID'];
-								$sql = "SELECT * FROM users WHERE id = '$userIdTest'";
+							<?php
+              if(isset($_SESSION['userID'])){
+                $userIdTest = $_SESSION['userID'];
+                $sql = "SELECT * FROM users WHERE id = '$userIdTest'";
 
-								$result = $mysqli->query($sql);
+                $result = $mysqli->query($sql);
 
 
-								$res = $result->fetch_object();
+                $res = $result->fetch_object();
 
-								if($res->r_roles_id == 2){
-									echo '<li><a href="bo.php" class="hvr-horizontal" >BackOffice</a></li>';
-								}
+                if($res->r_roles_id == 2){
+                  echo '<li><a href="bo.php" class="hvr-horizontal" >BackOffice</a></li>';
+                }
+              }
 							?>
 							<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<?php 

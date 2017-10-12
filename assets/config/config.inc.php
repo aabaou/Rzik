@@ -32,10 +32,10 @@
 	$return_url = 'http://localhost/Rzik/';  //path to script folder
 	$fbPermissions = 'publish_actions,email'; //more permissions : https://developers.facebook.com/docs/authentication/permissions/
 
-	$hostname  ="192.168.100.140";			// Nom du serveur mysql
-	$mysqluser ="rzik";					// login
-	$mysqlpswd ="password";					// password
-	$database  ="rzik";	// Nom de la base de données
+$hostname  ="localhost";			// Nom du serveur mysql
+$mysqluser ="root";					// login
+$mysqlpswd ="";					// password
+$database  ="rzik";	// Nom de la base de données
 	date_default_timezone_set('Europe/Paris');
 
 	$mysqli = new mysqli($hostname, $mysqluser, $mysqlpswd, $database);
