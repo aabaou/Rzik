@@ -29,13 +29,24 @@
 		<!-- FIN HEADER FOND 
 
 		<!-- BODY -->
-
-
+<div class="relative">
+  <h1 class="container">TOP 10</h1>
+  <div class="relative">
+    <section class="center slider">
+    <?php
+    $top10 = statistique_top_10();
+    while($res = $top10->fetch_object()){
+      print('<div><h3>'.$res->titre.'</h3><img src="assets/upload/'.$res->cover.'"></div>');
+      print('<div onclick="playlist.addRemove(this)" song="'.$res->music_id.'" source ="assets/upload/'.$res->file.'" titre="'.$res->titre.'">
+        <h3>'.$res->titre.'</h3>
+        <img src="assets/upload/'.$res->cover.'">
+      </div>');
+    }
+    ?>
+    </section>
+  </div>
+</div>
 	<div id="searchSong" class="container">
-
-  
-
-
 <?php 
 
   if(isset($_SESSION['connect'])){
@@ -164,8 +175,14 @@
 
 
 $(document).ready(function() {
-  
 
+  $(".center").slick({
+    dots: true,
+    infinite: true,
+    centerMode: true,
+    slidesToShow: 5,
+    slidesToScroll: 3
+  });
   obj = {cover: 'cover', music: 'music'};
   $path = "assets/ws/upload.php";
 
@@ -197,9 +214,6 @@ $(document).ready(function() {
 
 });
 
-
-
-
 </script>
 
 <br/>
@@ -208,16 +222,6 @@ $(document).ready(function() {
 <br/>
 
 <input type='hidden' name='lang' id='lang' value="<?php echo($_SESSION['lang']); ?>"/>
-
-
-
-
-
-
-
-
-
-
 
 
 		<!-- FIN BODY -->
@@ -231,3 +235,33 @@ $(document).ready(function() {
 </script>
 <script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<style type="text/css">
+  .slider {
+    width: 50%;
+    margin: 100px auto;
+  }
+
+  .slick-slide {
+    margin: 0px 20px;
+  }
+
+  .slick-slide img {
+    width: 100%;
+  }
+
+
+
+
+  .slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: .2;
+  }
+
+  .slick-active {
+    opacity: .5;
+  }
+
+  .slick-current {
+    opacity: 1;
+  }
+</style>

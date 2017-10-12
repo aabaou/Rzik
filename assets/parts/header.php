@@ -1,4 +1,7 @@
 <?php include 'assets/config/config.inc.php' ?>
+
+<?php include 'assets/ws/statistique.php' ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,6 +20,7 @@
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/tools.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.8.0/slick.css"/>
 		<!-- END CSS -->
 
 		<!-- Favicon -->
@@ -98,23 +102,6 @@
     function saveUserData(userData){
       $.post('assets/ws/userData.php', {userData: JSON.stringify(userData)}, function(){return true;});
 
-
-      /*$data = JSON.stringify(userData);
-      console.dir($data);
-      $.ajax({
-        url : 'assets/ws/userData.php',
-        contentType: "html",
-        type: "POST",
-        data : "userData="+$data.toString(),
-        success: function(response, statut){
-          alert(statut);
-          console.dir(response);
-          $('#log').append(response);
-
-        }
-      }).fail(function() {
-        notify.danger("Erreur inconnue");
-      });*/
     }
 
   </script>
