@@ -1986,6 +1986,7 @@ color: #797979;
   100%{transform:rotate(720deg) scale(1);}
 }
 
+
 #webradio{
     margin-top: 40px;
     width: 100%;
@@ -1994,3 +1995,10 @@ color: #797979;
 .padding{
     padding: 40px 0;
 }
+
+.carousel-inner.onebyone-carosel { margin: auto; width: 90%; }
+.onebyone-carosel .active.left { left: -33.33%; }
+.onebyone-carosel .active.right { left: 33.33%; }
+.onebyone-carosel .next { left: 33.33%; }
+.onebyone-carosel .prev { left: -33.33%; }
+

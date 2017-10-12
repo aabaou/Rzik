@@ -925,6 +925,24 @@ $(document).ready(function(){
       $this = $(this);
       $data = $this.data('value');
       $('.inputSelect[type="hidden"]').val($data);
+
+    $('#myCarousel').carousel({
+        interval: 10000
+    })
+    $('.fdi-Carousel .item').each(function () {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        if (next.next().length > 0) {
+            next.next().children(':first-child').clone().appendTo($(this));
+        }
+        else {
+            $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+        }
+
     });
 
     /**
@@ -1103,6 +1121,33 @@ $(document).ready(function(){
     /**
      * Carousel
      */
+    $('.carousel-top-10').slick({
+        slidesToScroll: 4,
+        slidesToShow: 4,
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
     $('.slider_home').slick({
         dots: false,
         infinite: true,

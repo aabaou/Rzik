@@ -1,9 +1,7 @@
 <?php
 
 	include 'fonctions.inc.php';
-	
-	define('SRC', 'http://localhost/Rzik/');
-	
+
 	session_start();
 	
 	if(empty($_SESSION['lang'])){
@@ -41,7 +39,7 @@
 	date_default_timezone_set('Europe/Paris');
 
 	$mysqli = new mysqli($hostname, $mysqluser, $mysqlpswd, $database);
-
+  global $mysqli;
 	if (mysqli_connect_errno()) {
 		printf("Connect failed: %s\n", mysqli_connect_error());
 		exit();
