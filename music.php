@@ -11,6 +11,11 @@ $result = $mysqli->query($sql);
 
 $res = $result->fetch_object();
 
+
+
+
+
+
 ?>
 <div class="relative">
     <div id="background-music" style="background-image: url('assets/upload/<?php echo $res->cover ?>')" ></div>
