@@ -147,35 +147,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `users`
---
-
-INSERT INTO `users` (`id`, `mail`, `password`, `username`, `r_roles_id`, `trackm`) VALUES
-(1, 'cyril@gmail.com', 'azerty', 'azerty', 1, 'dfhjhsgfedzss'),
-(3, 'cyrilbaril@gmail.com', 'fa6unbu4', 'freebox', 1, '84d2c09491e835e6b2260b16b07e413a31fe0360'),
-(4, 'cyrilbaril@gmail.com', 'NeQki', 'freebox', 1, 'e42ca1eecc69194485629eeb6d8e7f3b0fdedd42'),
-(5, 'cyrilbaril@gmail.com', 'iunQ6o8', 'freebox', 1, '0b4f68002794198a7f350839f8fe6658228e2f00'),
-(6, 'cyrilbaril@gmail.com', 'FbcV8GZVhW', 'freebox', 1, 'bc91d1a98b9e6e667a3a58872c05208c9ba0824d'),
-(7, 'cyrilbaril@gmail.com', '8e5DsHRT', 'freebox', 1, '401455bb2e8cbfeae631b44504e82aa5d6fcf3a9'),
-(8, 'cyrilbaril@gmail.com', '7C2MH', 'freebox', 1, '73916014d312cc268220e125a114e83c758df229'),
-(9, 'cyrilbaril@gmail.com', 'NNBvRaBzUn', 'freebox', 1, '64073521739b9411967a901f515ad17cd96f1e7f'),
-(10, 'cyrilbaril@gmail.com', 'jboiDFGAY', 'freebox', 1, 'ce5bc8b59cac2f67006f313b4129e1ae723b0068'),
-(11, 'cyrilbaeril@gmail.com', 'G8rrLgkY', 'freebox', 1, '83949302f64168684f0d81f94e79b4b133b008c0'),
-(12, 'cyrilbaezril@gmail.com', '2FfHBGyRQ', 'freebox', 1, '4c3cf180e9ae00089a00a8992c67e84452868f2b'),
-(13, 'cyrilbaezrrtil@gmail.com', 'LJkKPjZ3', 'freebox', 1, 'd5a2d3f894adf1b83c44d1b976eeace0a8462119'),
-(14, 'cyrilbeaezrrtil@gmail.com', 'iYzbB', 'freebox', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(15, 'cyrilbeaeezrrtil@gmail.com', '7NCYXkkLox', 'freebox', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(16, 'cyrille7@yopmail.com', 'Htm3aHC', 'azert', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(17, 'cyrille@yopmail.com', 'kgPG4', 'az', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(18, 'cyrillez@yopmail.com', 'sHgjcc', 'az', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(19, 'cyrilleza@yopmail.com', 'pTQWf18', 'az', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(20, 'cyrille7az@yopmail.com', 'HXue7T1k', 'cyrille', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(21, 'cyrille7azA@yopmail.com', 'bn8CqPJ9C', 'cyrille', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(22, 'cyrilleaze@yopmail.com', 'WzPuyo', 'azerty', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(23, 'cyrilbarilazert@gmail.com', 'NNamstve1Y', 'q', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4'),
-(24, 'azerty@hotmail.com', 'MNz9FKH', 'azerty', 1, 'dd5ad8ddaa4398268a4bca13ac0268c142181cd4');
-
---
 -- Index pour les tables exportées
 --
 
